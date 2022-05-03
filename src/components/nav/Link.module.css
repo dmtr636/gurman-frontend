@@ -11,3 +11,11 @@
 .item.active {
     color: #FA3D3D;
 }
+
+.line {
+    border: 1px solid #FA3D3D;
+    width: 60%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}

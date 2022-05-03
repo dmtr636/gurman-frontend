@@ -11,6 +11,7 @@ function Link(props: { path: string; name: string }) {
             className={styles.item + (match ? " " + styles.active : "")}
         >
             {props.name}
+            {match && <div className={styles.line} />}
         </NavLink>
     )
 }

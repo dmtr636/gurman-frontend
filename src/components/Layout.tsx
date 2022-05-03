@@ -5,7 +5,7 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-    Link, NavLink
+    Link, NavLink, HashRouter
 } from "react-router-dom";
 import category from "../store/category";
 import {observer} from "mobx-react-lite";
@@ -17,17 +17,21 @@ const Layout = observer(() => {
         <div className={styles.layout}>
             <Header />
 
-            <Router>
+            <HashRouter>
                 <Nav />
 
                 <Routes>
                     {categories.map((category) =>
-                        <Route path={'/' + category.path} element={<h1>{category.name}</h1>} />
+                        <Route
+                            path={'/' + category.path}
+                            element={<h1>{category.name}</h1>}
+                            key={category.id}
+                        />
                     )}
                     <Route path={'*'} element={<h1>Not found</h1>} />
 
                 </Routes>
-            </Router>
+            </HashRouter>
         </div>
     )
 })
