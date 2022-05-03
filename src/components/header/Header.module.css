@@ -1,0 +1,47 @@
+.header {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.brand {
+    font-family: 'Ubuntu', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    color: #FA3D3D;
+
+    margin-right: 80px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    margin-right: 40px;
+    margin-top: 45px;
+    margin-bottom: 37px;
+}
+
+.infoTextTop {
+    font-family: 'Ubuntu', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #282828;
+}
+
+.infoTextBottom {
+    font-family: 'Ubuntu', serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 18px;
+    color: #282828;
+    margin-top: 3px;
+}
+

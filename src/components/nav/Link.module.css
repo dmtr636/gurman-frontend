@@ -1,0 +1,13 @@
+.item {
+    font-family: 'Open Sans', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 30px;
+    color: #282828;
+    text-decoration: none;
+}
+
+.item.active {
+    color: #FA3D3D;
+}
