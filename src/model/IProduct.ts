@@ -5,5 +5,6 @@ export interface IProduct {
     image: string,
     variants: IVariant[],
     category: number,
-    portion: number
+    portion: number,
+    activeVariant: IVariant
 }

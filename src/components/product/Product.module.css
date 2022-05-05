@@ -32,32 +32,6 @@
     margin-left: 10px;
 }
 
-.variants {
-    display: flex;
-    margin-top: 20px;
-}
-
-.variant {
-    width: 97px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 100%;
-    color: #929292;
-    cursor: pointer;
-}
-
-.active {
-    background: #FA3D3D;
-    border-radius: 5px;
-    color: #FFFFFF;
-}
-
 .composition {
     margin-top: 20px;
 }
@@ -78,4 +52,39 @@
     line-height: 16px;
     letter-spacing: 0em;
     text-align: left;
+}
+
+.nextLink {
+    color: #FA3D3D;
+    cursor: pointer;
+}
+
+.orderRow {
+    display: flex;
+}
+
+.orderButton {
+    user-select: none;
+    margin-top: 30px;
+    background: #FA3D3D;
+    border-radius: 5px;
+    width: 174px;
+    height: 62px;
+    font-family: 'Ubuntu', "Segoe UI", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 31px;
+    line-height: 100%;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderButton.active {
+    background: #FFD3D3;
+    border-radius: 5px 5px 5px 5px;
+    color: #FA3D3D;
 }
