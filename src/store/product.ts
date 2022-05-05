@@ -16,6 +16,7 @@ class Product {
                 let products = response.data["products"]
                 products.forEach((product: IProduct) => {
                     product.activeVariant = product.variants[0]
+                    product.expanded = false
                     product.variants.forEach((variant: IVariant) => variant.cartCount = 0)
                 })
                 this.products = products
@@ -28,6 +29,10 @@ class Product {
         } else {
             variant.cartCount = 0
         }
+    }
+
+    setExpanded(product: IProduct, isExpanded: boolean) {
+        product.expanded = isExpanded
     }
 
     addToCart(variant: IVariant) {

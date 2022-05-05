@@ -1,9 +1,10 @@
 import styles from "./Variants.module.css";
 import {IProduct} from "../../model/IProduct";
 import {IVariant} from "../../model/IVariant";
+import {observer} from "mobx-react-lite";
 
 
-const Variants = (props: { product: IProduct}) => {
+const Variants = observer((props: { product: IProduct}) => {
     const product = props.product
 
     const variantClassNames = (variant: IVariant) => {
@@ -23,6 +24,6 @@ const Variants = (props: { product: IProduct}) => {
             )}
         </div>
     )
-}
+})
 
 export default Variants

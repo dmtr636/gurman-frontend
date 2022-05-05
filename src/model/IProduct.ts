@@ -6,5 +6,6 @@ export interface IProduct {
     variants: IVariant[],
     category: number,
     portion: number,
-    activeVariant: IVariant
+    activeVariant: IVariant,
+    expanded: boolean
 }
