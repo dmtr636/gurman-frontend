@@ -7,7 +7,7 @@ import {
     Route,
     Link, NavLink, HashRouter
 } from "react-router-dom";
-import category from "../store/category";
+import category from "../store/categoryStore";
 import {observer} from "mobx-react-lite";
 import ProductsContainer from "./product/ProductsContainer";
 

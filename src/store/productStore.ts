@@ -2,8 +2,9 @@ import {makeAutoObservable} from "mobx";
 import axios from "axios";
 import {IProduct} from "../model/IProduct";
 import {IVariant} from "../model/IVariant";
+import cart from './cartStore'
 
-class Product {
+class ProductStore {
     products: IProduct[] = []
 
     constructor() {
@@ -26,9 +27,25 @@ class Product {
     toggleInCartState(variant: IVariant) {
         if (variant.cartCount === 0) {
             variant.cartCount = 1
+            cart.addVariant(variant)
         } else {
             variant.cartCount = 0
+            cart.removeVariant(variant)
         }
+    }
+
+    get variantsInCartCount() {
+        let count = 0
+        this.products.forEach(product => {
+            product.variants.forEach(variant => {
+                if (variant.cartCount > 0) {
+                    count++
+                }
+            })
+        })
+        console.log(count)
+        console.log(this.products)
+        return count
     }
 
     setExpanded(product: IProduct, isExpanded: boolean) {
@@ -52,4 +69,4 @@ class Product {
     }
 }
 
-export default new Product()
+export default new ProductStore()

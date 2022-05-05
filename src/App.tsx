@@ -4,8 +4,8 @@ import './App.css';
 import Header from "./components/header/Header";
 import Layout from "./components/Layout";
 import styles from './App.module.css'
-import category from './store/category'
-import product from './store/product'
+import category from './store/categoryStore'
+import product from './store/productStore'
 
 function App() {
     useEffect(() => {

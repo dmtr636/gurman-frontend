@@ -1,4 +1,4 @@
-import product from '../../store/product'
+import product from '../../store/productStore'
 import Product from "./Product";
 import styles from './ProductContainer.module.css'
 import {observer} from "mobx-react-lite";

@@ -2,7 +2,7 @@ import {makeAutoObservable} from "mobx";
 import axios from "axios";
 import {ICategory} from "../model/ICategory";
 
-class Category {
+class CategoryStore {
     categories: ICategory[] = []
 
     constructor() {
@@ -18,4 +18,4 @@ class Category {
     }
 }
 
-export default new Category()
+export default new CategoryStore()
