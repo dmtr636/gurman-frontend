@@ -1,16 +1,20 @@
 import {makeAutoObservable} from "mobx";
+import axios from "axios";
+import {ICategory} from "../model/ICategory";
 
 class Category {
-    categories = [
-        {id: 1, name: "Акции", path: "shares"},
-        {id: 2, name: "Шаурма", path: "shawarma"},
-        {id: 3, name: "Шашлык", path: "shashlik"},
-        {id: 4, name: "Бургеры", path: "burgers"},
-        {id: 5, name: "Стрит-фуд", path: "street-food"}
-    ]
+    categories: ICategory[] = []
 
     constructor() {
         makeAutoObservable(this)
+    }
+
+    fetchCategories() {
+        axios.get("http://localhost:8000/categories")
+            .then(response => {
+                this.categories = response.data["categories"]
+                console.log(response.data)
+            })
     }
 }
 

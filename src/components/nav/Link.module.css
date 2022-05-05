@@ -12,6 +12,10 @@
     color: #FA3D3D;
 }
 
+.item:hover {
+    color: #FA3D3D;
+}
+
 .line {
     border: 1px solid #FA3D3D;
     width: 60%;

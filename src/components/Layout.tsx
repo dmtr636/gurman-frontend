@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import category from "../store/category";
 import {observer} from "mobx-react-lite";
+import ProductsContainer from "./product/ProductsContainer";
 
 const Layout = observer(() => {
     const categories = category.categories
@@ -24,7 +25,9 @@ const Layout = observer(() => {
                     {categories.map((category) =>
                         <Route
                             path={'/' + category.path}
-                            element={<h1>{category.name}</h1>}
+                            element={
+                                <ProductsContainer categoryId={category.id} />
+                            }
                             key={category.id}
                         />
                     )}
