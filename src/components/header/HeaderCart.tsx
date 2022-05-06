@@ -1,31 +1,62 @@
 import styles from "./HeaderCart.module.css";
 import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore"
-import Cart from "../../store/cartStore";
+import cartStore from "../../store/cartStore";
+import React, {useState} from "react";
+import {Box, Button, Divider, List, ListItem, ListItemIcon, ListItemText, SwipeableDrawer} from "@mui/material";
+import Drawer from '@mui/material/Drawer';
+import Cart from '../cart/Cart'
+import {set} from "mobx";
+
+type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 const HeaderCart = observer(() => {
-    const cartCount = Cart.cartCount
+    const cartCount = cartStore.cartCount
 
     const cartClassName = () => {
         let empty = cartCount === 0 ? styles.empty : " "
         return `${styles.cart} ${empty}`
     }
 
+    const [open, setOpen] = useState(false)
+
     return (
-        <div className={cartClassName()} onClick={() => alert("Open cart")}>
+        <div className={cartClassName()} onClick={() => {
+            if (cartCount > 0) {
+                setOpen(true)
+            }
+        }}>
             <div className={styles.image}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="25" viewBox="0 0 21 25" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0455 6.25H15.9886V5.75C15.9886 2.575 13.5307 0 10.5 0C7.46932 0 5.01136 2.575 5.01136 5.75V6.25H0.954546C0.426563 6.25 0 6.69687 0 7.25V24C0 24.5531 0.426563 25 0.954546 25H8.74988C8.47006 24.2835 8.2632 23.5304 8.13844 22.75H2.14773V8.5H5.01136V11.25C5.01136 11.3875 5.11875 11.5 5.25 11.5H6.92046C7.0517 11.5 7.15909 11.3875 7.15909 11.25V8.5H13.8409V11.25C13.8409 11.2606 13.8415 11.2711 13.8428 11.2814C14.5192 10.9217 15.2375 10.6306 15.9886 10.4173V8.5H18.8523V10.001C18.9014 10.0003 18.9507 10 19 10C19.683 10 20.3514 10.0622 21 10.1814V7.25C21 6.69687 20.5734 6.25 20.0455 6.25ZM7.15909 5.75C7.15909 3.81562 8.65355 2.25 10.5 2.25C12.3465 2.25 13.8409 3.81562 13.8409 5.75V6.25H7.15909V5.75Z" fill="white"/>
-                </svg>
+                {cartCount === 0
+                    ?
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" viewBox="0 0 25 30" fill="none">
+                        <path d="M23.8636 7.5H19.0341V6.9C19.0341 3.09 16.108 0 12.5 0C8.89205 0 5.96591 3.09 5.96591 6.9V7.5H1.13636C0.507812 7.5 0 8.03625 0 8.7V28.8C0 29.4638 0.507812 30 1.13636 30H23.8636C24.4922 30 25 29.4638 25 28.8V8.7C25 8.03625 24.4922 7.5 23.8636 7.5ZM8.52273 6.9C8.52273 4.57875 10.3018 2.7 12.5 2.7C14.6982 2.7 16.4773 4.57875 16.4773 6.9V7.5H8.52273V6.9ZM22.4432 27.3H2.55682V10.2H5.96591V13.5C5.96591 13.665 6.09375 13.8 6.25 13.8H8.23864C8.39489 13.8 8.52273 13.665 8.52273 13.5V10.2H16.4773V13.5C16.4773 13.665 16.6051 13.8 16.7614 13.8H18.75C18.9062 13.8 19.0341 13.665 19.0341 13.5V10.2H22.4432V27.3Z" fill="white"/>
+                    </svg>
+                    :
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="30" viewBox="0 0 26 30" fill="none">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M24.8182 7.5H19.7955V6.9C19.7955 3.09 16.7523 0 13 0C9.24773 0 6.20455 3.09 6.20455 6.9V7.5H1.18182C0.528126 7.5 0 8.03625 0 8.7V28.8C0 29.4637 0.528126 30 1.18182 30H10.8332C10.4867 29.1402 10.2306 28.2365 10.0762 27.3H2.65909V10.2H6.20455V13.5C6.20455 13.665 6.3375 13.8 6.5 13.8H8.56818C8.73068 13.8 8.86364 13.665 8.86364 13.5V10.2H17.1364V13.5C17.1364 13.5128 17.1372 13.5253 17.1387 13.5377C17.9761 13.1061 18.8655 12.7567 19.7955 12.5007V10.2H23.3409V12.0012C23.4018 12.0004 23.4627 12 23.5238 12C24.3694 12 25.197 12.0747 26 12.2177V8.7C26 8.03625 25.4719 7.5 24.8182 7.5ZM8.86364 6.9C8.86364 4.57875 10.7139 2.7 13 2.7C15.2861 2.7 17.1364 4.57875 17.1364 6.9V7.5H8.86364V6.9Z" fill="white"/>
+                    </svg>
+                }
             </div>
-            <div className={styles.positions}>
-                <div className={styles.positionsText}>
-                    {cartCount}
+            {cartCount > 0 &&
+                <div className={styles.positions}>
+                    <div className={styles.positionsText}>
+                        {cartCount}
+                    </div>
                 </div>
-            </div>
+            }
             <div className={styles.text}>
-                Оформить заказ
+                {cartCount === 0
+                    ? "Корзина пустует"
+                    : "Оформить заказ"
+                }
             </div>
+            <Drawer
+                anchor={'right'}
+                open={open}
+            >
+                <Cart close={() => setOpen(false)} />
+            </Drawer>
         </div>
     )
 })

@@ -16,7 +16,6 @@ class ProductStore {
             .then(response => {
                 let products = response.data["products"]
                 products.forEach((product: IProduct) => {
-                    product.activeVariant = product.variants[0]
                     product.expanded = false
                     product.variants.forEach((variant: IVariant) => variant.cartCount = 0)
                 })
@@ -24,13 +23,17 @@ class ProductStore {
             })
     }
 
-    toggleInCartState(variant: IVariant) {
+    setActiveVariant(product: IProduct, variant: IVariant) {
+        product.activeVariant = variant
+    }
+
+    toggleInCartState(variant: IVariant, product: IProduct) {
         if (variant.cartCount === 0) {
             variant.cartCount = 1
-            cart.addVariant(variant)
+            cart.addItem(variant, product)
         } else {
             variant.cartCount = 0
-            cart.removeVariant(variant)
+            cart.removeItem(variant)
         }
     }
 

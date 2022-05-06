@@ -31,7 +31,7 @@ const Layout = observer(() => {
                             key={category.id}
                         />
                     )}
-                    <Route path={'*'} element={<h1>Not found</h1>} />
+                    <Route path={'*'} element={<h1>Not found</h1>} key={-1}/>
 
                 </Routes>
             </HashRouter>

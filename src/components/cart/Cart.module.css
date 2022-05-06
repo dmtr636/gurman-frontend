@@ -1,0 +1,24 @@
+.cart {
+    width: 600px;
+    padding: 40px;
+}
+
+.closeImg {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
+}
+
+.header {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    color: #282828;
+}
+
+.header.cost {
+    color: #FA3D3D;
+}

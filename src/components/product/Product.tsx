@@ -4,9 +4,14 @@ import productStore from '../../store/productStore'
 import {observer} from "mobx-react-lite";
 import Variants from "./Variants";
 import Composition from "./Composition";
+import cartStore from "../../store/cartStore";
 
 const Product = observer((props: {product: IProduct}) => {
     const product = props.product
+
+    if (product.activeVariant === undefined) {
+        productStore.setActiveVariant(product, product.variants[0])
+    }
 
     const orderButtonClassNames = () => {
         return styles['orderButton'] +
@@ -18,7 +23,7 @@ const Product = observer((props: {product: IProduct}) => {
     return (
         <div
             className={styles.product}
-            onClick={() => product.expanded = false}
+            onClick={() => productStore.setExpanded(product, false)}
         >
             <img src={"http://localhost:8000" + props.product.image} alt={""}/>
 
@@ -40,10 +45,39 @@ const Product = observer((props: {product: IProduct}) => {
             <div className={styles.orderRow}>
                 <div
                     className={orderButtonClassNames()}
-                    onClick={() => productStore.toggleInCartState(product.activeVariant)}
+                    onClick={() => productStore.toggleInCartState(product.activeVariant, product)}
                 >
                     {product.activeVariant.cost + " ₽"}
                 </div>
+
+                {product.activeVariant.cartCount > 0 &&
+                    <div className={styles.cartCount}>
+                        <div
+                            className={styles.cartCountButton}
+                            onClick={() => {
+                                if (product.activeVariant.cartCount > 1) {
+                                    product.activeVariant.cartCount--
+                                }
+                            }}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2" fill="none">
+                                <path d="M1 1H11" stroke="#282828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <div>{product.activeVariant.cartCount}</div>
+
+                        <div
+                            className={styles.cartCountButton}
+                            onClick={() => product.activeVariant.cartCount++}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M1 6H11" stroke="#282828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M6 1L6 11" stroke="#282828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     )

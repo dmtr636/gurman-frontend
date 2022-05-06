@@ -1,23 +1,28 @@
 import {makeAutoObservable} from "mobx";
 import {IVariant} from "../model/IVariant";
+import {ICartItem} from "../model/ICartItem";
+import {IProduct} from "../model/IProduct";
 
 class CartStore {
-    variants: IVariant[] = []
+    items: ICartItem[] = []
 
     constructor() {
         makeAutoObservable(this, {}, {deep: true})
     }
 
-    addVariant(variant: IVariant) {
-        this.variants.push(variant)
+    addItem(variant: IVariant, product: IProduct) {
+        this.items.push({
+            variant: variant,
+            product: product
+        })
     }
 
-    removeVariant(variant: IVariant) {
-        this.variants = this.variants.filter(v => v.id !== variant.id)
+    removeItem(variant: IVariant) {
+        this.items = this.items.filter(item => item.variant.id !== variant.id)
     }
 
     get cartCount() {
-        return this.variants.length
+        return this.items.length
     }
 }
 

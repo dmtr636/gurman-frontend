@@ -9,9 +9,6 @@
 
     background: #FA3D3D;
 
-    display: flex;
-    justify-content: center;
-
     cursor: pointer;
     user-select: none;
 }
@@ -22,36 +19,30 @@
 
 .text {
     position: absolute;
-    left: 27.22%;
-    right: 10%;
-    top: 42.86%;
-    bottom: 34.29%;
+    left: 28.62%;
+    top: 40.87%;
 
-    font-family: 'Ubuntu', serif;
+    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 20px;
+    line-height: 23px;
     color: #FFFFFF;
 }
 
 .image {
     position: absolute;
-    left: 10%;
-    right: 78.33%;
-    top: 35.71%;
-    bottom: 28.57%;
+    left: 13.77%;
+    top: 38.1%;
 }
 
 .positions {
     position: absolute;
-    left: 15.56%;
-    right: 75%;
-    top: 52.86%;
-    bottom: 22.86%;
+    left: 18.84%;
+    top: 50%;
 
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
 
     background: url("../../images/ellips.svg");
 }
@@ -70,3 +61,4 @@
     align-items: center;
     justify-content: center;
 }
+
