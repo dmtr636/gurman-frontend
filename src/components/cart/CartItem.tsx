@@ -1,6 +1,7 @@
 import {ICartItem} from "../../model/ICartItem";
 import styles from './CartItem.module.css'
 import {observer} from "mobx-react-lite";
+import productStore from "../../store/productStore";
 
 const COMPOSITION_MAX_LEN = 60
 
@@ -43,7 +44,7 @@ const CartItem = observer((props: {item: ICartItem}) => {
                         <div
                             className={styles.cartCountButton}
                             onClick={() => {
-                                item.variant.cartCount--
+                                productStore.decrementCartCount(item.variant)
                             }}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2" fill="none">
@@ -56,7 +57,7 @@ const CartItem = observer((props: {item: ICartItem}) => {
                         <div
                             className={styles.cartCountButton}
                             onClick={() => {
-                                item.variant.cartCount++
+                                productStore.incrementCartCount(item.variant)
                             }}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">

@@ -53,11 +53,7 @@ const Product = observer((props: {product: IProduct}) => {
                     <div className={styles.cartCount}>
                         <div
                             className={styles.cartCountButton}
-                            onClick={() => {
-                                if (product.activeVariant.cartCount > 1) {
-                                    product.activeVariant.cartCount--
-                                }
-                            }}
+                            onClick={() => productStore.decrementCartCount(product.activeVariant)}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2" fill="none">
                                 <path d="M1 1H11" stroke="#282828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -68,7 +64,7 @@ const Product = observer((props: {product: IProduct}) => {
 
                         <div
                             className={styles.cartCountButton}
-                            onClick={() => product.activeVariant.cartCount++}
+                            onClick={() => productStore.incrementCartCount(product.activeVariant)}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                                 <path d="M1 6H11" stroke="#282828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

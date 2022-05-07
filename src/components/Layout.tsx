@@ -10,6 +10,7 @@ import {
 import category from "../store/categoryStore";
 import {observer} from "mobx-react-lite";
 import ProductsContainer from "./product/ProductsContainer";
+import Carousel from "./carousel/Carousel";
 
 const Layout = observer(() => {
     const categories = category.categories
@@ -31,6 +32,8 @@ const Layout = observer(() => {
                             key={category.id}
                         />
                     )}
+                    <Route path={'/'} element={<Carousel />} key={0} />
+                    <Route path={'/promotions'} element={<Carousel />} key={0} />
                     <Route path={'*'} element={<h1>Not found</h1>} key={-1}/>
 
                 </Routes>

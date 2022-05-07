@@ -13,6 +13,10 @@
     user-select: none;
 }
 
+.cart:hover {
+    background: #FF5A5A;
+}
+
 .cart.empty {
     background: #282828;
 }
