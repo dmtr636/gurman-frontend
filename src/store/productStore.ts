@@ -2,7 +2,7 @@ import {makeAutoObservable} from "mobx";
 import axios from "axios";
 import {IProduct} from "../model/IProduct";
 import {IVariant} from "../model/IVariant";
-import cart from './cartStore'
+import {ICartItem} from "../model/ICartItem";
 
 class ProductStore {
     products: IProduct[] = []
@@ -30,14 +30,40 @@ class ProductStore {
     toggleInCartState(variant: IVariant, product: IProduct) {
         if (variant.cartCount === 0) {
             variant.cartCount = 1
-            cart.addItem(variant, product)
         } else {
             variant.cartCount = 0
-            cart.removeItem(variant)
         }
     }
 
-    get variantsInCartCount() {
+    setExpanded(product: IProduct, isExpanded: boolean) {
+        product.expanded = isExpanded
+    }
+
+    incrementCartCount(variant: IVariant) {
+        variant.cartCount++
+    }
+
+    decrementCartCount(variant: IVariant) {
+        variant.cartCount--
+    }
+
+    get cartItems(): ICartItem[] {
+        let items: ICartItem[] = []
+        this.products.forEach(product => {
+            product.variants.forEach(variant => {
+                if (variant.cartCount > 0) {
+                    items.push({
+                        product: product,
+                        variant: variant,
+                        amount: 0
+                    })
+                }
+            })
+        })
+        return items
+    }
+
+    get cartCount() {
         let count = 0
         this.products.forEach(product => {
             product.variants.forEach(variant => {
@@ -46,29 +72,19 @@ class ProductStore {
                 }
             })
         })
-        console.log(count)
-        console.log(this.products)
+
         return count
     }
 
-    setExpanded(product: IProduct, isExpanded: boolean) {
-        product.expanded = isExpanded
-    }
+    get cartCost() {
+        let cost = 0
+        this.products.forEach(product => {
+            product.variants.forEach(variant => {
+                cost += variant.cartCount * variant.cost
+            })
+        })
 
-    addToCart(variant: IVariant) {
-        variant.cartCount = 1
-    }
-
-    removeFromCart(variant: IVariant) {
-        variant.cartCount = 0
-    }
-
-    incCartCount(variant: IVariant) {
-        variant.cartCount++
-    }
-
-    decCartCount(variant: IVariant) {
-        variant.cartCount--
+        return cost
     }
 }
 

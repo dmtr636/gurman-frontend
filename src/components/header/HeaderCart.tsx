@@ -1,17 +1,12 @@
 import styles from "./HeaderCart.module.css";
 import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore"
-import cartStore from "../../store/cartStore";
 import React, {useState} from "react";
-import {Box, Button, Divider, List, ListItem, ListItemIcon, ListItemText, SwipeableDrawer} from "@mui/material";
 import Drawer from '@mui/material/Drawer';
 import Cart from '../cart/Cart'
-import {set} from "mobx";
-
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 const HeaderCart = observer(() => {
-    const cartCount = cartStore.cartCount
+    const cartCount = productStore.cartCount
 
     const cartClassName = () => {
         let empty = cartCount === 0 ? styles.empty : " "

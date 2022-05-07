@@ -1,13 +1,15 @@
 import styles from './Cart.module.css'
 import closeImg from '../../images/Close.svg'
-import cartStore from "../../store/cartStore";
+import CartItemContainer from "./CartItemContainer";
+import {observer} from "mobx-react-lite";
+import productStore from "../../store/productStore";
 
 function declOfNum(number: number, titles: string[]) {
     let cases = [2, 0, 1, 1, 1, 2];
     return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
 }
 
-const Cart = (props: {close: any}) => {
+const Cart = observer((props: {close: any}) => {
 
     return (
         <div className={styles.cart}>
@@ -21,13 +23,22 @@ const Cart = (props: {close: any}) => {
                 }}
             />
             <div className={styles.header}>
-                {cartStore.cartCount
+                {productStore.cartCount
                     + " "
-                    + declOfNum(cartStore.cartCount, ["товар", "товара", "товаров"])
-                    + " на "}
+                    + declOfNum(productStore.cartCount, ["товар", "товара", "товаров"])
+                    + " на "
+                }
+                <span className={styles.cost}>
+                    {productStore.cartCost
+                        + " "
+                        + declOfNum(productStore.cartCost, ["рубль", "рубля", "рублей"])
+                    }
+                </span>
             </div>
+
+            <CartItemContainer />
         </div>
     )
-}
+})
 
 export default Cart

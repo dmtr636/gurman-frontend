@@ -1,16 +1,27 @@
-.product {
-
+.item {
+    display: flex;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    padding: 40px;
 }
 
-.product img {
-    width: 100%;
+.image {
+    width: 209px;
+    height: 162px;
     border-radius: 5px;
+}
+
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 20px;
+    margin-left: 20px;
 }
 
 .titleRow {
     display: flex;
     justify-content: start;
-    margin-top: 10px;
 }
 
 .title {
@@ -33,7 +44,7 @@
 }
 
 .composition {
-    margin-top: 20px;
+
 }
 
 .compositionHeader {
@@ -54,51 +65,29 @@
     text-align: left;
 }
 
-.nextLink {
-    color: #FA3D3D;
-    cursor: pointer;
-}
-
 .orderRow {
-    margin-top: 30px;
     display: flex;
+    align-items: center;
 }
 
-.orderButton {
-    user-select: none;
-
-    background: #FA3D3D;
-    border-radius: 5px;
-    width: 174px;
-    height: 62px;
-    font-family: 'Ubuntu', "Segoe UI", sans-serif;
+.cost {
+    font-family: 'Ubuntu', 'Segoe UI';
     font-style: normal;
     font-weight: 700;
     font-size: 31px;
     line-height: 100%;
+    /* identical to box height, or 31px */
+
     letter-spacing: 0.04em;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.orderButton:hover {
-    background: #FF5A5A;
-}
+    /* Чёрный */
 
-.orderButton.active {
-    background: #FFD3D3;
-    border-radius: 5px 5px 5px 5px;
-    color: #FA3D3D;
+    color: #282828;
 }
 
 .cartCount {
-    width: 116px;
-    height: 62px;
-    background: #FBFBFB;
-    border-radius: 0px 5px 5px 0px;
+    width: 86px;
+    height: 31px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,6 +101,10 @@
 
     column-gap: 17px;
     user-select: none;
+
+    margin-left: 10px;
+    background: #FAF9F9;
+    border-radius: 5px;
 }
 
 .cartCountButton {

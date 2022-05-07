@@ -3,5 +3,6 @@ import {IVariant} from "./IVariant";
 
 export interface ICartItem {
     product: IProduct,
-    variant: IVariant
+    variant: IVariant,
+    amount: number
 }

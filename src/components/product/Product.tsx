@@ -4,7 +4,6 @@ import productStore from '../../store/productStore'
 import {observer} from "mobx-react-lite";
 import Variants from "./Variants";
 import Composition from "./Composition";
-import cartStore from "../../store/cartStore";
 
 const Product = observer((props: {product: IProduct}) => {
     const product = props.product
