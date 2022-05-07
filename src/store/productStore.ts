@@ -86,6 +86,11 @@ class ProductStore {
 
         return cost
     }
+
+    get productsOnSale() {
+        console.log(this.products.filter(product => product.onSale))
+        return this.products.filter(product => product.onSale)
+    }
 }
 
 export default new ProductStore()

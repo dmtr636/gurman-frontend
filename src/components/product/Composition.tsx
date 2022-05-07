@@ -17,7 +17,6 @@ const Composition = observer((props: {product: IProduct}) => {
 
     return (
         <div className={styles['composition']}>
-            <span className={styles['compositionHeader']}>Состав: </span>
             <span className={styles['compositionText']}>
                 {(product.activeVariant.composition.length > COMPOSITION_MAX_LEN && !product.expanded)
                     ?

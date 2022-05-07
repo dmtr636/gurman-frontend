@@ -8,7 +8,7 @@ const Nav = observer(() => {
 
     return (
         <nav className={styles.nav}>
-            <Link path={"promotions"} name={"Акции"} key={0} />
+            <Link path={""} name={"Акции"} key={0} />
             {categories.map((category) =>
                 <Link path={category.path} name={category.name} key={category.id} />
             )}

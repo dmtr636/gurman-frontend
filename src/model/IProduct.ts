@@ -7,5 +7,6 @@ export interface IProduct {
     category: number,
     portion: number,
     activeVariant: IVariant,
-    expanded: boolean
+    expanded: boolean,
+    onSale: boolean
 }

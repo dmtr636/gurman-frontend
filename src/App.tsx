@@ -6,11 +6,13 @@ import Layout from "./components/Layout";
 import styles from './App.module.css'
 import category from './store/categoryStore'
 import product from './store/productStore'
+import sliderStore from "./store/sliderStore";
 
 function App() {
     useEffect(() => {
         category.fetchCategories()
         product.fetchProducts()
+        sliderStore.fetchImages()
     }, [])
 
   return (

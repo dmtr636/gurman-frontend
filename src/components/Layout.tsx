@@ -27,13 +27,12 @@ const Layout = observer(() => {
                         <Route
                             path={'/' + category.path}
                             element={
-                                <ProductsContainer categoryId={category.id} />
+                                <ProductsContainer categoryId={category.id} salePage={false} />
                             }
                             key={category.id}
                         />
                     )}
-                    <Route path={'/'} element={<Carousel />} key={0} />
-                    <Route path={'/promotions'} element={<Carousel />} key={0} />
+                    <Route path={'/'} element={ <ProductsContainer categoryId={0} salePage={true} />} key={0} />
                     <Route path={'*'} element={<h1>Not found</h1>} key={-1}/>
 
                 </Routes>

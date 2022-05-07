@@ -5,8 +5,12 @@ import "./styles.css";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import sliderImage from '../../images/Slider.png'
+import sliderStore from "../../store/sliderStore";
+import {observer} from "mobx-react-lite";
 
-export default function Carousel() {
+const Carousel = observer(() => {
+    const images = sliderStore.images
+
     return (
         <>
             <Swiper
@@ -15,13 +19,14 @@ export default function Carousel() {
                 className="mySwiper"
                 loop={true}
             >
-                <SwiperSlide>
-                    <img src={sliderImage} alt={""}/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={sliderImage} alt={""}/>
-                </SwiperSlide>
+                {images.map(image =>
+                    <SwiperSlide>
+                        <img src={"http://localhost:8000" + image} alt={""}/>
+                    </SwiperSlide>
+                )}
             </Swiper>
         </>
     );
-}
+})
+
+export default Carousel

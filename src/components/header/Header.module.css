@@ -1,8 +1,13 @@
 .header {
-    position: relative;
     display: flex;
     justify-content: start;
     align-items: center;
+    background: #FAF9F9;
+    height: 86px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .brand {
@@ -13,8 +18,8 @@
     color: #FA3D3D;
 
     margin-right: 80px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .info {
@@ -22,8 +27,8 @@
     align-items: center;
     column-gap: 14px;
     margin-right: 40px;
-    margin-top: 45px;
-    margin-bottom: 37px;
+    margin-top: 21px;
+    margin-bottom: 21px;
 }
 
 .info svg:hover {

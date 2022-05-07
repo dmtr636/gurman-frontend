@@ -1,6 +1,6 @@
 .cart {
     width: 276px;
-    height: 126px;
+    height: 86px;
     box-sizing: border-box;
 
     position: absolute;
@@ -11,6 +11,10 @@
 
     cursor: pointer;
     user-select: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cart:hover {
@@ -22,10 +26,7 @@
 }
 
 .text {
-    position: absolute;
-    left: 28.62%;
-    top: 40.87%;
-
+    margin-left: 16px;
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 500;
@@ -35,15 +36,13 @@
 }
 
 .image {
-    position: absolute;
-    left: 13.77%;
-    top: 38.1%;
+
 }
 
 .positions {
     position: absolute;
     left: 18.84%;
-    top: 50%;
+    top: 49%;
 
     width: 18px;
     height: 18px;
