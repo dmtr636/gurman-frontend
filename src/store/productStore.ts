@@ -3,6 +3,7 @@ import axios from "axios";
 import {IProduct} from "../model/IProduct";
 import {IVariant} from "../model/IVariant";
 import {ICartItem} from "../model/ICartItem";
+import {SERVER_HOST} from "../constants/constants";
 
 class ProductStore {
     products: IProduct[] = []
@@ -12,7 +13,7 @@ class ProductStore {
     }
 
     fetchProducts() {
-        axios.get("http://localhost:8000/products")
+        axios.get(SERVER_HOST + "/products")
             .then(response => {
                 let products = response.data["products"]
                 products.forEach((product: IProduct) => {

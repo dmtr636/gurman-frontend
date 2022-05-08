@@ -14,14 +14,12 @@
 .infoColumn {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    row-gap: 20px;
     margin-left: 20px;
+    margin-right: -2px;
 }
 
 .titleRow {
-    display: flex;
-    justify-content: start;
+
 }
 
 .title {
@@ -44,7 +42,7 @@
 }
 
 .composition {
-
+    margin-top: 15px;
 }
 
 .compositionHeader {
@@ -68,21 +66,24 @@
 .orderRow {
     display: flex;
     align-items: center;
+    margin-top: auto;
 }
 
 .cost {
-    font-family: 'Ubuntu', 'Segoe UI';
+    font-family: 'Ubuntu', "Segoe UI";
     font-style: normal;
     font-weight: 700;
-    font-size: 31px;
+    font-size: 20px;
     line-height: 100%;
-    /* identical to box height, or 31px */
+    /* identical to box height, or 20px */
 
     letter-spacing: 0.04em;
 
     /* Чёрный */
 
     color: #282828;
+
+    width: 135px;
 }
 
 .cartCount {

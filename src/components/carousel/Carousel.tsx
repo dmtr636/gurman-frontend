@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import sliderImage from '../../images/Slider.png'
 import sliderStore from "../../store/sliderStore";
 import {observer} from "mobx-react-lite";
+import {SERVER_HOST} from "../../constants/constants";
 
 const Carousel = observer(() => {
     const images = sliderStore.images
@@ -21,7 +22,7 @@ const Carousel = observer(() => {
             >
                 {images.map(image =>
                     <SwiperSlide>
-                        <img src={"http://localhost:8000" + image} alt={""}/>
+                        <img src={SERVER_HOST + image} alt={""}/>
                     </SwiperSlide>
                 )}
             </Swiper>

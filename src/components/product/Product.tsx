@@ -4,6 +4,7 @@ import productStore from '../../store/productStore'
 import {observer} from "mobx-react-lite";
 import Variants from "./Variants";
 import Composition from "./Composition";
+import {SERVER_HOST} from "../../constants/constants";
 
 const Product = observer((props: {product: IProduct}) => {
     const product = props.product
@@ -24,7 +25,7 @@ const Product = observer((props: {product: IProduct}) => {
             className={styles.product}
             onClick={() => productStore.setExpanded(product, false)}
         >
-            <img src={"http://localhost:8000" + props.product.image} alt={""}/>
+            <img src={SERVER_HOST + props.product.image} alt={""}/>
 
             {product.onSale &&
                 <div className={styles.saleBg}>

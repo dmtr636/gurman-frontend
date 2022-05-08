@@ -2,8 +2,9 @@ import {ICartItem} from "../../model/ICartItem";
 import styles from './CartItem.module.css'
 import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore";
+import {SERVER_HOST} from "../../constants/constants";
 
-const COMPOSITION_MAX_LEN = 60
+const COMPOSITION_MAX_LEN = 83
 
 function truncate(input: string) {
     if (input.length > COMPOSITION_MAX_LEN) {
@@ -17,19 +18,18 @@ const CartItem = observer((props: {item: ICartItem}) => {
 
     return (
         <div className={styles.item}>
-            <img className={styles.image} src={"http://localhost:8000" + item.product.image} alt={""}/>
+            <img className={styles.image} src={SERVER_HOST + item.product.image} alt={""}/>
             <div className={styles.infoColumn}>
                 <div className={styles.titleRow}>
-                    <div className={styles.title}>
+                    <span className={styles.title}>
                         {item.product.name}
-                    </div>
-                    <div className={styles.portion}>
+                    </span>
+                    <span className={styles.portion}>
                         {item.product.portion + " г."}
-                    </div>
+                    </span>
                 </div>
 
                 <div className={styles['composition']}>
-                    <span className={styles['compositionHeader']}>Состав: </span>
                     <span className={styles['compositionText']}>
                         {truncate(item.variant.composition)}
                     </span>
