@@ -8,5 +8,6 @@ export interface IProduct {
     portion: number,
     activeVariant: IVariant,
     expanded: boolean,
-    onSale: boolean
+    onSale: boolean,
+    discount: number
 }

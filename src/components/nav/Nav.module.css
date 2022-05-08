@@ -1,5 +1,7 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    margin-top: 34px;
+
+    max-width: 1280px;
+    margin: 34px auto 0 auto;
 }

@@ -18,10 +18,8 @@ const Layout = observer(() => {
     return (
         <div className={styles.layout}>
             <Header />
-
             <HashRouter>
                 <Nav />
-
                 <Routes>
                     {categories.map((category) =>
                         <Route
@@ -34,7 +32,6 @@ const Layout = observer(() => {
                     )}
                     <Route path={'/'} element={ <ProductsContainer categoryId={0} salePage={true} />} key={0} />
                     <Route path={'*'} element={<h1>Not found</h1>} key={-1}/>
-
                 </Routes>
             </HashRouter>
         </div>

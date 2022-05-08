@@ -26,13 +26,21 @@ const Product = observer((props: {product: IProduct}) => {
         >
             <img src={"http://localhost:8000" + props.product.image} alt={""}/>
 
+            {product.onSale &&
+                <div className={styles.saleBg}>
+                    <div className={styles.saleText}>
+                        {`-${product.discount}% при заказе`}
+                    </div>
+                </div>
+            }
+
             <div className={styles.titleRow}>
-                <div className={styles.title}>
+                <span className={styles.title}>
                     {props.product.name}
-                </div>
-                <div className={styles.portion}>
+                </span>
+                <span className={styles.portion}>
                     {props.product.portion + " г."}
-                </div>
+                </span>
             </div>
 
             {product.variants.length > 1 &&

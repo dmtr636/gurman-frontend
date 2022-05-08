@@ -1,6 +1,6 @@
 .product {
     position: relative;
-    min-height: calc(480px - 92px);
+    min-height: calc(508px - 92px);
     padding-bottom: 92px;
 }
 
@@ -10,9 +10,8 @@
 }
 
 .titleRow {
-    display: flex;
-    justify-content: start;
     margin-top: 10px;
+    margin-right: -2px;
 }
 
 .title {
@@ -128,4 +127,29 @@
 
 .cartCountButton:hover {
     opacity: 0.7;
+}
+
+.saleBg {
+    position: absolute;
+    width: 193px;
+    height: 33px;
+    right: 0;
+    top: 20px;
+
+    background: rgba(250, 61, 61, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 5px 0px 0px 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.saleText {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
 }
