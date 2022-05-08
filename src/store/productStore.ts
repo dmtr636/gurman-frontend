@@ -81,7 +81,11 @@ class ProductStore {
         let cost = 0
         this.products.forEach(product => {
             product.variants.forEach(variant => {
-                cost += variant.cartCount * variant.cost
+                if (product.onSale) {
+                    cost += variant.cartCount * variant.cost * (100 - product.discount) / 100
+                } else {
+                    cost += variant.cartCount * variant.cost
+                }
             })
         })
 

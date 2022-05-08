@@ -55,7 +55,10 @@ const Product = observer((props: {product: IProduct}) => {
                     className={orderButtonClassNames()}
                     onClick={() => productStore.toggleInCartState(product.activeVariant, product)}
                 >
-                    {product.activeVariant.cost + " ₽"}
+                    {(product.onSale && product.activeVariant.cartCount > 0)
+                        ? product.activeVariant.cost * (100 - product.discount) / 100 + " ₽"
+                        : product.activeVariant.cost + " ₽"
+                    }
                 </div>
 
                 {product.activeVariant.cartCount > 0 &&

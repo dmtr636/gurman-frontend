@@ -37,7 +37,10 @@ const CartItem = observer((props: {item: ICartItem}) => {
 
                 <div className={styles.orderRow}>
                     <div className={styles.cost}>
-                        {item.variant.cost + " ₽"}
+                        {item.product.onSale
+                            ? item.variant.cost * (100 - item.product.discount) / 100 + " ₽"
+                            : item.variant.cost + " ₽"
+                        }
                     </div>
 
                     <div className={styles.cartCount}>
