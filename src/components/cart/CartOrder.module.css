@@ -43,6 +43,15 @@
     color: #FF5A5A;
 }
 
+.promoNotExists {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FA3D3D;
+}
+
 .divider {
     box-sizing: border-box;
     height: 1px;

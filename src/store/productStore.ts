@@ -4,6 +4,7 @@ import {IProduct} from "../model/IProduct";
 import {IVariant} from "../model/IVariant";
 import {ICartItem} from "../model/ICartItem";
 import {SERVER_HOST} from "../constants/constants";
+import promoCodeStore from "./promoCodeStore";
 
 class ProductStore {
     products: IProduct[] = []
@@ -88,6 +89,7 @@ class ProductStore {
                 }
             })
         })
+        cost *= (100 - promoCodeStore.discount) / 100
 
         return cost
     }

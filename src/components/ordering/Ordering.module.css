@@ -1,0 +1,117 @@
+.wrapper {
+    height: 100%;
+    overflow-y: auto;
+    background: #FAF9F9;
+}
+
+.cart {
+    width: 600px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background: #FAF9F9;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.closeImg {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
+}
+
+.closeImg:hover {
+    opacity: 0.8;
+}
+
+.header {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    color: #282828;
+    margin-bottom: 50px;
+}
+
+.divider {
+    box-sizing: border-box;
+    height: 1px;
+    opacity: 0.3;
+    background: #929292;
+}
+
+.labelRow {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #282828;
+    margin-left: 20px;
+}
+
+.formRow {
+    display: flex;
+    column-gap: 10px;
+}
+
+.inputName {
+    padding: 21px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    width: 259px;
+    height: 65px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #282828;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+.inputName::placeholder {
+    color: #929292;
+}
+
+.selectButton {
+    padding: 21px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    width: 259px;
+    height: 65px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #282828;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.selectButton.selectedLeft {
+    color: #FA3D3D;
+    border: 1px solid #FA3D3D;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.selectButton.selectedRight {
+    color: #FA3D3D;
+    border: 1px solid #FA3D3D;
+    border-radius: 0px 5px 5px 0px;
+}
+

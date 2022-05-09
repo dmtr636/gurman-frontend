@@ -5,6 +5,9 @@ import productStore from "../../store/productStore";
 import orderButtonArrow from "../../images/orderButtonArrow.svg"
 import Drawer from "@mui/material/Drawer";
 import Cart from "./Cart";
+import checkMark from "../../images/checkMark.svg"
+import promoCodeStore, {CHECKING, EXISTS, NOT_CHECKED, NOT_EXISTS} from "../../store/promoCodeStore";
+import Ordering from "../ordering/Ordering";
 
 
 function declOfNum(number: number, titles: string[]) {
@@ -26,7 +29,7 @@ const InfoRow = observer((props: {title: string, value: string}) => {
 })
 
 const CartOrder = observer(() => {
-    const [promoCode, setPromoCode] = useState("")
+    const [promoCode, setPromoCode] = [promoCodeStore.code, (code: string) => promoCodeStore.setPromoCode(code)]
     const [open, setOpen] = useState(false)
 
     return(
@@ -38,9 +41,27 @@ const CartOrder = observer(() => {
                     value={promoCode}
                     onChange={(event) => setPromoCode(event.target.value)}
                 />
-                {promoCode.length > 0 &&
-                    <div className={styles.promoApply}>
+                {(promoCodeStore.status === NOT_CHECKED && promoCode.length > 0) &&
+                    <div
+                        className={styles.promoApply}
+                        onClick={() => promoCodeStore.checkPromoCode(promoCode)}
+                    >
                         Применить
+                    </div>
+                }
+                {(promoCodeStore.status === CHECKING) &&
+                    <div className={styles.promoApply}>
+                        Проверка...
+                    </div>
+                }
+                {(promoCodeStore.status === EXISTS) &&
+                    <div className={styles.promoApply}>
+                        <img src={checkMark} alt={""} />
+                    </div>
+                }
+                {(promoCodeStore.status === NOT_EXISTS) &&
+                    <div className={styles.promoNotExists}>
+                        Промокод не найден
                     </div>
                 }
             </div>
@@ -70,7 +91,7 @@ const CartOrder = observer(() => {
                 anchor={'right'}
                 open={open}
             >
-                <Cart close={() => setOpen(false)} />
+                <Ordering close={() => setOpen(false)} />
             </Drawer>
         </div>
     )
