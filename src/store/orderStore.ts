@@ -4,6 +4,8 @@ export const DELIVERY = "DELIVERY"
 export const PICKUP = "PICKUP"
 export const ONLINE = "ONLINE"
 export const CHECKOUT = "CHECKOUT"
+export const CASH_COURIER = "CASH_COURIER"
+export const CARD_COURIER = "CARD_COURIER"
 
 class OrderStore {
     name = ""
@@ -29,6 +31,7 @@ class OrderStore {
     }
     setReceiveWay(receiveWay: string) {
         this.receiveWay = receiveWay
+        this.paymentType = ONLINE
     }
     setStreet(street: string) {
         this.street = street

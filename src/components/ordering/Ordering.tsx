@@ -12,9 +12,10 @@ import orderButtonArrow from "../../images/orderButtonArrow.svg";
 import Drawer from "@mui/material/Drawer";
 import navStore from "../../store/navStore";
 import OrderingResult from "./OrderingResult";
-import orderStore from "../../store/orderStore";
+import orderStore, {CARD_COURIER, CASH_COURIER} from "../../store/orderStore";
 import {DELIVERY, ONLINE, CHECKOUT, PICKUP} from "../../store/orderStore";
 import SelectTime from "./SelectTime";
+import {isNight} from "../../utils/utils";
 
 const Ordering = observer((props: {close: any}) => {
 
@@ -35,6 +36,12 @@ const Ordering = observer((props: {close: any}) => {
             classname += ` ${styles["selected"]}`
         }
         if (buttonType === CHECKOUT && orderStore.paymentType === CHECKOUT) {
+            classname += ` ${styles["selected"]}`
+        }
+        if (buttonType === CARD_COURIER && orderStore.paymentType === CARD_COURIER) {
+            classname += ` ${styles["selected"]}`
+        }
+        if (buttonType === CASH_COURIER && orderStore.paymentType === CASH_COURIER) {
             classname += ` ${styles["selected"]}`
         }
         return classname
@@ -125,12 +132,40 @@ const Ordering = observer((props: {close: any}) => {
                         Онлайн оплата
                     </div>
 
-                    <div
-                        className={selectPaymentTypeButtonClassname(CHECKOUT)}
-                        onClick={() => orderStore.setPaymentType(CHECKOUT)}
-                    >
-                        На кассе
-                    </div>
+                    {!isNight()
+                        ?
+                        <div className={styles["paymentMessage"]}>
+                            Все способы оплаты будут доступны<br/>
+                            с 8:00 до 22:00
+                        </div>
+                        :
+                        <div className={styles["formRow"]}>
+                            {orderStore.receiveWay === DELIVERY
+                                ?
+                                <>
+                                    <div
+                                        className={selectPaymentTypeButtonClassname(CASH_COURIER)}
+                                        onClick={() => orderStore.setPaymentType(CASH_COURIER)}
+                                    >
+                                        Наличными курьеру
+                                    </div>
+                                    <div
+                                        className={selectPaymentTypeButtonClassname(CARD_COURIER)}
+                                        onClick={() => orderStore.setPaymentType(CARD_COURIER)}
+                                    >
+                                        Картой курьеру
+                                    </div>
+                                </>
+                                :
+                                <div
+                                    className={selectPaymentTypeButtonClassname(CHECKOUT)}
+                                    onClick={() => orderStore.setPaymentType(CHECKOUT)}
+                                >
+                                    На кассе
+                                </div>
+                            }
+                        </div>
+                    }
 
                     <button
                         type={"submit"}

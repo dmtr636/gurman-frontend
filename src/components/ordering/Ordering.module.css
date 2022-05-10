@@ -2,6 +2,7 @@
     height: 100%;
     overflow-y: auto;
     background: #FAF9F9;
+    width: 600px;
 }
 
 .cart {
@@ -117,7 +118,7 @@
 }
 
 .selectButtonWide {
-    margin-top: 20px;
+    margin-top: 10px;
     composes: selectButton;
     width: 100%;
 }
@@ -151,4 +152,11 @@
 
 .button:hover {
     background: #FF5A5A;
+}
+
+.paymentMessage {
+    composes: text-info from "../../App.css";
+    text-align: center;
+    margin-top: 20px;
+    color: #929292;
 }

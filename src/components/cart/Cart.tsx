@@ -4,6 +4,7 @@ import CartItemContainer from "./CartItemContainer";
 import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore";
 import CartOrder from "./CartOrder";
+import DrawerContainer from "../common/DrawerContainer";
 
 function declOfNum(number: number, titles: string[]) {
     let cases = [2, 0, 1, 1, 1, 2];
@@ -13,36 +14,24 @@ function declOfNum(number: number, titles: string[]) {
 const Cart = observer((props: {close: any}) => {
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.cart}>
-                <img
-                    src={closeImg}
-                    className={styles.closeImg}
-                    alt={""}
-                    onClick={(event) => {
-                        props.close()
-                        event.stopPropagation()
-                    }}
-                />
-
-                <div className={styles.header}>
-                    {productStore.cartCount
+        <DrawerContainer close={() => props.close()}>
+            <div className={styles.header}>
+                {productStore.cartCount
+                    + " "
+                    + declOfNum(productStore.cartCount, ["товар", "товара", "товаров"])
+                    + " на "
+                }
+                <span className={styles.cost}>
+                    {productStore.cartCost
                         + " "
-                        + declOfNum(productStore.cartCount, ["товар", "товара", "товаров"])
-                        + " на "
+                        + declOfNum(productStore.cartCost, ["рубль", "рубля", "рублей"])
                     }
-                    <span className={styles.cost}>
-                        {productStore.cartCost
-                            + " "
-                            + declOfNum(productStore.cartCost, ["рубль", "рубля", "рублей"])
-                        }
-                    </span>
-                </div>
-
-                <CartItemContainer />
-                <CartOrder />
+                </span>
             </div>
-        </div>
+
+            <CartItemContainer />
+            <CartOrder />
+        </DrawerContainer>
     )
 })
 

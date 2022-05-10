@@ -4,7 +4,7 @@
     width: 600px;
 }
 
-.cart {
+.container {
     width: 600px;
     display: flex;
     flex-direction: column;
@@ -23,19 +23,4 @@
 
 .closeImg:hover {
     opacity: 0.8;
-}
-
-.header {
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 37px;
-    color: #282828;
-    margin-left: 40px;
-    margin-top: 40px;
-}
-
-.header .cost {
-    color: #FA3D3D;
 }
