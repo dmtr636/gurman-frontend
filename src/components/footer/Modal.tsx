@@ -9,15 +9,18 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import {ReactNode} from "react";
+import styles from "./Footer.module.css";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
         paddingLeft: theme.spacing(5),
         paddingRight: theme.spacing(5),
-        paddingBottom: theme.spacing(5)
     },
     '& .MuiDialogTitle-root': {
-        padding: theme.spacing(5)
+        paddingLeft: theme.spacing(5),
+        paddingRight: theme.spacing(5),
+        paddingTop: theme.spacing(10),
+        paddingBottom: theme.spacing(5)
     }
 }));
 
@@ -32,6 +35,7 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
 
     return (
         <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+            {children}
             {onClose ? (
                 <IconButton
                     aria-label="close"
@@ -63,9 +67,12 @@ const Modal = (props: {close: () => void, content: ReactNode, title: string}) =>
             open={true}
             fullWidth={true}
             maxWidth={'lg'}
+            PaperProps={{style: {width: "1002px"}}}
         >
             <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                {props.title}
+                <div className={styles["modalContentTitle"]}>
+                    {props.title}
+                </div>
             </BootstrapDialogTitle>
             <DialogContent>
                 {props.content!}

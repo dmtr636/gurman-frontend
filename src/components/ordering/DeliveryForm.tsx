@@ -10,12 +10,14 @@ const DeliveryForm = observer(() => {
                 placeholder={"Улица"}
                 value={orderStore.street}
                 onChange={event => orderStore.setStreet(event.target.value)}
+                required={true}
             />
             <input
                 className={styles["inputHouse"]}
                 placeholder={"Дом"}
                 value={orderStore.house}
                 onChange={event => orderStore.setHouse(event.target.value)}
+                required={true}
             />
             <input
                 className={styles["inputEntrance"]}

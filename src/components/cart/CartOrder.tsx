@@ -9,6 +9,7 @@ import checkMark from "../../images/checkMark.svg"
 import promoCodeStore, {CHECKING, EXISTS, NOT_CHECKED, NOT_EXISTS} from "../../store/promoCodeStore";
 import Ordering from "../ordering/Ordering";
 import navStore from "../../store/navStore";
+import SelectTime from "../ordering/SelectTime";
 
 
 function declOfNum(number: number, titles: string[]) {
@@ -81,7 +82,7 @@ const CartOrder = observer(() => {
             />
             <div
                 className={styles.button}
-                onClick={() => navStore.openOrdering()}
+                onClick={() => navStore.openSelectTime()}
             >
                 <div>К оформлению заказа</div>
                 <img src={orderButtonArrow} alt={""} />
@@ -89,10 +90,10 @@ const CartOrder = observer(() => {
 
             <Drawer
                 anchor={'right'}
-                open={navStore.orderingOpenState}
+                open={navStore.selectTimeOpenState}
                 BackdropProps={{style:{opacity:0}}}
             >
-                <Ordering close={() => navStore.closeOrdering()} />
+                <SelectTime />
             </Drawer>
         </div>
     )

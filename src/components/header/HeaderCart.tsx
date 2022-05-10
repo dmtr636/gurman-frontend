@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import Drawer from '@mui/material/Drawer';
 import Cart from '../cart/Cart'
 import navStore from "../../store/navStore";
+import EmptyCart from "../cart/EmptyCart";
 
 const HeaderCart = observer(() => {
     const cartCount = productStore.cartCount
@@ -18,6 +19,8 @@ const HeaderCart = observer(() => {
         <div className={cartClassName()} onClick={() => {
             if (cartCount > 0) {
                 navStore.openCart()
+            } else {
+                navStore.openEmptyCart()
             }
         }}>
             <div className={styles.image}>
@@ -45,12 +48,27 @@ const HeaderCart = observer(() => {
                     : "Оформить заказ"
                 }
             </div>
-            <Drawer
-                anchor={'right'}
-                open={navStore.cartOpenState}
-            >
-                <Cart close={() => navStore.closeCart()} />
-            </Drawer>
+            {(cartCount > 0 && !navStore.emptyCartOpenState)
+                ?
+                <Drawer
+                    anchor={'right'}
+                    open={navStore.cartOpenState}
+                >
+                    <Cart close={() => navStore.closeCart()} />
+                </Drawer>
+                :
+                <Drawer
+                    anchor={'right'}
+                    open={navStore.emptyCartOpenState}
+                    PaperProps={{ style: { height: "745px" } }}
+                    onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
+                        event.stopPropagation()
+                        navStore.closeEmptyCart()
+                    }}
+                >
+                    <EmptyCart close={() => navStore.closeEmptyCart()} />
+                </Drawer>
+            }
         </div>
     )
 })

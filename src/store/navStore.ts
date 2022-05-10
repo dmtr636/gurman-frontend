@@ -4,6 +4,8 @@ class NavStore {
     cartOpenState = false
     orderingOpenState = false
     resultOpenState = false
+    emptyCartOpenState = false
+    selectTimeOpenState = false
 
     constructor() {
         makeAutoObservable(this)
@@ -31,6 +33,22 @@ class NavStore {
 
     closeResult() {
         this.resultOpenState = false
+    }
+
+    openEmptyCart() {
+        this.emptyCartOpenState = true
+    }
+
+    closeEmptyCart() {
+        this.emptyCartOpenState = false
+    }
+
+    openSelectTime() {
+        this.selectTimeOpenState = true
+    }
+
+    closeSelectTime() {
+        this.selectTimeOpenState = false
     }
 }
 

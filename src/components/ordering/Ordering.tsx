@@ -14,15 +14,16 @@ import navStore from "../../store/navStore";
 import OrderingResult from "./OrderingResult";
 import orderStore from "../../store/orderStore";
 import {DELIVERY, ONLINE, CHECKOUT, PICKUP} from "../../store/orderStore";
+import SelectTime from "./SelectTime";
 
 const Ordering = observer((props: {close: any}) => {
 
     const selectReceiveWayButtonClassname = (buttonType: string) => {
         let classname = styles["selectButton"]
-        if (buttonType === "delivery" && orderStore.receiveWay === "delivery") {
+        if (buttonType === DELIVERY && orderStore.receiveWay === DELIVERY) {
             classname += ` ${styles["selectedLeft"]}`
         }
-        if (buttonType === "pickup" && orderStore.receiveWay === "pickup") {
+        if (buttonType === PICKUP && orderStore.receiveWay === PICKUP) {
             classname += ` ${styles["selectedRight"]}`
         }
         return classname
@@ -30,10 +31,10 @@ const Ordering = observer((props: {close: any}) => {
 
     const selectPaymentTypeButtonClassname = (buttonType: string) => {
         let classname = styles["selectButtonWide"]
-        if (buttonType === "online" && orderStore.paymentType === "online") {
+        if (buttonType === ONLINE && orderStore.paymentType === ONLINE) {
             classname += ` ${styles["selected"]}`
         }
-        if (buttonType === "checkout" && orderStore.paymentType === "checkout") {
+        if (buttonType === CHECKOUT && orderStore.paymentType === CHECKOUT) {
             classname += ` ${styles["selected"]}`
         }
         return classname
@@ -42,105 +43,110 @@ const Ordering = observer((props: {close: any}) => {
     return(
         <div className={styles.wrapper}>
             <div className={styles.cart}>
-                <img
-                    src={closeImg}
-                    className={styles.closeImg}
-                    alt={""}
-                    onClick={(event) => {
-                        props.close()
-                        event.stopPropagation()
-                    }}
-                />
-                <div className={styles.header}>
-                    Оформление заказа
-                </div>
-                <div className={styles["divider"]} />
-
-                <div className={styles["labelRow"]}>
-                    <img src={number1Image} alt={""} />
-                    <div className={styles["label"]}>
-                        Как вас зовут и как с вами связаться?
-                    </div>
-                </div>
-
-                <div className={styles["formRow"]}>
-                    <input
-                        className={styles["inputName"]}
-                        placeholder={"Имя"}
-                        value={orderStore.name}
-                        onChange={event => orderStore.setName(event.target.value)}
+                <form onSubmit={() => {navStore.openResult()}}>
+                    <img
+                        src={closeImg}
+                        className={styles.closeImg}
+                        alt={""}
+                        onClick={(event) => {
+                            props.close()
+                            event.stopPropagation()
+                        }}
                     />
-                    <InputMask
-                        className={styles["inputName"]}
-                        mask="+7 (999) 999-99-99"
-                        placeholder={"+7"}
-                        value={orderStore.phone}
-                        onChange={event => orderStore.setPhone(event.target.value)}
-                    />
-                </div>
-
-                <div className={styles["labelRow"]}>
-                    <img src={number2Image} alt={""} />
-                    <div className={styles["label"]}>
-                        Как вы хотите получить заказ?
+                    <div className={styles.header}>
+                        Оформление заказа
                     </div>
-                </div>
+                    <div className={styles["divider"]} />
 
-                <div className={styles["formRow"]}>
+                    <div className={styles["labelRow"]}>
+                        <img src={number1Image} alt={""} />
+                        <div className={styles["label"]}>
+                            Как вас зовут и как с вами связаться?
+                        </div>
+                    </div>
+
+                    <div className={styles["formRow"]}>
+                        <input
+                            className={styles["inputName"]}
+                            placeholder={"Имя"}
+                            value={orderStore.name}
+                            onChange={event => orderStore.setName(event.target.value)}
+                            required={true}
+                        />
+                        <InputMask
+                            className={styles["inputName"]}
+                            mask="+7 (999) 999-99-99"
+                            placeholder={"+7"}
+                            value={orderStore.phone}
+                            onChange={event => orderStore.setPhone(event.target.value)}
+                            required={true}
+                            pattern={"\\+7 \\([0-9]{3}\\) [0-9]{3}-[0-9]{2}-[0-9]{2}"}
+                        />
+                    </div>
+
+                    <div className={styles["labelRow"]}>
+                        <img src={number2Image} alt={""} />
+                        <div className={styles["label"]}>
+                            Как вы хотите получить заказ?
+                        </div>
+                    </div>
+
+                    <div className={styles["formRow"]}>
+                        <div
+                            className={selectReceiveWayButtonClassname(DELIVERY)}
+                            onClick={() => orderStore.setReceiveWay(DELIVERY)}
+                        >
+                            Доставка
+                        </div>
+                        <div
+                            className={selectReceiveWayButtonClassname(PICKUP)}
+                            onClick={() => orderStore.setReceiveWay(PICKUP)}
+                        >
+                            Самовывоз
+                        </div>
+                    </div>
+
+                    {orderStore.receiveWay === DELIVERY
+                        ? <DeliveryForm />
+                        : <PickupForm />
+                    }
+
+                    <div className={styles["labelRow"]}>
+                        <img src={number3Image} alt={""} />
+                        <div className={styles["label"]}>
+                            Способ оплаты
+                        </div>
+                    </div>
+
                     <div
-                        className={selectReceiveWayButtonClassname(DELIVERY)}
-                        onClick={() => orderStore.setReceiveWay(DELIVERY)}
+                        className={selectPaymentTypeButtonClassname(ONLINE)}
+                        onClick={() => orderStore.setPaymentType(ONLINE)}
                     >
-                        Доставка
+                        Онлайн оплата
                     </div>
+
                     <div
-                        className={selectReceiveWayButtonClassname(PICKUP)}
-                        onClick={() => orderStore.setReceiveWay(PICKUP)}
+                        className={selectPaymentTypeButtonClassname(CHECKOUT)}
+                        onClick={() => orderStore.setPaymentType(CHECKOUT)}
                     >
-                        Самовывоз
+                        На кассе
                     </div>
-                </div>
 
-                {orderStore.receiveWay === DELIVERY
-                    ? <DeliveryForm />
-                    : <PickupForm />
-                }
+                    <button
+                        type={"submit"}
+                        className={styles.button}
+                    >
+                        <div>Подтвердить</div>
+                    </button>
 
-                <div className={styles["labelRow"]}>
-                    <img src={number3Image} alt={""} />
-                    <div className={styles["label"]}>
-                        Способ оплаты
-                    </div>
-                </div>
-
-                <div
-                    className={selectPaymentTypeButtonClassname(ONLINE)}
-                    onClick={() => orderStore.setPaymentType(ONLINE)}
-                >
-                    Онлайн оплата
-                </div>
-
-                <div
-                    className={selectPaymentTypeButtonClassname(CHECKOUT)}
-                    onClick={() => orderStore.setPaymentType(CHECKOUT)}
-                >
-                    На кассе
-                </div>
-
-                <div
-                    className={styles.button}
-                    onClick={() => {navStore.openResult()}}
-                >
-                    <div>Подтвердить</div>
-                </div>
-
-                <Drawer
-                    anchor={'right'}
-                    open={navStore.resultOpenState}
-                    BackdropProps={{style:{opacity:0}}}
-                >
-                    <OrderingResult />
-                </Drawer>
+                    <Drawer
+                        anchor={'right'}
+                        open={navStore.resultOpenState}
+                        BackdropProps={{style:{opacity:0}}}
+                    >
+                        <OrderingResult />
+                    </Drawer>
+                </form>
             </div>
         </div>
     )

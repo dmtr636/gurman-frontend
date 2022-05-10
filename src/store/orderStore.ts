@@ -15,6 +15,7 @@ class OrderStore {
     flat = ""
     comment = ""
     paymentType = ONLINE
+    cookingTime: number = -1
 
     constructor() {
         makeAutoObservable(this)
@@ -46,6 +47,9 @@ class OrderStore {
     }
     setPaymentType(paymentType: string) {
         this.paymentType = paymentType
+    }
+    setCookingTime(time: number) {
+        this.cookingTime = time
     }
 }
 

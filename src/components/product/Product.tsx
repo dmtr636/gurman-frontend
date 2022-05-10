@@ -53,7 +53,10 @@ const Product = observer((props: {product: IProduct}) => {
             <div className={styles.orderRow}>
                 <div
                     className={orderButtonClassNames()}
-                    onClick={() => productStore.toggleInCartState(product.activeVariant, product)}
+                    onClick={(event) => {
+                        productStore.toggleInCartState(product.activeVariant, product)
+                        event.stopPropagation()
+                    }}
                 >
                     {(product.onSale && product.activeVariant.cartCount > 0)
                         ? product.activeVariant.cost * (100 - product.discount) / 100 + " ₽"
@@ -65,7 +68,10 @@ const Product = observer((props: {product: IProduct}) => {
                     <div className={styles.cartCount}>
                         <div
                             className={styles.cartCountButton}
-                            onClick={() => productStore.decrementCartCount(product.activeVariant)}
+                            onClick={(event) => {
+                                productStore.decrementCartCount(product.activeVariant)
+                                event.stopPropagation()
+                            }}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2" fill="none">
                                 <path d="M1 1H11" stroke="#282828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -76,7 +82,10 @@ const Product = observer((props: {product: IProduct}) => {
 
                         <div
                             className={styles.cartCountButton}
-                            onClick={() => productStore.incrementCartCount(product.activeVariant)}
+                            onClick={(event) => {
+                                productStore.incrementCartCount(product.activeVariant)
+                                event.stopPropagation()
+                            }}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                                 <path d="M1 6H11" stroke="#282828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

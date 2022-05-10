@@ -4,7 +4,7 @@
     background: #FAF9F9;
 }
 
-.cart {
+.selectTime {
     width: 600px;
     padding: 40px;
     display: flex;
@@ -12,6 +12,7 @@
     background: #FAF9F9;
     position: relative;
     box-sizing: border-box;
+    height: 100%;
 }
 
 .closeImg {
@@ -42,46 +43,11 @@
     background: #929292;
 }
 
-.labelRow {
-    display: flex;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-.label {
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    color: #282828;
-    margin-left: 20px;
-}
-
 .formRow {
     display: flex;
     column-gap: 10px;
-}
-
-.inputName {
-    padding: 21px;
-    background: #FFFFFF;
-    border-radius: 5px;
-    width: 259px;
-    height: 65px;
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    color: #282828;
-    border: 0;
-    outline: 0;
-    box-sizing: border-box;
-}
-
-.inputName::placeholder {
-    color: #929292;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .selectButton {
@@ -89,9 +55,9 @@
     background: #FFFFFF;
     border-radius: 5px;
 
-    width: 259px;
-    height: 65px;
-    font-family: 'Ubuntu';
+    width: 240px;
+    height: 165px;
+    font-family: 'Ubuntu', serif;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -101,31 +67,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     cursor: pointer;
 }
 
-.selectButton.selectedLeft {
-    color: #FA3D3D;
-    border: 1px solid #FA3D3D;
-    border-radius: 5px 0px 0px 5px;
+.selectButton img {
+    filter: brightness(0%);
+    margin-bottom: 14px;
 }
 
-.selectButton.selectedRight {
-    color: #FA3D3D;
-    border: 1px solid #FA3D3D;
-    border-radius: 0px 5px 5px 0px;
-}
-
-.selectButtonWide {
-    margin-top: 20px;
+.selectButtonSelected {
     composes: selectButton;
-    width: 100%;
-}
-
-.selectButtonWide.selected {
     color: #FA3D3D;
     border: 1px solid #FA3D3D;
     border-radius: 5px 5px 5px 5px;
+}
+
+.selectButtonSelected img {
+    filter: none;
 }
 
 .button {
@@ -133,7 +92,7 @@
     height: 69px;
     background: #FA3D3D;
     border-radius: 5px;
-    margin: 70px auto 40px auto;
+    margin: 0 auto;
     cursor: pointer;
     font-family: 'Ubuntu';
     font-style: normal;
@@ -145,8 +104,10 @@
     justify-content: center;
     align-items: center;
     column-gap: 20px;
-    border: 0;
-    outline: 0;
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    right: 0;
 }
 
 .button:hover {

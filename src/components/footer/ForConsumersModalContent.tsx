@@ -6,10 +6,6 @@ import styles from "./Footer.module.css"
 const ForConsumersModalContent = () => {
     return(
         <>
-            <div className={styles["modalContentTitle"]}>
-                Правила продажи
-            </div>
-
             <div className={styles["modalContentSubtitle"]}>
                 {"1. Общие положения\n"}
             </div>
