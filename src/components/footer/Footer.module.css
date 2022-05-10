@@ -55,7 +55,7 @@
     position: absolute;
     width: 139px;
     height: 46px;
-    right: 290px;
+    right: 286px;
     top: 96px;
     font-family: 'Ubuntu';
     font-style: normal;
@@ -85,4 +85,34 @@
     font-size: 20px;
     line-height: 23px;
     color: #FFFFFF;
+}
+
+.modalContent {
+    white-space: pre-wrap;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 44px;
+    color: #282828;
+}
+
+.modalContentSubtitle {
+    white-space: pre-wrap;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 44px;
+    color: #282828;
+}
+
+.modalContentTitle {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 37px;
+    color: #282828;
+    margin-bottom: 40px;
 }

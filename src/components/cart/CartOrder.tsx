@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import checkMark from "../../images/checkMark.svg"
 import promoCodeStore, {CHECKING, EXISTS, NOT_CHECKED, NOT_EXISTS} from "../../store/promoCodeStore";
 import Ordering from "../ordering/Ordering";
+import navStore from "../../store/navStore";
 
 
 function declOfNum(number: number, titles: string[]) {
@@ -30,7 +31,6 @@ const InfoRow = observer((props: {title: string, value: string}) => {
 
 const CartOrder = observer(() => {
     const [promoCode, setPromoCode] = [promoCodeStore.code, (code: string) => promoCodeStore.setPromoCode(code)]
-    const [open, setOpen] = useState(false)
 
     return(
         <div className={styles.container}>
@@ -81,7 +81,7 @@ const CartOrder = observer(() => {
             />
             <div
                 className={styles.button}
-                onClick={() => setOpen(true)}
+                onClick={() => navStore.openOrdering()}
             >
                 <div>К оформлению заказа</div>
                 <img src={orderButtonArrow} alt={""} />
@@ -89,9 +89,10 @@ const CartOrder = observer(() => {
 
             <Drawer
                 anchor={'right'}
-                open={open}
+                open={navStore.orderingOpenState}
+                BackdropProps={{style:{opacity:0}}}
             >
-                <Ordering close={() => setOpen(false)} />
+                <Ordering close={() => navStore.closeOrdering()} />
             </Drawer>
         </div>
     )

@@ -4,6 +4,7 @@ import productStore from "../../store/productStore"
 import React, {useState} from "react";
 import Drawer from '@mui/material/Drawer';
 import Cart from '../cart/Cart'
+import navStore from "../../store/navStore";
 
 const HeaderCart = observer(() => {
     const cartCount = productStore.cartCount
@@ -13,12 +14,10 @@ const HeaderCart = observer(() => {
         return `${styles.cart} ${empty}`
     }
 
-    const [open, setOpen] = useState(false)
-
     return (
         <div className={cartClassName()} onClick={() => {
             if (cartCount > 0) {
-                setOpen(true)
+                navStore.openCart()
             }
         }}>
             <div className={styles.image}>
@@ -48,9 +47,9 @@ const HeaderCart = observer(() => {
             </div>
             <Drawer
                 anchor={'right'}
-                open={open}
+                open={navStore.cartOpenState}
             >
-                <Cart close={() => setOpen(false)} />
+                <Cart close={() => navStore.closeCart()} />
             </Drawer>
         </div>
     )

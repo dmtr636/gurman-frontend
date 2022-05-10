@@ -1,0 +1,15 @@
+.wrapper {
+    height: 100%;
+    overflow-y: auto;
+    background: #FAF9F9;
+}
+
+.result {
+    width: 600px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background: #FAF9F9;
+    position: relative;
+    box-sizing: border-box;
+}

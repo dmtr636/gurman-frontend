@@ -63,6 +63,8 @@
     column-gap: 10px;
 }
 
+
+
 .inputName {
     padding: 21px;
     background: #FFFFFF;
@@ -88,6 +90,7 @@
     padding: 21px;
     background: #FFFFFF;
     border-radius: 5px;
+
     width: 259px;
     height: 65px;
     font-family: 'Ubuntu';
@@ -115,3 +118,38 @@
     border-radius: 0px 5px 5px 0px;
 }
 
+.selectButtonWide {
+    margin-top: 20px;
+    composes: selectButton;
+    width: 100%;
+}
+
+.selectButtonWide.selected {
+    color: #FA3D3D;
+    border: 1px solid #FA3D3D;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.button {
+    width: 440px;
+    height: 69px;
+    background: #FA3D3D;
+    border-radius: 5px;
+    margin: 70px auto 40px auto;
+    cursor: pointer;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+
+}
+
+.button:hover {
+    background: #FF5A5A;
+}

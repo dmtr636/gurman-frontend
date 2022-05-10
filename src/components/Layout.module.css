@@ -1,4 +1,6 @@
 .layout {
     padding-bottom: calc(80px + 434px);
     position: relative;
+    min-height: 100vh;
+    box-sizing: border-box;
 }

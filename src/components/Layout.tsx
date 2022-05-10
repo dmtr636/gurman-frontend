@@ -11,7 +11,7 @@ import category from "../store/categoryStore";
 import {observer} from "mobx-react-lite";
 import ProductsContainer from "./product/ProductsContainer";
 import Carousel from "./carousel/Carousel";
-import Footer from "./Footer/Footer";
+import Footer from "./footer/Footer";
 
 const Layout = observer(() => {
     const categories = category.categories

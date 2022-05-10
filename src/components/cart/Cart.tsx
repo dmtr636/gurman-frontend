@@ -24,6 +24,7 @@ const Cart = observer((props: {close: any}) => {
                         event.stopPropagation()
                     }}
                 />
+
                 <div className={styles.header}>
                     {productStore.cartCount
                         + " "
@@ -31,11 +32,11 @@ const Cart = observer((props: {close: any}) => {
                         + " на "
                     }
                     <span className={styles.cost}>
-                    {productStore.cartCost
-                        + " "
-                        + declOfNum(productStore.cartCost, ["рубль", "рубля", "рублей"])
-                    }
-                </span>
+                        {productStore.cartCost
+                            + " "
+                            + declOfNum(productStore.cartCost, ["рубль", "рубля", "рублей"])
+                        }
+                    </span>
                 </div>
 
                 <CartItemContainer />

@@ -1,8 +1,33 @@
 import styles from "./Footer.module.css"
 import vkImage from "../../images/Vk.svg"
 import instagramImage from "../../images/Instagram.svg"
+import {useState} from "react";
+import Modal from "./Modal";
+import ForConsumersModalContent from "./ForConsumersModalContent";
+
+const FOR_CONSUMERS_MODAL_TYPE = "FOR_CONSUMERS_MODAL_TYPE"
+
+const ModalContent = (modalType: string) => {
+    switch (modalType) {
+        case FOR_CONSUMERS_MODAL_TYPE:
+            return <ForConsumersModalContent />
+        default:
+            return <></>
+    }
+}
+
+const ModalTitle = (modalType: string) => {
+    switch (modalType) {
+        case FOR_CONSUMERS_MODAL_TYPE:
+            return "Правила продажи"
+        default:
+            return ""
+    }
+}
 
 const Footer = () => {
+    const [modalType, setModalType] = useState("")
+
     return(
         <footer className={styles.footer}>
             <div className={styles.col}>
@@ -12,7 +37,10 @@ const Footer = () => {
                 <div className={styles.colHeader}>
                     Клиентам
                 </div>
-                <div className={styles.colItem}>
+                <div
+                    className={styles.colItem}
+                    onClick={() => setModalType(FOR_CONSUMERS_MODAL_TYPE)}
+                >
                     Для потребителей
                 </div>
                 <div className={styles.colItem}>
@@ -56,6 +84,13 @@ const Footer = () => {
             <div className={styles.bottom}>
                 © Все права защищены «Гурман» 2022
             </div>
+            {modalType !== "" &&
+                <Modal 
+                    close={() => setModalType("")} 
+                    content={ModalContent(modalType)}
+                    title={ModalTitle(modalType)}
+                />
+            }
         </footer>
     )
 }

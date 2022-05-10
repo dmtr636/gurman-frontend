@@ -38,7 +38,7 @@
     margin-bottom: 21px;
 }
 
-.info svg:hover {
+.info img:hover {
     opacity: 0.85;
     cursor: pointer;
 }
@@ -62,3 +62,20 @@
     margin-top: 3px;
 }
 
+.infoPayment {
+    composes: info;
+    margin-left: 80px;
+}
+
+.infoPaymentPopup {
+    width: 446px;
+    height: 140px;
+    background-image: url("../../images/infoPaymentPopup.svg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 26px;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+}
