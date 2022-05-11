@@ -1,19 +1,12 @@
 import styles from "./OrderingResult.module.css"
 import navStore from "../../store/navStore";
+import DrawerContainer from "../common/DrawerContainer";
 
 const OrderingResult = () => {
     return(
-        <div className={styles["wrapper"]}>
-            <div className={styles["result"]}>
-                <button onClick={(event) => {
-                    navStore.closeResult()
-                    navStore.closeOrdering()
-                    navStore.closeCart()
-                    navStore.closeSelectTime()
-                    event.stopPropagation()
-                }}>Close</button>
-            </div>
-        </div>
+        <DrawerContainer close={() => navStore.closeResult()} hideClose={true}>
+            Успех
+        </DrawerContainer>
     )
 }
 

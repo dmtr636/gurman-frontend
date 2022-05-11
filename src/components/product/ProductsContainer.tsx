@@ -14,7 +14,7 @@ const ProductsContainer = observer((props: {
     if (props.salePage) {
         products = product.productsOnSale
     } else if (props.recommendationsPage) {
-        products = product.productsOnSale
+        products = product.recommendations
     } else {
         products = product.products.filter(product => product.category === props.categoryId)
     }

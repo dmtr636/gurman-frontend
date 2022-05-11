@@ -132,7 +132,7 @@ const Ordering = observer((props: {close: any}) => {
                         Онлайн оплата
                     </div>
 
-                    {!isNight()
+                    {isNight()
                         ?
                         <div className={styles["paymentMessage"]}>
                             Все способы оплаты будут доступны<br/>

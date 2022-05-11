@@ -2,17 +2,17 @@
     height: 100%;
     overflow-y: auto;
     background: #FAF9F9;
+    width: 600px;
 }
 
 .selectTime {
-    width: 600px;
     padding: 40px;
     display: flex;
     flex-direction: column;
     background: #FAF9F9;
     position: relative;
     box-sizing: border-box;
-    height: 100%;
+    min-height: 100%;
 }
 
 .closeImg {
@@ -45,7 +45,7 @@
 
 .formRow {
     display: flex;
-    column-gap: 10px;
+    column-gap: 20px;
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -55,7 +55,7 @@
     background: #FFFFFF;
     border-radius: 5px;
 
-    width: 240px;
+    width: 250px;
     height: 165px;
     font-family: 'Ubuntu', serif;
     font-style: normal;
@@ -112,4 +112,93 @@
 
 .button:hover {
     background: #FF5A5A;
+}
+
+.todayLabel {
+    width: 250px;
+    height: 65px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    padding: 21px;
+    box-sizing: border-box;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #282828;
+}
+
+.select {
+    composes: todayLabel;
+    cursor: pointer;
+    position: relative;
+    outline: 0;
+    border: 0;
+    text-align: left;
+    margin-bottom: 220px;
+}
+
+.selectActive {
+    composes: select;
+    color: #FA3D3D;
+}
+
+.selectMark {
+    position: absolute;
+    top: 29px;
+    right: 28px;
+}
+
+.selectMarkRotated {
+    composes: selectMark;
+    transform: rotate(180deg);
+}
+
+.selectMenu {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 21px 24px;
+    column-gap: 16px;
+    row-gap: 21px;
+}
+
+.selectMenuItem {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    color: #282828;
+    cursor: pointer;
+}
+
+.selectMenuItemActive {
+    composes: selectMenuItem;
+    color: #FA3D3D;
+}
+
+.verticalDivider {
+    width: 1px;
+    position: absolute;
+    top: 21px;
+    bottom: 21px;
+    opacity: 0.3;
+    background: #929292;
+}
+
+.verticalDivider1 {
+    composes: verticalDivider;
+    left: 73px;
+}
+
+.verticalDivider2 {
+    composes: verticalDivider;
+    left: 130px;
+}
+
+.verticalDivider3 {
+    composes: verticalDivider;
+    left: 186px;
 }

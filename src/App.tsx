@@ -13,6 +13,7 @@ function App() {
         category.fetchCategories()
         product.fetchProducts()
         sliderStore.fetchImages()
+        product.fetchRecommendations()
     }, [])
 
   return (

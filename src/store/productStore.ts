@@ -8,6 +8,7 @@ import promoCodeStore from "./promoCodeStore";
 
 class ProductStore {
     products: IProduct[] = []
+    recommendations: IProduct[] = []
 
     constructor() {
         makeAutoObservable(this, {}, {deep: true})
@@ -22,6 +23,18 @@ class ProductStore {
                     product.variants.forEach((variant: IVariant) => variant.cartCount = 0)
                 })
                 this.products = products
+            })
+    }
+
+    fetchRecommendations() {
+        axios.get(SERVER_HOST + "/recommendations")
+            .then(response => {
+                let products = response.data["recommendations"]
+                products.forEach((product: IProduct) => {
+                    product.expanded = false
+                    product.variants.forEach((variant: IVariant) => variant.cartCount = 0)
+                })
+                this.recommendations = products
             })
     }
 
