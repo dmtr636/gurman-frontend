@@ -7,8 +7,14 @@ class NavStore {
     emptyCartOpenState = false
     selectTimeOpenState = false
 
+    footerModalType = ""
+
     constructor() {
         makeAutoObservable(this)
+    }
+
+    setFooterModalType(type: string) {
+        this.footerModalType = type
     }
 
     openCart() {

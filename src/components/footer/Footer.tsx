@@ -8,12 +8,20 @@ import DeliveryAndPickupModalContent from "./DeliveryAndPickupModalContent";
 import PaymentModalContent from "./PaymentModalContent";
 import SaleRulesModalContent from "./SaleRulesModalContent";
 import AboutSellerModalContent from "./AboutSellerModalContent";
+import navStore from "../../store/navStore";
+import {observer} from "mobx-react-lite";
+import RequisitesModalContent from "./RequisitesModalContent";
+import PrivacyPolicyModalContent from "./PrivacyPolicyModalContent";
+import UseTermsModalContent from "./UseTermsModalContent";
 
-const FOR_CONSUMERS_MODAL_TYPE = "FOR_CONSUMERS_MODAL_TYPE"
-const DELIVERY_AND_PICKUP_MODAL_TYPE = "DELIVERY_AND_PICKUP_MODAL_TYPE"
-const PAYMENT_MODAL_CONTENT_TYPE = "PAYMENT_MODAL_CONTENT_TYPE"
-const SALE_RULES_MODAL_CONTENT_TYPE = "SALE_RULES_MODAL_CONTENT_TYPE"
-const ABOUT_SELLER_MODAL_CONTENT_TYPE = "ABOUT_SELLER_MODAL_CONTENT_TYPE"
+export const FOR_CONSUMERS_MODAL_TYPE = "FOR_CONSUMERS_MODAL_TYPE"
+export const DELIVERY_AND_PICKUP_MODAL_TYPE = "DELIVERY_AND_PICKUP_MODAL_TYPE"
+export const PAYMENT_MODAL_CONTENT_TYPE = "PAYMENT_MODAL_CONTENT_TYPE"
+export const SALE_RULES_MODAL_CONTENT_TYPE = "SALE_RULES_MODAL_CONTENT_TYPE"
+export const ABOUT_SELLER_MODAL_CONTENT_TYPE = "ABOUT_SELLER_MODAL_CONTENT_TYPE"
+export const REQUISITES_MODAL_CONTENT_TYPE = "REQUISITES_MODAL_CONTENT_TYPE"
+export const PRIVACY_POLICY_MODAL_CONTENT_TYPE = "PRIVACY_POLICY_MODAL_CONTENT_TYPE"
+export const USE_TERMS_MODAL_CONTENT_TYPE = "USE_TERMS_MODAL_CONTENT_TYPE"
 
 const ModalContent = (modalType: string)  => {
     switch (modalType) {
@@ -27,6 +35,12 @@ const ModalContent = (modalType: string)  => {
             return <SaleRulesModalContent />
         case ABOUT_SELLER_MODAL_CONTENT_TYPE:
             return <AboutSellerModalContent/>
+        case REQUISITES_MODAL_CONTENT_TYPE:
+            return <RequisitesModalContent />
+        case PRIVACY_POLICY_MODAL_CONTENT_TYPE:
+            return <PrivacyPolicyModalContent />
+        case USE_TERMS_MODAL_CONTENT_TYPE:
+            return <UseTermsModalContent />
         default:
             return <></>
     }
@@ -44,13 +58,19 @@ const ModalTitle = (modalType: string) => {
             return "Правила продажи"
         case ABOUT_SELLER_MODAL_CONTENT_TYPE:
             return "Данные о продавце"
+        case REQUISITES_MODAL_CONTENT_TYPE:
+            return "Полные реквизиты"
+        case PRIVACY_POLICY_MODAL_CONTENT_TYPE:
+            return "Политика конфиденциальности"
+        case USE_TERMS_MODAL_CONTENT_TYPE:
+            return "Пользовательское соглашение"
         default:
             return ""
     }
 }
 
-const Footer = () => {
-    const [modalType, setModalType] = useState("")
+const Footer = observer(() => {
+    const [modalType, setModalType] = [navStore.footerModalType, (type: string) => navStore.setFooterModalType(type)]
 
     return(
         <footer className={styles.footer}>
@@ -84,11 +104,17 @@ const Footer = () => {
                 <div className={styles.colHeader}>
                     Информация
                 </div>
-                <div className={styles.colItem}>
+                <div
+                    className={styles.colItem}
+                    onClick={() => setModalType(PRIVACY_POLICY_MODAL_CONTENT_TYPE)}
+                >
                     Политика<br />
                     конфендициальности
                 </div>
-                <div className={styles.colItem}>
+                <div
+                    className={styles.colItem}
+                    onClick={() => setModalType(USE_TERMS_MODAL_CONTENT_TYPE)}
+                >
                     Пользовательское<br />
                     соглашение
                 </div>
@@ -109,7 +135,10 @@ const Footer = () => {
                 >
                     Данные о продавце
                 </div>
-                <div className={styles.colItem}>
+                <div
+                    className={styles.colItem}
+                    onClick={() => setModalType(REQUISITES_MODAL_CONTENT_TYPE)}
+                >
                     Полные реквизиты
                 </div>
                 <div className={styles.colItemImages}>
@@ -129,6 +158,6 @@ const Footer = () => {
             }
         </footer>
     )
-}
+})
 
 export default Footer
