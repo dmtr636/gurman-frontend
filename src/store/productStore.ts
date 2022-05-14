@@ -62,6 +62,14 @@ class ProductStore {
         variant.cartCount--
     }
 
+    clearCart() {
+        this.products.forEach(product => {
+            product.variants.forEach(variant => {
+                variant.cartCount = 0
+            })
+        })
+    }
+
     get cartItems(): ICartItem[] {
         let items: ICartItem[] = []
         this.products.forEach(product => {
@@ -104,7 +112,7 @@ class ProductStore {
         })
         cost *= (100 - promoCodeStore.discount) / 100
 
-        return cost
+        return Math.round(cost)
     }
 
     get productsOnSale() {

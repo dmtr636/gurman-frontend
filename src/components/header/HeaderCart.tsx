@@ -6,6 +6,7 @@ import Drawer from '@mui/material/Drawer';
 import Cart from '../cart/Cart'
 import navStore from "../../store/navStore";
 import EmptyCart from "../cart/EmptyCart";
+import Dialog from "@mui/material/Dialog";
 
 const HeaderCart = observer(() => {
     const cartCount = productStore.cartCount
@@ -17,6 +18,9 @@ const HeaderCart = observer(() => {
 
     return (
         <div className={cartClassName()} onClick={() => {
+            if (navStore.cartOpenState) {
+                return
+            }
             if (cartCount > 0) {
                 navStore.openCart()
             } else {
@@ -48,27 +52,25 @@ const HeaderCart = observer(() => {
                     : "Оформить заказ"
                 }
             </div>
-            {(cartCount > 0 && !navStore.emptyCartOpenState)
-                ?
-                <Drawer
-                    anchor={'right'}
-                    open={navStore.cartOpenState}
-                >
-                    <Cart close={() => navStore.closeCart()} />
-                </Drawer>
-                :
-                <Drawer
-                    anchor={'right'}
-                    open={navStore.emptyCartOpenState}
-                    PaperProps={{ style: { height: "745px" } }}
-                    onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
-                        event.stopPropagation()
-                        navStore.closeEmptyCart()
-                    }}
-                >
-                    <EmptyCart close={() => navStore.closeEmptyCart()} />
-                </Drawer>
-            }
+            <Drawer
+                anchor={'right'}
+                open={navStore.cartOpenState}
+            >
+                <Cart close={() => navStore.closeCart()} />
+            </Drawer>
+
+            <Dialog
+                fullWidth={true}
+                maxWidth={'lg'}
+                open={navStore.emptyCartOpenState}
+                PaperProps={{ style: { height: "745px", width: "1030px", position: "static", margin: "0 auto", maxHeight: "745px" } }}
+                onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
+                    event.stopPropagation()
+                    navStore.closeEmptyCart()
+                }}
+            >
+                <EmptyCart close={() => navStore.closeEmptyCart()} />
+            </Dialog>
         </div>
     )
 })

@@ -17,6 +17,12 @@
     position: relative;
 }
 
+@media (max-width: 1365px) {
+    .header {
+        height: 60px;
+    }
+}
+
 .brand {
     font-family: 'Ubuntu', serif;
     font-style: normal;
@@ -29,6 +35,14 @@
     margin-bottom: 20px;
 }
 
+@media (max-width: 1365px) {
+    .brand {
+        margin: 12px 0 20px 20px;
+        font-size: 26px;
+        line-height: 30px;
+    }
+}
+
 .info {
     display: flex;
     align-items: center;
@@ -36,6 +50,12 @@
     margin-right: 40px;
     margin-top: 21px;
     margin-bottom: 21px;
+}
+
+@media (max-width: 1365px) {
+    .info {
+        display: none;
+    }
 }
 
 .info img:hover {
@@ -78,4 +98,16 @@
     box-sizing: border-box;
     color: white;
     text-align: center;
+}
+
+.navBurger {
+    display: none;
+    margin: 20px 20px 21px auto;
+    cursor: pointer;
+}
+
+@media (max-width: 1365px) {
+    .navBurger {
+        display: block;
+    }
 }

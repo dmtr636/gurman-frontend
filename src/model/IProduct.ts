@@ -1,6 +1,7 @@
 import {IVariant} from './IVariant'
 
 export interface IProduct {
+    id: number,
     name: string,
     image: string,
     variants: IVariant[],

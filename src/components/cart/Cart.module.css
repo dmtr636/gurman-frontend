@@ -5,7 +5,6 @@
 }
 
 .cart {
-    width: 600px;
     display: flex;
     flex-direction: column;
     background: #FAF9F9;

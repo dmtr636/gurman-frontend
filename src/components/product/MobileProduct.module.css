@@ -1,16 +1,22 @@
 .product {
     position: relative;
-    min-height: calc(508px - 92px);
     padding-bottom: 92px;
+    width: 280px;
+    height: 195px;
 }
 
 .product img {
-    width: 100%;
     border-radius: 5px;
+    width: 135px;
+    height: 105px;
+    position: absolute;
+    top: 0;
+    left: 0 ;
 }
 
 .titleRow {
     margin-top: 10px;
+    margin-left: 145px;
     margin-right: -2px;
 }
 
@@ -18,8 +24,8 @@
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 700;
-    font-size: 22px;
-    line-height: 25px;
+    font-size: 14px;
+    line-height: 16px;
     color: #282828;
 }
 
@@ -27,22 +33,15 @@
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
-    font-size: 22px;
-    line-height: 25px;
+    font-size: 14px;
+    line-height: 16px;
     color: #929292;
     margin-left: 10px;
 }
 
 .composition {
     margin-top: 20px;
-}
-
-@media (max-width: 1365px) {
-    .composition {
-        margin-top: 10px;
-        margin-left: 145px;
-        min-height: 70px;
-    }
+    margin-left: 145px;
 }
 
 .compositionHeader {
@@ -61,15 +60,6 @@
     line-height: 16px;
     letter-spacing: 0em;
     text-align: left;
-}
-
-@media (max-width: 1365px) {
-    .compositionText {
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 13.62px;
-        display: block;
-    }
 }
 
 .nextLink {
@@ -148,14 +138,16 @@
 
 .saleBg {
     position: absolute;
-    width: 193px;
-    height: 33px;
-    right: 0;
-    top: 20px;
+    width: 135px;
+    height: 20px;
+    left: 0;
+    top: 85px;
 
     background: rgba(250, 61, 61, 0.8);
     backdrop-filter: blur(4px);
-    border-radius: 5px 0px 0px 5px;
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 0px 0px 5px 3px;
 
     display: flex;
     justify-content: center;
@@ -166,7 +158,7 @@
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
+    font-size: 12px;
+    line-height: 14px;
     color: #FFFFFF;
 }

@@ -1,13 +1,15 @@
 .item {
     display: flex;
     margin-bottom: 10px;
-    background: #FFFFFF;
     padding: 20px 40px;
+    background: #FFFFFF;
+    box-shadow: 0px -6px 10px rgba(184, 184, 184, 0.1);
+    border-radius: 5px;
 }
 
 .image {
-    width: 209px;
-    height: 162px;
+    width: 160px;
+    height: 120px;
     border-radius: 5px;
 }
 
@@ -42,7 +44,7 @@
 }
 
 .composition {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .compositionHeader {

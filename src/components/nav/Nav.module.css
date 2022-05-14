@@ -1,7 +1,16 @@
 .nav {
     display: flex;
     justify-content: space-between;
-
     max-width: 1280px;
     margin: 34px auto 0 auto;
+}
+
+@media (max-width: 1365px) {
+    .nav {
+        column-gap: 10px;
+        width: 100%;
+        overflow: scroll;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
 }

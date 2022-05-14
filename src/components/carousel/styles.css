@@ -6,6 +6,12 @@
     margin-bottom: 40px;
 }
 
+@media (max-width: 1365px) {
+    .swiper {
+        display: none;
+    }
+}
+
 .swiper-slide {
     text-align: center;
     font-size: 18px;

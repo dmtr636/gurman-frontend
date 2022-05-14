@@ -3,7 +3,7 @@ import {IProduct} from "../../model/IProduct";
 import productState from '../../store/productStore'
 import {observer} from "mobx-react-lite";
 
-const COMPOSITION_MAX_LEN = 115
+const COMPOSITION_MAX_LEN = 110
 
 function truncate(input: string) {
     if (input.length > COMPOSITION_MAX_LEN) {

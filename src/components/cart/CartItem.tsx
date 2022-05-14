@@ -4,7 +4,7 @@ import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore";
 import {SERVER_HOST} from "../../constants/constants";
 
-const COMPOSITION_MAX_LEN = 83
+const COMPOSITION_MAX_LEN = 65
 
 function truncate(input: string) {
     if (input.length > COMPOSITION_MAX_LEN) {

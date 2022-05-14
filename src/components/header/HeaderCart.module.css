@@ -17,6 +17,12 @@
     align-items: center;
 }
 
+@media (max-width: 1365px) {
+    .cart {
+        display: none;
+    }
+}
+
 .cart:hover {
     background: #FF5A5A;
 }

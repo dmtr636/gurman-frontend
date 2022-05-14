@@ -10,6 +10,7 @@ import promoCodeStore, {CHECKING, EXISTS, NOT_CHECKED, NOT_EXISTS} from "../../s
 import Ordering from "../ordering/Ordering";
 import navStore from "../../store/navStore";
 import SelectTime from "../ordering/SelectTime";
+import OrderingResult from "../ordering/OrderingResult";
 
 
 function declOfNum(number: number, titles: string[]) {
@@ -82,7 +83,10 @@ const CartOrder = observer(() => {
             />
             <div
                 className={styles.button}
-                onClick={() => navStore.openSelectTime()}
+                onClick={(event) => {
+                    event.stopPropagation()
+                    navStore.openSelectTime()
+                }}
             >
                 <div>К оформлению заказа</div>
                 <img src={orderButtonArrow} alt={""} />
@@ -91,9 +95,19 @@ const CartOrder = observer(() => {
             <Drawer
                 anchor={'right'}
                 open={navStore.selectTimeOpenState}
+                elevation={0}
                 BackdropProps={{style:{opacity:0}}}
             >
                 <SelectTime />
+            </Drawer>
+
+            <Drawer
+                anchor={'right'}
+                open={navStore.resultOpenState}
+                elevation={0}
+                BackdropProps={{style:{opacity:0}}}
+            >
+                <OrderingResult />
             </Drawer>
         </div>
     )

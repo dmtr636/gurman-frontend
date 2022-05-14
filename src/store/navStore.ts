@@ -50,6 +50,13 @@ class NavStore {
     closeSelectTime() {
         this.selectTimeOpenState = false
     }
+
+    closAll() {
+        this.cartOpenState = false
+        this.orderingOpenState = false
+        this.selectTimeOpenState = false
+        this.resultOpenState = false
+    }
 }
 
 export default new NavStore()

@@ -3,13 +3,15 @@ import Product from "./Product";
 import styles from './ProductContainer.module.css'
 import {observer} from "mobx-react-lite";
 import Carousel from "../carousel/Carousel";
+import useWindowDimensions from "../../hooks/hooks";
+import MobileProduct from "./MobileProduct";
 
 const ProductsContainer = observer((props: {
     categoryId: number,
     salePage: boolean,
     recommendationsPage?: boolean
 }) => {
-
+    const { height, width } = useWindowDimensions()
     let products
     if (props.salePage) {
         products = product.productsOnSale
@@ -25,7 +27,13 @@ const ProductsContainer = observer((props: {
             <div className={props.recommendationsPage ? styles["container-3"] : styles["container"]}>
                 {products.map(product =>
                     <div>
-                        <Product product={product} />
+                        {width > 1365
+                            ?
+                            <Product product={product} />
+
+                            :
+                            <MobileProduct product={product} />
+                        }
                     </div>
                 )}
             </div>

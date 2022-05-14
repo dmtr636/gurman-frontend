@@ -7,13 +7,15 @@ import ForConsumersModalContent from "./ForConsumersModalContent";
 import DeliveryAndPickupModalContent from "./DeliveryAndPickupModalContent";
 import PaymentModalContent from "./PaymentModalContent";
 import SaleRulesModalContent from "./SaleRulesModalContent";
+import AboutSellerModalContent from "./AboutSellerModalContent";
 
 const FOR_CONSUMERS_MODAL_TYPE = "FOR_CONSUMERS_MODAL_TYPE"
 const DELIVERY_AND_PICKUP_MODAL_TYPE = "DELIVERY_AND_PICKUP_MODAL_TYPE"
 const PAYMENT_MODAL_CONTENT_TYPE = "PAYMENT_MODAL_CONTENT_TYPE"
 const SALE_RULES_MODAL_CONTENT_TYPE = "SALE_RULES_MODAL_CONTENT_TYPE"
+const ABOUT_SELLER_MODAL_CONTENT_TYPE = "ABOUT_SELLER_MODAL_CONTENT_TYPE"
 
-const ModalContent = (modalType: string) => {
+const ModalContent = (modalType: string)  => {
     switch (modalType) {
         case FOR_CONSUMERS_MODAL_TYPE:
             return <ForConsumersModalContent />
@@ -23,6 +25,8 @@ const ModalContent = (modalType: string) => {
             return <PaymentModalContent />
         case SALE_RULES_MODAL_CONTENT_TYPE:
             return <SaleRulesModalContent />
+        case ABOUT_SELLER_MODAL_CONTENT_TYPE:
+            return <AboutSellerModalContent/>
         default:
             return <></>
     }
@@ -31,13 +35,15 @@ const ModalContent = (modalType: string) => {
 const ModalTitle = (modalType: string) => {
     switch (modalType) {
         case FOR_CONSUMERS_MODAL_TYPE:
-            return "Правила продажи"
+            return "Мы строги к правилам!"
         case DELIVERY_AND_PICKUP_MODAL_TYPE:
             return "Доставка и самовывоз"
         case PAYMENT_MODAL_CONTENT_TYPE:
             return "Оплата"
         case SALE_RULES_MODAL_CONTENT_TYPE:
-            return "Мы строги к правилам!"
+            return "Правила продажи"
+        case ABOUT_SELLER_MODAL_CONTENT_TYPE:
+            return "Данные о продавце"
         default:
             return ""
     }
@@ -97,7 +103,10 @@ const Footer = () => {
                 <div className={styles.colHeader}>
                     Компания
                 </div>
-                <div className={styles.colItem}>
+                <div
+                    className={styles.colItem}
+                    onClick={() => setModalType(ABOUT_SELLER_MODAL_CONTENT_TYPE)}
+                >
                     Данные о продавце
                 </div>
                 <div className={styles.colItem}>

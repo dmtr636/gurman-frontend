@@ -19,7 +19,7 @@ const cookingTimes = () => {
     for (let hour = currentHours + 2; hour <= 23; hour++) {
         times.push(hour + ":00")
     }
-    times.push("24:00")
+    times.push("00:00")
     return times
 }
 
@@ -138,7 +138,10 @@ const SelectTime = observer(() => {
 
                 <div
                     className={styles.button}
-                    onClick={() => navStore.openOrdering()}
+                    onClick={(event) => {
+                        event.stopPropagation()
+                        navStore.openOrdering()
+                    }}
                 >
                     <div>Далее</div>
                     <img src={orderButtonArrow} alt={""} />
@@ -148,6 +151,7 @@ const SelectTime = observer(() => {
                     anchor={'right'}
                     open={navStore.orderingOpenState}
                     BackdropProps={{style:{opacity:0}}}
+                    elevation={0}
                 >
                     <Ordering close={() => navStore.closeOrdering()} />
                 </Drawer>

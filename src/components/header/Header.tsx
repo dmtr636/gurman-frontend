@@ -5,6 +5,7 @@ import React from "react";
 import {Popover} from "@mui/material";
 import infoLocation from "../../images/infoLocation.svg"
 import infoPhone from "../../images/infoPhone.svg"
+import navBurger from "../../images/navBurger.svg"
 
 const isNight = () => {
     let hours = new Date().getHours()
@@ -99,6 +100,7 @@ function Header() {
                     </div>
                 }
                 <HeaderCart />
+                <img className={styles['navBurger']} src={navBurger} alt={""} />
             </div>
         </div>
     )

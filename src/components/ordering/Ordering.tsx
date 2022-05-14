@@ -16,6 +16,7 @@ import orderStore, {CARD_COURIER, CASH_COURIER} from "../../store/orderStore";
 import {DELIVERY, ONLINE, CHECKOUT, PICKUP} from "../../store/orderStore";
 import SelectTime from "./SelectTime";
 import {isNight} from "../../utils/utils";
+import {postOrder} from "../../api/api"
 
 const Ordering = observer((props: {close: any}) => {
 
@@ -50,7 +51,12 @@ const Ordering = observer((props: {close: any}) => {
     return(
         <div className={styles.wrapper}>
             <div className={styles.cart}>
-                <form onSubmit={() => {navStore.openResult()}}>
+                <form onSubmit={(event) => {
+                    postOrder()
+                    navStore.openResult()
+                    event.preventDefault()
+                    event.stopPropagation()
+                }}>
                     <img
                         src={closeImg}
                         className={styles.closeImg}
@@ -174,13 +180,6 @@ const Ordering = observer((props: {close: any}) => {
                         <div>Подтвердить</div>
                     </button>
 
-                    <Drawer
-                        anchor={'right'}
-                        open={navStore.resultOpenState}
-                        BackdropProps={{style:{opacity:0}}}
-                    >
-                        <OrderingResult />
-                    </Drawer>
                 </form>
             </div>
         </div>
