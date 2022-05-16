@@ -1,19 +1,19 @@
-import {NavLink, useMatch, useResolvedPath} from "react-router-dom";
 import styles from "./Link.module.css";
+import navStore from "../../store/navStore";
+import { observer } from "mobx-react-lite";
 
-function Link(props: { path: string; name: string }) {
-    let resolved = useResolvedPath(props.path);
-    let match = useMatch({ path: resolved.pathname, end: true });
+function Link(props: { categoryId: number; name: string }) {
+    const match = props.categoryId === navStore.categoryId
 
     return (
-        <NavLink
-            to={"/" + props.path}
+        <div
             className={styles.item + (match ? " " + styles.active : "")}
+            onClick={() => navStore.setCategoryId(props.categoryId)}
         >
             {props.name}
             {match && <div className={styles.line} />}
-        </NavLink>
+        </div>
     )
 }
 
-export default Link
+export default observer(Link)

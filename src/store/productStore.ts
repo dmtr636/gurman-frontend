@@ -70,6 +70,17 @@ class ProductStore {
         })
     }
 
+    get getRecommendations() {
+        let recommendations: IProduct[] = []
+        let ids = this.recommendations.map(rec => rec.id)
+        this.products.forEach(product => {
+            if (ids.includes(product.id)) {
+                recommendations.push(product)
+            }
+        })
+        return recommendations
+    }
+
     get cartItems(): ICartItem[] {
         let items: ICartItem[] = []
         this.products.forEach(product => {

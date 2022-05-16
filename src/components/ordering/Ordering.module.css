@@ -5,6 +5,13 @@
     width: 600px;
 }
 
+@media (max-width: 767px) {
+    .wrapper {
+        width: 100vw;
+        margin-top: 60px;
+    }
+}
+
 .cart {
     padding: 40px;
     display: flex;
@@ -14,11 +21,23 @@
     box-sizing: border-box;
 }
 
+@media (max-width: 767px) {
+    .cart {
+        padding: 20px;
+    }
+}
+
 .closeImg {
     position: absolute;
     right: 40px;
     top: 40px;
     cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .closeImg {
+        display: none;
+    }
 }
 
 .closeImg:hover {
@@ -35,6 +54,14 @@
     margin-bottom: 50px;
 }
 
+@media (max-width: 767px) {
+    .header {
+        font-size: 20px;
+        line-height: 23px;
+        margin-bottom: 20px;
+    }
+}
+
 .divider {
     box-sizing: border-box;
     height: 1px;
@@ -48,6 +75,16 @@
     margin-bottom: 20px;
 }
 
+@media (max-width: 767px) {
+    .labelRow {
+        margin-top: 20px;
+    }
+    .labelRow img {
+        width: 14px;
+        height: 14px;
+    }
+}
+
 .label {
     font-family: 'Ubuntu';
     font-style: normal;
@@ -58,9 +95,23 @@
     margin-left: 20px;
 }
 
+@media (max-width: 767px) {
+    .label {
+        font-size: 14px;
+        line-height: 16px;
+        margin-left: 10px;
+    }
+}
+
 .formRow {
     display: flex;
     column-gap: 10px;
+}
+
+@media (max-width: 767px) {
+    .formRow {
+        column-gap: 5px;
+    }
 }
 
 .inputName {
@@ -78,6 +129,15 @@
     border: 0;
     outline: 0;
     box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+    .inputName {
+        width: 140px;
+        height: 40px;
+        font-size: 14px;
+        line-height: 16px;
+    }
 }
 
 .inputName::placeholder {
@@ -102,6 +162,17 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .selectButton {
+        width: 280px;
+        height: 40px;
+        font-size: 14px;
+        line-height: 16px;
+        box-sizing: border-box;
+        padding: 12px;
+    }
 }
 
 .selectButton.selectedLeft {
@@ -149,6 +220,15 @@
     outline: 0;
 }
 
+@media (max-width: 767px) {
+    .button {
+        width: 100%;
+        height: 40px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
 .button:hover {
     background: #FF5A5A;
 }
@@ -158,4 +238,12 @@
     text-align: center;
     margin-top: 20px;
     color: #929292;
+}
+
+@media (max-width: 767px) {
+    .paymentMessage {
+        font-size: 14px;
+        line-height: 16px;
+        margin-top: 10px;
+    }
 }

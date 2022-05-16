@@ -17,6 +17,7 @@ import {DELIVERY, ONLINE, CHECKOUT, PICKUP} from "../../store/orderStore";
 import SelectTime from "./SelectTime";
 import {isNight} from "../../utils/utils";
 import {postOrder} from "../../api/api"
+import useWindowDimensions from "../../hooks/hooks";
 
 const Ordering = observer((props: {close: any}) => {
 
@@ -47,6 +48,8 @@ const Ordering = observer((props: {close: any}) => {
         }
         return classname
     }
+
+    const {width, height} = useWindowDimensions()
 
     return(
         <div className={styles.wrapper}>
@@ -153,13 +156,13 @@ const Ordering = observer((props: {close: any}) => {
                                         className={selectPaymentTypeButtonClassname(CASH_COURIER)}
                                         onClick={() => orderStore.setPaymentType(CASH_COURIER)}
                                     >
-                                        Наличными курьеру
+                                        {width < 768 ? "Наличными" : "Наличными курьеру"}
                                     </div>
                                     <div
                                         className={selectPaymentTypeButtonClassname(CARD_COURIER)}
                                         onClick={() => orderStore.setPaymentType(CARD_COURIER)}
                                     >
-                                        Картой курьеру
+                                        {width < 768 ? "Картой" : "Картой курьеру"}
                                     </div>
                                 </>
                                 :
@@ -170,6 +173,13 @@ const Ordering = observer((props: {close: any}) => {
                                     На кассе
                                 </div>
                             }
+                        </div>
+                    }
+
+                    {(width < 768 && orderStore.receiveWay === DELIVERY && !isNight()) &&
+                        <div className={styles["paymentMessage"]}>
+                            Оплата наличными или картой<br />
+                            производится курьеру
                         </div>
                     }
 

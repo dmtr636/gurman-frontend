@@ -16,7 +16,7 @@ const ProductsContainer = observer((props: {
     if (props.salePage) {
         products = product.productsOnSale
     } else if (props.recommendationsPage) {
-        products = product.recommendations
+        products = product.getRecommendations
     } else {
         products = product.products.filter(product => product.category === props.categoryId)
     }
@@ -26,7 +26,7 @@ const ProductsContainer = observer((props: {
             {props.salePage && <Carousel />}
             <div className={props.recommendationsPage ? styles["container-3"] : styles["container"]}>
                 {products.map(product =>
-                    <div>
+                    <>
                         {width > 1365
                             ?
                             <Product product={product} />
@@ -34,7 +34,7 @@ const ProductsContainer = observer((props: {
                             :
                             <MobileProduct product={product} />
                         }
-                    </div>
+                    </>
                 )}
             </div>
         </>

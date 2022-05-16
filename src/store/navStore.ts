@@ -8,9 +8,41 @@ class NavStore {
     selectTimeOpenState = false
 
     footerModalType = ""
+    categoryId = 0
+    menuOpenState = false
 
     constructor() {
         makeAutoObservable(this)
+    }
+
+    back() {
+        if (this.orderingOpenState) {
+            this.orderingOpenState = false
+            return;
+        }
+        if (this.selectTimeOpenState) {
+            this.selectTimeOpenState = false
+            return
+        }
+        if (this.cartOpenState) {
+            this.cartOpenState = false
+        }
+    }
+
+    get backButtonVisible() {
+        return this.cartOpenState;
+    }
+
+    openMenu() {
+        this.menuOpenState = true
+    }
+
+    closeMenu() {
+        this.menuOpenState = false
+    }
+
+    setCategoryId(category: number) {
+        this.categoryId = category
     }
 
     setFooterModalType(type: string) {

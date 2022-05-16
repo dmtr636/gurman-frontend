@@ -3,6 +3,12 @@
     margin-top: 20px;
 }
 
+@media (max-width: 767px) {
+    .variants {
+        margin-top: 10px;
+    }
+}
+
 .variant {
     width: 97px;
     height: 30px;
@@ -16,6 +22,14 @@
     line-height: 100%;
     color: #929292;
     cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .variant {
+        width: 93px;
+        height: 30px;
+        font-size: 14px;
+    }
 }
 
 .variant.active {

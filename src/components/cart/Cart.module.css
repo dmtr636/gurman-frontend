@@ -35,6 +35,15 @@
     margin-top: 40px;
 }
 
+@media (max-width: 767px) {
+    .header {
+        font-size: 20px;
+        line-height: 23px;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+}
+
 .header .cost {
     color: #FA3D3D;
 }

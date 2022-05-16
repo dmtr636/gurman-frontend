@@ -18,12 +18,23 @@
         height: 565px;
         width: 100%;
         flex-direction: column;
+        position: relative;
+        background-image: url("../../images/footerMobileBg.jpg");
+        padding-left: 20px;
+        row-gap: 40px;
+        justify-content: start;
     }
 }
 
 .col {
     position: relative;
     color: #FFFFFF
+}
+
+@media (max-width: 767px) {
+    .col {
+        position: static;
+    }
 }
 
 .colHeader {
@@ -33,6 +44,13 @@
     font-size: 32px;
     line-height: 44px;
     color: #FFFFFF;
+}
+
+@media (max-width: 767px) {
+    .colHeader {
+        font-size: 16px;
+        line-height: 22px;
+    }
 }
 
 .colItem {
@@ -46,6 +64,14 @@
     cursor: pointer;
 }
 
+@media (max-width: 767px) {
+    .colItem {
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 10px;
+    }
+}
+
 .colItem:hover {
     color: #FA3D3D;
 }
@@ -54,6 +80,12 @@
     margin-top: 20px;
     display: flex;
     column-gap: 15px;
+}
+
+@media (max-width: 767px) {
+    .colItemImages {
+        margin-top: 10px;
+    }
 }
 
 .imageLink {
@@ -72,6 +104,15 @@
     font-size: 40px;
     line-height: 46px;
     color: #FFFFFF;
+}
+
+@media (max-width: 767px) {
+    .brand {
+        font-size: 26px;
+        line-height: 30px;
+        left: 20px;
+        top: 12px;
+    }
 }
 
 .bottom {
@@ -94,6 +135,14 @@
     font-size: 20px;
     line-height: 23px;
     color: #FFFFFF;
+}
+
+@media (max-width: 767px) {
+    .bottom {
+        font-size: 14px;
+        line-height: 16px;
+        left: 0;
+    }
 }
 
 .modalContent {
@@ -125,4 +174,24 @@
     line-height: 37px;
     color: #282828;
     margin-bottom: 0;
+}
+.divider {
+    position: absolute;
+    height: 1px;
+    left: 20px;
+    right: 20px;
+    opacity: 0.3;
+    background: #929292;
+}
+.line1 {
+    composes: divider;
+    top: 60px;
+}
+.line2 {
+    composes: divider;
+    top: 200px;
+}
+.line3 {
+    composes: divider;
+    top: 372px;
 }

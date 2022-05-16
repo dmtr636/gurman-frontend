@@ -13,6 +13,7 @@ import {observer} from "mobx-react-lite";
 import RequisitesModalContent from "./RequisitesModalContent";
 import PrivacyPolicyModalContent from "./PrivacyPolicyModalContent";
 import UseTermsModalContent from "./UseTermsModalContent";
+import useWindowDimensions from "../../hooks/hooks";
 
 export const FOR_CONSUMERS_MODAL_TYPE = "FOR_CONSUMERS_MODAL_TYPE"
 export const DELIVERY_AND_PICKUP_MODAL_TYPE = "DELIVERY_AND_PICKUP_MODAL_TYPE"
@@ -71,6 +72,7 @@ const ModalTitle = (modalType: string) => {
 
 const Footer = observer(() => {
     const [modalType, setModalType] = [navStore.footerModalType, (type: string) => navStore.setFooterModalType(type)]
+    const { height, width } = useWindowDimensions()
 
     return(
         <footer className={styles.footer}>
@@ -149,6 +151,13 @@ const Footer = observer(() => {
             <div className={styles.bottom}>
                 © Все права защищены «Гурман» 2022
             </div>
+            {width < 768 &&
+                <>
+                    <div className={styles['line1']} />
+                    <div className={styles['line2']} />
+                    <div className={styles['line3']} />
+                </>
+            }
             {modalType !== "" &&
                 <Modal 
                     close={() => setModalType("")} 

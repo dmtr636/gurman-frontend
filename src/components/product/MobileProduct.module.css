@@ -1,8 +1,7 @@
 .product {
     position: relative;
-    padding-bottom: 92px;
+    padding-bottom: 50px;
     width: 280px;
-    height: 195px;
 }
 
 .product img {
@@ -15,7 +14,6 @@
 }
 
 .titleRow {
-    margin-top: 10px;
     margin-left: 145px;
     margin-right: -2px;
 }
@@ -27,6 +25,7 @@
     font-size: 14px;
     line-height: 16px;
     color: #282828;
+    display: inline-block;
 }
 
 .portion {
@@ -37,6 +36,7 @@
     line-height: 16px;
     color: #929292;
     margin-left: 10px;
+    display: inline-block;
 }
 
 .composition {
@@ -78,13 +78,13 @@
 
     background: #FA3D3D;
     border-radius: 5px;
-    width: 174px;
-    height: 62px;
+    width: 135px;
+    height: 40px;
 
     font-family: 'Ubuntu', "Segoe UI", sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 31px;
+    font-size: 20px;
     line-height: 100%;
     letter-spacing: 0.04em;
     color: #FFFFFF;
@@ -95,10 +95,6 @@
     align-items: center;
 }
 
-.orderButton:hover {
-    background: #FF5A5A;
-}
-
 .orderButton.active {
     background: #FFD3D3;
     border-radius: 5px 5px 5px 5px;
@@ -106,8 +102,8 @@
 }
 
 .cartCount {
-    width: 116px;
-    height: 62px;
+    width: 145px;
+    height: 40px;
     background: #FBFBFB;
     border-radius: 0px 5px 5px 0px;
     display: flex;
@@ -130,10 +126,6 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-}
-
-.cartCountButton:hover {
-    opacity: 0.7;
 }
 
 .saleBg {

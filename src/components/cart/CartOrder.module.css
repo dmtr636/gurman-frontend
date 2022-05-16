@@ -12,6 +12,13 @@
     box-sizing: border-box;
 }
 
+@media (max-width: 767px) {
+    .container {
+        padding: 20px;
+        height: 264px;
+    }
+}
+
 .promoInputRow {
     display: flex;
     justify-content: space-between;
@@ -27,6 +34,7 @@
     color: #929292;
     border: none;
     outline: 0;
+    padding: 0;
 }
 
 
@@ -51,6 +59,17 @@
     font-size: 20px;
     line-height: 23px;
     color: #FA3D3D;
+}
+
+@media (max-width: 767px) {
+    .promoInput, .promoApply, .promoNotExists, .promoInput::placeholder {
+        font-size: 14px;
+        line-height: 16px;
+        max-width: 180px;
+    }
+    .promoNotExists {
+        text-align: right;
+    }
 }
 
 .divider {
@@ -84,6 +103,13 @@
     color: #282828;
 }
 
+@media (max-width: 767px) {
+    .infoTitle, .infoValue {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}
+
 .button {
     width: 440px;
     height: 69px;
@@ -101,6 +127,16 @@
     justify-content: center;
     align-items: center;
     column-gap: 20px;
+}
+
+@media (max-width: 767px) {
+    .button {
+        width: 280px;
+        height: 40px;
+        margin: 20px auto 0 auto;
+        font-size: 16px;
+        line-height: 18px;
+    }
 }
 
 .button:hover {

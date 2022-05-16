@@ -4,3 +4,9 @@
     min-height: 100vh;
     box-sizing: border-box;
 }
+
+@media (max-width: 767px) {
+    .layout {
+        padding-bottom: 0;
+    }
+}

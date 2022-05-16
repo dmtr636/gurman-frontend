@@ -12,5 +12,7 @@
         overflow: scroll;
         padding-left: 20px;
         box-sizing: border-box;
+        margin-top: 20px;
+        padding-bottom: 10px;
     }
 }

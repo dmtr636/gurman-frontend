@@ -4,12 +4,26 @@
     width: 600px;
 }
 
+@media (max-width: 767px) {
+    .wrapper {
+        width: 100vw;
+        margin-top: 60px;
+        overflow-x: hidden;
+    }
+}
+
 .container {
     display: flex;
     flex-direction: column;
     background: #FAF9F9;
     position: relative;
     min-height: 100%;
+}
+
+@media (max-width: 767px) {
+    .container {
+        background: white;
+    }
 }
 
 .closeImg {
@@ -19,6 +33,12 @@
     right: 40px;
     top: 49px;
     cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .closeImg {
+        display: none;
+    }
 }
 
 .closeImg:hover {

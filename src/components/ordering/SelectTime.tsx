@@ -10,16 +10,21 @@ import orderButtonArrow from "../../images/orderButtonArrow.svg";
 import Drawer from "@mui/material/Drawer";
 import Ordering from "./Ordering";
 import selectMark from "../../images/selectMark.svg"
-import {Popover, Typography} from "@mui/material";
+import {Paper, Popover, Popper, Typography} from "@mui/material";
+import useWindowDimensions from "../../hooks/hooks";
+import { ClickAwayListener } from "@material-ui/core";
 
 const cookingTimes = () => {
     const currentHours = new Date().getHours()
     let times = []
 
-    for (let hour = currentHours + 2; hour <= 23; hour++) {
-        times.push(hour + ":00")
+    for (let i = 0; i < 12; i++) {
+        let hours = (currentHours + 2 + i) % 24 + ":00"
+        if (hours.length === 4) {
+            hours = "0" + hours
+        }
+        times.push(hours)
     }
-    times.push("00:00")
     return times
 }
 
@@ -38,9 +43,14 @@ function SelectMenuItem(props: { time: any, onClick: () => void }) {
 
 const SelectTime = observer(() => {
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+    const {height, width} = useWindowDimensions()
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
+        if (anchorEl === null) {
+            setAnchorEl(event.currentTarget);
+        } else {
+            setAnchorEl(null);
+        }
     };
 
     const handleClose = () => {
@@ -78,7 +88,11 @@ const SelectTime = observer(() => {
                     </div>
                     <div
                         className={orderStore.cookingTime !== "" ? styles["selectButtonSelected"] : styles["selectButton"]}
-                        onClick={() => orderStore.setCookingTime(cookingTimes()[0])}
+                        onClick={() => {
+                            if (orderStore.cookingTime === "") {
+                                orderStore.setCookingTime(cookingTimes()[0])
+                            }
+                        }}
                     >
                         <img
                             src={alarmImage}
@@ -92,7 +106,10 @@ const SelectTime = observer(() => {
                     <>
                         <div className={styles["divider"]} />
 
-                        <div className={styles["formRow"]}>
+                        <div
+                            className={[styles["formRow"], styles['formRowBottom']].join(" ")}
+                            style={{marginBottom: (width < 768 && open) ? "150px" : "20px" }}
+                        >
                             <div className={styles['todayLabel']}>
                                 Сегодня
                             </div>
@@ -109,30 +126,84 @@ const SelectTime = observer(() => {
                             </button>
                         </div>
 
-                        <Popover
-                            id={id}
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            elevation={0}
-                            PaperProps={{style: {marginTop: "20px", width: "250px"}}}
-                        >
-                            <div className={styles["selectMenu"]}>
-                                {cookingTimes().map(time =>
-                                    <SelectMenuItem time={time} onClick={() => {
-                                        orderStore.setCookingTime(time)
-                                        setAnchorEl(null)
-                                    }}/>
-                                )}
-                                <div className={styles['verticalDivider1']}></div>
-                                <div className={styles['verticalDivider2']}></div>
-                                <div className={styles['verticalDivider3']}></div>
-                            </div>
-                        </Popover>
+                        {width < 768
+                            ?
+                            <Popper
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                style={{zIndex: 10000}}
+                                placement='bottom-end'
+                                disablePortal={false}
+                                modifiers={[
+                                    {
+                                        name: 'flip',
+                                        enabled: true,
+                                        options: {
+                                            altBoundary: false,
+                                            rootBoundary: 'document',
+                                            padding: 8,
+                                        },
+                                    },
+                                    {
+                                        name: 'preventOverflow',
+                                        enabled: true,
+                                        options: {
+                                            altAxis: true,
+                                            altBoundary: false,
+                                            tether: true,
+                                            rootBoundary: 'document',
+                                            padding: 8,
+                                        },
+                                    },
+                                ]}
+                            >
+                                <ClickAwayListener onClickAway={(event) => {
+                                    setTimeout(() => handleClose(), 10)
+                                }}>
+                                    <Paper elevation={0} sx={{width: "calc(100vw - 40px)", marginTop: "10px", marginBottom: "20px", zIndex: "10000", position: "relative"}}>
+                                        <div className={styles["selectMenu"]}>
+                                            {cookingTimes().map(time =>
+                                                <SelectMenuItem time={time} onClick={() => {
+                                                    orderStore.setCookingTime(time)
+                                                    setAnchorEl(null)
+                                                }}/>
+                                            )}
+                                            <div className={styles['verticalDivider1']}></div>
+                                            <div className={styles['verticalDivider2']}></div>
+                                            <div className={styles['verticalDivider3']}></div>                                            <div className={styles['verticalDivider3']}></div>
+                                            <div className={styles['verticalDivider4']}></div>
+
+                                        </div>
+                                    </Paper>
+                                </ClickAwayListener>
+                            </Popper>
+                            :
+                            <Popover
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                elevation={0}
+                                PaperProps={{style: {marginTop: "20px", width: "250px"}}}
+                            >
+                                <div className={styles["selectMenu"]}>
+                                    {cookingTimes().map(time =>
+                                        <SelectMenuItem time={time} onClick={() => {
+                                            orderStore.setCookingTime(time)
+                                            setAnchorEl(null)
+                                        }}/>
+                                    )}
+                                    <div className={styles['verticalDivider1']}></div>
+                                    <div className={styles['verticalDivider2']}></div>
+                                    <div className={styles['verticalDivider3']}></div>
+                                </div>
+                            </Popover>
+                        }
                     </>
                 }
 

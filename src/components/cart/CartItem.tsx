@@ -4,7 +4,7 @@ import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore";
 import {SERVER_HOST} from "../../constants/constants";
 
-const COMPOSITION_MAX_LEN = 65
+const COMPOSITION_MAX_LEN = 60
 
 function truncate(input: string) {
     if (input.length > COMPOSITION_MAX_LEN) {
@@ -23,9 +23,9 @@ const CartItem = observer((props: {item: ICartItem}) => {
                 <div className={styles.titleRow}>
                     <span className={styles.title}>
                         {item.product.name}
-                    </span>
-                    <span className={styles.portion}>
-                        {item.product.portion + " г."}
+                        <span className={styles.portion}>
+                            {item.product.portion + " г."}
+                        </span>
                     </span>
                 </div>
 
@@ -69,8 +69,9 @@ const CartItem = observer((props: {item: ICartItem}) => {
                             </svg>
                         </div>
                     </div>
+                </div>
             </div>
-            </div>
+            <div className={styles['divider']} />
         </div>
     )
 })

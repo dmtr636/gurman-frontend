@@ -13,6 +13,10 @@ import ProductsContainer from "./product/ProductsContainer";
 import Carousel from "./carousel/Carousel";
 import Footer from "./footer/Footer";
 import useWindowDimensions from "../hooks/hooks";
+import MobileInfo from "./header/MobileInfo";
+import navStore from "../store/navStore";
+import FloatingCartButton from "./cart/FloatingCartButton";
+import productStore from "../store/productStore";
 
 const Layout = observer(() => {
     const categories = category.categories
@@ -21,44 +25,18 @@ const Layout = observer(() => {
     return (
         <div className={styles.layout}>
             <Header />
-            <HashRouter>
-                <Nav />
+            {width < 768 && <MobileInfo />}
 
-                {width > 1365
-                    ?
-                    <Routes>
-                        {categories.map((category) =>
-                            <Route
-                                path={'/' + category.path}
-                                element={
-                                    <ProductsContainer categoryId={category.id} salePage={false} />
-                                }
-                                key={category.id}
-                            />
-                        )}
-                        <Route path={'/'} element={ <ProductsContainer categoryId={0} salePage={true} />} key={0} />
-                        <Route path={'*'} element={<h1>Not found</h1>} key={-1}/>
-                    </Routes>
+            <Nav />
 
-                    :
-                    <Routes>
-                        {categories.map((category) =>
-                            <Route
-                                path={'/' + category.path}
-                                element={
-                                    <ProductsContainer categoryId={category.id} salePage={false} />
-                                }
-                                key={category.id}
-                            />
-                        )}
-                        <Route path={'/'} element={ <ProductsContainer categoryId={0} salePage={true} />} key={0} />
-                        <Route path={'*'} element={<h1>Not found</h1>} key={-1}/>
-                    </Routes>
-                }
+            <ProductsContainer
+                categoryId={navStore.categoryId}
+                salePage={navStore.categoryId === 0}
+            />
 
-
-            </HashRouter>
             <Footer />
+
+            {(productStore.cartCost > 0 && width < 768) && <FloatingCartButton />}
         </div>
     )
 })

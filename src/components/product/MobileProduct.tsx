@@ -5,6 +5,7 @@ import {observer} from "mobx-react-lite";
 import Variants from "./Variants";
 import Composition from "./Composition";
 import {SERVER_HOST} from "../../constants/constants";
+import MobileComposition from "./MobileComposition";
 
 const MobileProduct = observer((props: {product: IProduct}) => {
     const product = props.product
@@ -38,13 +39,13 @@ const MobileProduct = observer((props: {product: IProduct}) => {
             <div className={styles.titleRow}>
                 <span className={styles.title}>
                     {props.product.name}
-                </span>
-                <span className={styles.portion}>
-                    {props.product.portion + " г."}
+                    <span className={styles.portion}>
+                        {props.product.portion + " г."}
+                    </span>
                 </span>
             </div>
 
-            <Composition product={product} />
+            <MobileComposition product={product} />
 
             {product.variants.length > 1 &&
                 <Variants product={product} />
