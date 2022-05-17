@@ -3,12 +3,17 @@ import styles from './CartItem.module.css'
 import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore";
 import {SERVER_HOST} from "../../constants/constants";
+import useWindowDimensions from "../../hooks/hooks";
 
 
-function truncate(input: string, title: string) {
+function truncate(input: string, title: string, screenWidth: number) {
     let maxLength = 60
     if (title.length > 20) {
-        maxLength = 35
+        if (screenWidth < 768) {
+            maxLength = 25
+        } else {
+            maxLength = 35
+        }
     }
     if (input.length > maxLength) {
         return input.substring(0, maxLength) + '...';
@@ -18,6 +23,7 @@ function truncate(input: string, title: string) {
 
 const CartItem = observer((props: {item: ICartItem}) => {
     const item = props.item
+    const {width} = useWindowDimensions()
 
     return (
         <div className={styles.item}>
@@ -34,7 +40,7 @@ const CartItem = observer((props: {item: ICartItem}) => {
 
                 <div className={styles['composition']}>
                     <span className={styles['compositionText']}>
-                        {truncate(item.variant.composition, item.product.name)}
+                        {truncate(item.variant.composition, item.product.name, width)}
                     </span>
                 </div>
 

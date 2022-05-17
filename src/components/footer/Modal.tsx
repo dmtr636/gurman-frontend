@@ -10,6 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import {ReactNode} from "react";
 import styles from "./Footer.module.css";
+import useWindowDimensions from "../../hooks/hooks";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -27,7 +28,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export interface DialogTitleProps {
     id: string;
     children?: React.ReactNode;
-    onClose: () => void;
+    onClose?: () => void;
 }
 
 const BootstrapDialogTitle = (props: DialogTitleProps) => {
@@ -55,29 +56,60 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
 };
 
 const Modal = (props: {close: () => void, content: ReactNode, title: string}) => {
+    const {width} = useWindowDimensions()
 
     const handleClose = () => {
         props.close()
     };
 
     return(
-        <BootstrapDialog
-            onClose={handleClose}
-            aria-labelledby="customized-dialog-title"
-            open={true}
-            fullWidth={true}
-            maxWidth={'lg'}
-            PaperProps={{style: {width: "1002px"}}}
-        >
-            <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                <div className={styles["modalContentTitle"]}>
-                    {props.title}
-                </div>
-            </BootstrapDialogTitle>
-            <DialogContent>
-                {props.content!}
-            </DialogContent>
-        </BootstrapDialog>
+        <>
+            {width < 767
+                ?
+                <BootstrapDialog
+                    aria-labelledby="customized-dialog-title"
+                    open={true}
+                    fullWidth={true}
+                    maxWidth={'lg'}
+                    scroll={"body"}
+                    PaperProps={{style: {
+                            width: "1002px",
+                            marginLeft: 0,
+                            marginRight: 0,
+                            marginBottom: 0,
+                            marginTop: "55px",
+                            maxWidth: "100%"
+                    }}}
+                >
+                    <BootstrapDialogTitle id="customized-dialog-title" >
+                        <div className={styles["modalContentTitle"]}>
+                            {props.title}
+                        </div>
+                    </BootstrapDialogTitle>
+                    <DialogContent>
+                        {props.content!}
+                    </DialogContent>
+                </BootstrapDialog>
+                :
+                <BootstrapDialog
+                    onClose={handleClose}
+                    aria-labelledby="customized-dialog-title"
+                    open={true}
+                    fullWidth={true}
+                    maxWidth={'lg'}
+                    PaperProps={{style: {width: "1002px"}}}
+                >
+                    <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+                        <div className={styles["modalContentTitle"]}>
+                            {props.title}
+                        </div>
+                    </BootstrapDialogTitle>
+                    <DialogContent>
+                        {props.content!}
+                    </DialogContent>
+                </BootstrapDialog>
+            }
+        </>
     )
 }
 

@@ -1,5 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import Swiper from "swiper";
+import React from "react";
 
 class NavStore {
     cartOpenState = false
@@ -14,6 +15,9 @@ class NavStore {
 
     navSwiper: Swiper|null = null
 
+    navLinkRefs: Record<number, React.RefObject<HTMLDivElement>> | null = null
+    activeNavLinkRef: React.RefObject<HTMLDivElement> | null = null
+
     constructor() {
         makeAutoObservable(this)
     }
@@ -22,7 +26,19 @@ class NavStore {
         this.navSwiper = swiper
     }
 
+    setNavLinkRefs(refs: Record<number, React.RefObject<HTMLDivElement>>) {
+        this.navLinkRefs = refs
+    }
+
+    setActiveNavLinkRef(ref: React.RefObject<HTMLDivElement>) {
+        this.activeNavLinkRef = ref
+    }
+
     back() {
+        if (this.footerModalType !== "") {
+            this.footerModalType = ""
+            return;
+        }
         if (this.orderingOpenState) {
             this.orderingOpenState = false
             return;
@@ -37,7 +53,7 @@ class NavStore {
     }
 
     get backButtonVisible() {
-        return this.cartOpenState;
+        return this.cartOpenState || this.footerModalType !== "";
     }
 
     openMenu() {
@@ -48,10 +64,14 @@ class NavStore {
         this.menuOpenState = false
     }
 
-    setCategoryId(categoryId: number, updateSwiper?:boolean) {
+    setCategoryId(categoryId: number, updateSwiper?:boolean, updateNavbar?: boolean) {
         this.categoryId = categoryId
+        console.log(categoryId)
         if (this.navSwiper != null && updateSwiper !== false) {
             this.navSwiper.slideTo(categoryId)
+        }
+        if (updateNavbar) {
+            this.activeNavLinkRef?.current?.scroll()
         }
     }
 

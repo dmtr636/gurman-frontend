@@ -13,6 +13,7 @@ const Button = styled.div`
   right: 10px;
   bottom: 10px;
   background-image: url(${bg});
+  z-index: 1000;
 `
 const CartImage = styled.div`
   background-image: url(${cart});

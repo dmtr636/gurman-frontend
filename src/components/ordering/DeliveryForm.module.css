@@ -78,6 +78,7 @@
     .inputStreet {
         width: 202px;
         height: 40px;
+        flex-grow: 1;
     }
     .inputHouse {
         width: 73px;
@@ -94,5 +95,6 @@
     .inputComment {
         width: 280px;
         height: 100px;
+        flex-grow: 1;
     }
 }

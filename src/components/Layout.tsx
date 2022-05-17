@@ -14,18 +14,8 @@ import productStore from "../store/productStore";
 import SwipeableViews from 'react-swipeable-views';
 import { virtualize } from 'react-swipeable-views-utils';
 import {Swiper, SwiperSlide} from "swiper/react";
-import {Virtual} from "swiper";
+import {EffectCube, Virtual} from "swiper";
 
-const VirtualizeSwipeableViews = virtualize(SwipeableViews);
-
-// @ts-ignore
-const slideRenderer = ({key, index}) => (
-    <ProductsContainer
-        key={key}
-        categoryId={index}
-        salePage={navStore.categoryId === 0}
-    />
-);
 
 const Layout = observer(() => {
     const categories = category.categories
@@ -42,13 +32,18 @@ const Layout = observer(() => {
                 ?
                 <Swiper
                     modules={[Virtual]}
-                    spaceBetween={50}
                     slidesPerView={1}
                     virtual
                     autoHeight
                     onSwiper={swiper => navStore.setNavSwiper(swiper)}
                     className={styles['swiper']}
-                    onActiveIndexChange={swiper => navStore.setCategoryId(swiper.activeIndex, false)}
+                    onActiveIndexChange={swiper => {
+                        if (swiper.activeIndex === 0) {
+                            navStore.setCategoryId(0, false, true)
+                        } else {
+                            navStore.setCategoryId(categories[swiper.activeIndex - 1].id, false, true)
+                        }
+                    }}
                 >
                     <SwiperSlide key={0} virtualIndex={0} className={styles['swiperSlide']}>
                         <ProductsContainer

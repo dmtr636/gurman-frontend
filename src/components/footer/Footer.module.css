@@ -175,6 +175,22 @@
     color: #282828;
     margin-bottom: 0;
 }
+
+@media (max-width: 767px) {
+    .modalContentTitle {
+        font-size: 20px !important;
+        line-height: 23px !important;
+    }
+    .modalContentSubtitle {
+        font-size: 20px;
+        line-height: 27px;
+    }
+    .modalContent {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+
 .divider {
     position: absolute;
     height: 1px;
