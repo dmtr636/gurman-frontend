@@ -78,7 +78,8 @@ const Modal = (props: {close: () => void, content: ReactNode, title: string}) =>
                             marginRight: 0,
                             marginBottom: 0,
                             marginTop: "55px",
-                            maxWidth: "100%"
+                            maxWidth: "100%",
+                            height: "calc(100vh - 60px)"
                     }}}
                 >
                     <BootstrapDialogTitle id="customized-dialog-title" >
