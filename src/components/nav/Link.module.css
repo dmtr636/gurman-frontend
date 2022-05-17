@@ -24,8 +24,14 @@
     color: #FA3D3D;
 }
 
-.item:hover {
+.item:active {
     color: #FA3D3D;
+}
+
+@media (hover: hover) {
+    .item:hover {
+        color: #FA3D3D;
+    }
 }
 
 .line {

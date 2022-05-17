@@ -131,7 +131,7 @@
 
 @media (max-width: 767px) {
     .button {
-        width: 280px;
+        width: auto;
         height: 40px;
         margin: 20px auto 0 auto;
         font-size: 16px;

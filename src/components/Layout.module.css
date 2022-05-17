@@ -10,3 +10,11 @@
         padding-bottom: 0;
     }
 }
+
+.swiper {
+    min-height: 200px;
+}
+
+.swiperSlide {
+    min-height: 400px;
+}

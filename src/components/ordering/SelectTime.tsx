@@ -158,25 +158,21 @@ const SelectTime = observer(() => {
                                     },
                                 ]}
                             >
-                                <ClickAwayListener onClickAway={(event) => {
-                                    setTimeout(() => handleClose(), 10)
-                                }}>
-                                    <Paper elevation={0} sx={{width: "calc(100vw - 40px)", marginTop: "10px", marginBottom: "20px", zIndex: "10000", position: "relative"}}>
-                                        <div className={styles["selectMenu"]}>
-                                            {cookingTimes().map(time =>
-                                                <SelectMenuItem time={time} onClick={() => {
-                                                    orderStore.setCookingTime(time)
-                                                    setAnchorEl(null)
-                                                }}/>
-                                            )}
-                                            <div className={styles['verticalDivider1']}></div>
-                                            <div className={styles['verticalDivider2']}></div>
-                                            <div className={styles['verticalDivider3']}></div>                                            <div className={styles['verticalDivider3']}></div>
-                                            <div className={styles['verticalDivider4']}></div>
+                                <Paper elevation={0} sx={{width: "calc(100vw - 40px)", marginTop: "10px", marginBottom: "20px", zIndex: "10000", position: "relative"}}>
+                                    <div className={styles["selectMenu"]}>
+                                        {cookingTimes().map(time =>
+                                            <SelectMenuItem time={time} onClick={() => {
+                                                orderStore.setCookingTime(time)
+                                                setAnchorEl(null)
+                                            }}/>
+                                        )}
+                                        <div className={styles['verticalDivider1']}></div>
+                                        <div className={styles['verticalDivider2']}></div>
+                                        <div className={styles['verticalDivider3']}></div>                                            <div className={styles['verticalDivider3']}></div>
+                                        <div className={styles['verticalDivider4']}></div>
 
-                                        </div>
-                                    </Paper>
-                                </ClickAwayListener>
+                                    </div>
+                                </Paper>
                             </Popper>
                             :
                             <Popover

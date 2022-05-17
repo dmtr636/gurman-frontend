@@ -1,4 +1,4 @@
-.swiper {
+#carousel {
     max-width: 1280px;
 
     height: 400px;
@@ -7,12 +7,12 @@
 }
 
 @media (max-width: 1365px) {
-    .swiper {
+    #carousel {
         display: none;
     }
 }
 
-.swiper-slide {
+#carousel .swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
@@ -32,14 +32,14 @@
     align-items: center;
 }
 
-.swiper-slide img {
+#carousel .swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.swiper-button-prev {
+#carousel .swiper-button-prev {
     background-image: url("../../images/Trigger_Left.svg") !important;
     width: 36px;
     height: 36px;
@@ -47,7 +47,7 @@
     color: transparent;
 }
 
-.swiper-button-next {
+#carousel .swiper-button-next {
     background-image: url("../../images/Trigger_Right.svg") !important;
     width: 36px;
     height: 36px;
@@ -55,6 +55,6 @@
     color: transparent;
 }
 
-.swiper-button-prev:hover, .swiper-button-next:hover{
+#carousel .swiper-button-prev:hover, .swiper-button-next:hover{
     opacity: 0.8;
 }

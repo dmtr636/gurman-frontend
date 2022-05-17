@@ -15,6 +15,7 @@ const Carousel = observer(() => {
     return (
         <>
             <Swiper
+                id={"carousel"}
                 navigation={true}
                 modules={[Navigation]}
                 className="mySwiper"

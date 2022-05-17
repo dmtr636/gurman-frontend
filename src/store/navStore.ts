@@ -1,4 +1,5 @@
 import {makeAutoObservable} from "mobx";
+import Swiper from "swiper";
 
 class NavStore {
     cartOpenState = false
@@ -11,8 +12,14 @@ class NavStore {
     categoryId = 0
     menuOpenState = false
 
+    navSwiper: Swiper|null = null
+
     constructor() {
         makeAutoObservable(this)
+    }
+
+    setNavSwiper(swiper: Swiper) {
+        this.navSwiper = swiper
     }
 
     back() {
@@ -41,8 +48,11 @@ class NavStore {
         this.menuOpenState = false
     }
 
-    setCategoryId(category: number) {
-        this.categoryId = category
+    setCategoryId(categoryId: number, updateSwiper?:boolean) {
+        this.categoryId = categoryId
+        if (this.navSwiper != null && updateSwiper !== false) {
+            this.navSwiper.slideTo(categoryId)
+        }
     }
 
     setFooterModalType(type: string) {

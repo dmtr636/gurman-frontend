@@ -4,11 +4,14 @@ import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore";
 import {SERVER_HOST} from "../../constants/constants";
 
-const COMPOSITION_MAX_LEN = 60
 
-function truncate(input: string) {
-    if (input.length > COMPOSITION_MAX_LEN) {
-        return input.substring(0, COMPOSITION_MAX_LEN) + '...';
+function truncate(input: string, title: string) {
+    let maxLength = 60
+    if (title.length > 20) {
+        maxLength = 35
+    }
+    if (input.length > maxLength) {
+        return input.substring(0, maxLength) + '...';
     }
     return input;
 }
@@ -31,7 +34,7 @@ const CartItem = observer((props: {item: ICartItem}) => {
 
                 <div className={styles['composition']}>
                     <span className={styles['compositionText']}>
-                        {truncate(item.variant.composition)}
+                        {truncate(item.variant.composition, item.product.name)}
                     </span>
                 </div>
 
