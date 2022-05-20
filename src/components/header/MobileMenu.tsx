@@ -33,7 +33,7 @@ const Item = styled.div<{active: boolean}>`
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  color: ${props => props.active ? "#FA3D3D" : "#00000"};
+  color: ${props => props.active ? "#D42216" : "#00000"};
 `
 
 function MobileMenu() {
@@ -41,20 +41,12 @@ function MobileMenu() {
         <Container>
             <Header>Меню</Header>
             <Divider />
-            <Item
-                active={0 === navStore.categoryId}
-                onClick={() => {
-                    navStore.setCategoryId(0)
-                    navStore.closeMenu()
-                }}
-            >
-                Акции
-            </Item>
-            {categoryStore.categories.map(category =>
+            {categoryStore.categories.map((category, index) =>
                 <Item
-                    active={category.id === navStore.categoryId}
+                    key={index}
+                    active={index === navStore.navIndex}
                     onClick={() => {
-                        navStore.setCategoryId(category.id)
+                        navStore.setNavIndex(index, true)
                         navStore.closeMenu()
                     }}
                 >

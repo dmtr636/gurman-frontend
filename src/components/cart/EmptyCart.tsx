@@ -21,7 +21,7 @@ const EmptyCart = observer((props: {close: any}) => {
                     }}
                 />
 
-                <ProductsContainer categoryId={0} salePage={false} recommendationsPage={true} />
+                <ProductsContainer recommendationsPage />
             </div>
         </div>
     )

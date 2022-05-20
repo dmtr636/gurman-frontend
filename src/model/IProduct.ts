@@ -10,5 +10,6 @@ export interface IProduct {
     activeVariant: IVariant,
     expanded: boolean,
     onSale: boolean,
-    discount: number
+    discount: number,
+    unit: string
 }

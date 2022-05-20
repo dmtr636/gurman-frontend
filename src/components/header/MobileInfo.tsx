@@ -8,12 +8,13 @@ const Container = styled.div`
   height: 46px;
 `
 
-const LeftCol = styled.div`
+const LeftCol = styled.a`
   display: flex;
   align-items: center;
   flex-grow: 1;
-  background: #FA3D3D;
+  background: #D42216;
   border-radius: 0px 5px 5px 0px;
+  text-decoration: none;
 `
 
 const LocationImg = styled.a`
@@ -38,8 +39,8 @@ const Text = styled.div`
 const MobileInfo = () => {
     return(
         <Container>
-            <LeftCol>
-                <LocationImg href="https://yandex.ru/maps/-/CCUFV8xoPC" target="_blank" rel="noreferrer">
+            <LeftCol href="https://yandex.ru/maps/-/CCUFV8xoPC" target="_blank" rel="noreferrer">
+                <LocationImg>
                     <img src={locationImg} alt={""} />
                 </LocationImg>
                 <Text>Калуга, Плеханова, 19А</Text>

@@ -10,13 +10,11 @@ class NavStore {
     selectTimeOpenState = false
 
     footerModalType = ""
-    categoryId = 0
     menuOpenState = false
 
     navSwiper: Swiper|null = null
 
-    navLinkRefs: Record<number, React.RefObject<HTMLDivElement>> | null = null
-    activeNavLinkRef: React.RefObject<HTMLDivElement> | null = null
+    navIndex = 0
 
     constructor() {
         makeAutoObservable(this)
@@ -26,12 +24,11 @@ class NavStore {
         this.navSwiper = swiper
     }
 
-    setNavLinkRefs(refs: Record<number, React.RefObject<HTMLDivElement>>) {
-        this.navLinkRefs = refs
-    }
-
-    setActiveNavLinkRef(ref: React.RefObject<HTMLDivElement>) {
-        this.activeNavLinkRef = ref
+    setNavIndex(index: number, updateSwiper?:boolean) {
+        this.navIndex = index
+        if (this.navSwiper != null && updateSwiper) {
+            this.navSwiper.slideTo(index)
+        }
     }
 
     back() {
@@ -62,17 +59,6 @@ class NavStore {
 
     closeMenu() {
         this.menuOpenState = false
-    }
-
-    setCategoryId(categoryId: number, updateSwiper?:boolean, updateNavbar?: boolean) {
-        this.categoryId = categoryId
-        console.log(categoryId)
-        if (this.navSwiper != null && updateSwiper !== false) {
-            this.navSwiper.slideTo(categoryId)
-        }
-        if (updateNavbar) {
-            this.activeNavLinkRef?.current?.scroll()
-        }
     }
 
     setFooterModalType(type: string) {

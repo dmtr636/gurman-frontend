@@ -127,7 +127,6 @@ class ProductStore {
     }
 
     get productsOnSale() {
-        console.log(this.products.filter(product => product.onSale))
         return this.products.filter(product => product.onSale)
     }
 }

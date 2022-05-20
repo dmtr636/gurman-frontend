@@ -44,12 +44,12 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
-    color: #FA3D3D;
+    color: #D42216;
     cursor: pointer;
 }
 
 .promoApply:hover {
-    color: #FF5A5A;
+    color: #FA3D3D;
 }
 
 .promoNotExists {
@@ -58,7 +58,7 @@
     font-weight: 300;
     font-size: 20px;
     line-height: 23px;
-    color: #FA3D3D;
+    color: #D42216;
 }
 
 @media (max-width: 767px) {
@@ -113,7 +113,7 @@
 .button {
     width: 440px;
     height: 69px;
-    background: #FA3D3D;
+    background: #D42216;
     border-radius: 5px;
     margin: 40px;
     cursor: pointer;
@@ -140,5 +140,5 @@
 }
 
 .button:hover {
-    background: #FF5A5A;
+    background: #FA3D3D;
 }

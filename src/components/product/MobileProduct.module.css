@@ -8,6 +8,7 @@
     border-radius: 5px;
     width: 135px;
     height: 105px;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0 ;
@@ -63,7 +64,7 @@
 }
 
 .nextLink {
-    color: #FA3D3D;
+    color: #D42216;
     cursor: pointer;
 }
 
@@ -76,7 +77,7 @@
 .orderButton {
     user-select: none;
 
-    background: #FA3D3D;
+    background: #D42216;
     border-radius: 5px;
     width: 135px;
     height: 40px;
@@ -98,7 +99,7 @@
 .orderButton.active {
     background: #FFD3D3;
     border-radius: 5px 5px 5px 5px;
-    color: #FA3D3D;
+    color: #D42216;
 }
 
 .cartCount {
@@ -135,7 +136,7 @@
     left: 0;
     top: 85px;
 
-    background: rgba(250, 61, 61, 0.8);
+    background: rgba(212, 34, 22, 0.8);
     backdrop-filter: blur(4px);
     /* Note: backdrop-filter has minimal browser support */
 

@@ -13,6 +13,8 @@ import EmptyCart from "../cart/EmptyCart";
 import { observer } from 'mobx-react-lite';
 import MobileMenu from "./MobileMenu";
 import productStore from "../../store/productStore";
+import brandImage from "../../images/brandImage.svg"
+import brandTextImage from "../../images/brandTextImage.svg"
 
 const isNight = () => {
     let hours = new Date().getHours()
@@ -42,9 +44,8 @@ function Header() {
                     />
                 }
 
-                <div className={styles.brand}>
-                    Гурман
-                </div>
+                <img src={brandImage} alt={""}/>
+                <img src={brandTextImage} alt={""} className={styles['brand']} />
                 <div className={styles.info}>
                     <a href="https://yandex.ru/maps/-/CCUFV8xoPC" target="_blank" rel="noreferrer">
                         <img src={infoLocation} alt={""} />

@@ -40,7 +40,7 @@ const Product = observer((props: {product: IProduct}) => {
                     {props.product.name}
                 </span>
                 <span className={styles.portion}>
-                    {props.product.portion + " г."}
+                    {props.product.portion + " " + props.product.unit}
                 </span>
             </div>
 

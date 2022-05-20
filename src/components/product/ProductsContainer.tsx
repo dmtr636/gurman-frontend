@@ -5,25 +5,32 @@ import {observer} from "mobx-react-lite";
 import Carousel from "../carousel/Carousel";
 import useWindowDimensions from "../../hooks/hooks";
 import MobileProduct from "./MobileProduct";
+import categoryStore from "../../store/categoryStore";
 
 const ProductsContainer = observer((props: {
-    categoryId: number,
-    salePage: boolean,
-    recommendationsPage?: boolean
+    navIndex?: number,
+    categoryId?: number,
+    salePage?: boolean,
+    recommendationsPage?: boolean,
+    popularPage?: boolean
 }) => {
-    const { height, width } = useWindowDimensions()
+    const { width } = useWindowDimensions()
     let products
-    if (props.salePage) {
+
+    if (props.navIndex === 0) {
+        products = product.products
+    } else if (props.navIndex === 1) {
         products = product.productsOnSale
     } else if (props.recommendationsPage) {
         products = product.getRecommendations
     } else {
-        products = product.products.filter(product => product.category === props.categoryId)
+        let categoryId = categoryStore.categories[props.navIndex!].id
+        products = product.products.filter(product => product.category === categoryId)
     }
 
     return (
         <>
-            {props.salePage && <Carousel />}
+            {props.navIndex === 0 && <Carousel />}
             <div className={props.recommendationsPage ? styles["container-3"] : styles["container"]}>
                 {products.map(product =>
                     <>

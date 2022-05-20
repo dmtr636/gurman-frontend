@@ -21,21 +21,22 @@
 }
 
 .item.active {
-    color: #FA3D3D;
+    color: #D42216;
 }
 
 .item:active {
-    color: #FA3D3D;
+    color: #D42216;
 }
 
 @media (hover: hover) {
     .item:hover {
-        color: #FA3D3D;
+        color: #D42216;
     }
 }
 
 .line {
-    border: 1px solid #FA3D3D;
+    height: 2px;
+    background: #D42216;
     width: 60%;
     margin-top: 20px;
     margin-left: auto;

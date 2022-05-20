@@ -137,6 +137,8 @@
         height: 40px;
         font-size: 14px;
         line-height: 16px;
+        flex-grow: 1;
+        padding: 12px;
     }
 }
 
@@ -176,14 +178,14 @@
 }
 
 .selectButton.selectedLeft {
-    color: #FA3D3D;
-    border: 1px solid #FA3D3D;
+    color: #D42216;
+    border: 1px solid #D42216;
     border-radius: 5px 0px 0px 5px;
 }
 
 .selectButton.selectedRight {
-    color: #FA3D3D;
-    border: 1px solid #FA3D3D;
+    color: #D42216;
+    border: 1px solid #D42216;
     border-radius: 0px 5px 5px 0px;
 }
 
@@ -194,15 +196,15 @@
 }
 
 .selectButtonWide.selected {
-    color: #FA3D3D;
-    border: 1px solid #FA3D3D;
+    color: #D42216;
+    border: 1px solid #D42216;
     border-radius: 5px 5px 5px 5px;
 }
 
 .button {
     width: 440px;
     height: 69px;
-    background: #FA3D3D;
+    background: #D42216;
     border-radius: 5px;
     margin: 70px auto 0 auto;
     cursor: pointer;
@@ -230,7 +232,7 @@
 }
 
 .button:hover {
-    background: #FF5A5A;
+    background: #FA3D3D;
 }
 
 .paymentMessage {

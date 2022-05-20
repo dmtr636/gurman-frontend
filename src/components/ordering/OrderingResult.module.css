@@ -98,7 +98,7 @@
 .button {
     width: 440px;
     height: 69px;
-    background: #FA3D3D;
+    background: #D42216;
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Ubuntu';
@@ -119,7 +119,7 @@
 }
 
 .button:hover {
-    background: #FF5A5A;
+    background: #FA3D3D;
 }
 
 @media (max-width: 767px) {

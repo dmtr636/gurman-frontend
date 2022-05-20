@@ -10,8 +10,8 @@ const Button = styled.div`
   width: 60px;
   height: 60px;
   position: fixed;
-  right: 10px;
-  bottom: 10px;
+  right: 20px;
+  bottom: 20px;
   background-image: url(${bg});
   z-index: 1000;
 `
@@ -40,7 +40,7 @@ const CountText = styled.div`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  color: #FA3D3D;
+  color: #D42216;
 `
 
 function FloatingCartButton() {

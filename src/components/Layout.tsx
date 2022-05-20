@@ -14,12 +14,14 @@ import productStore from "../store/productStore";
 import SwipeableViews from 'react-swipeable-views';
 import { virtualize } from 'react-swipeable-views-utils';
 import {Swiper, SwiperSlide} from "swiper/react";
-import {EffectCube, Virtual} from "swiper";
+import {EffectCreative, EffectCube, Virtual} from "swiper";
 
 
 const Layout = observer(() => {
     const categories = category.categories
-    const { height, width } = useWindowDimensions()
+    const { width } = useWindowDimensions()
+
+    console.log("RR")
 
     return (
         <div className={styles.layout}>
@@ -31,40 +33,40 @@ const Layout = observer(() => {
             {width < 768
                 ?
                 <Swiper
-                    modules={[Virtual]}
-                    slidesPerView={1}
-                    virtual
+                    effect={"creative"}
+                    creativeEffect={{
+                        limitProgress: 2,
+                        prev: {
+                            translate: ["-100%", 0, 0],
+                        },
+                        next: {
+                            translate: ["100%", 0, 0],
+                            opacity: 0.2
+                        },
+                    }}
+                    modules={[EffectCreative]}
+                    slidesPerView={width / 300}
                     autoHeight
                     onSwiper={swiper => navStore.setNavSwiper(swiper)}
                     className={styles['swiper']}
                     onActiveIndexChange={swiper => {
-                        if (swiper.activeIndex === 0) {
-                            navStore.setCategoryId(0, false, true)
+                        if (swiper.activeIndex === categories.length) {
+                            navStore.setNavIndex(swiper.activeIndex - 1, true)
                         } else {
-                            navStore.setCategoryId(categories[swiper.activeIndex - 1].id, false, true)
+                            navStore.setNavIndex(swiper.activeIndex)
                         }
                     }}
                 >
-                    <SwiperSlide key={0} virtualIndex={0} className={styles['swiperSlide']}>
-                        <ProductsContainer
-                            categoryId={0}
-                            salePage={true}
-                        />
-                    </SwiperSlide>
-                    {categories.map(category =>
-                        <SwiperSlide key={category.id} virtualIndex={category.id} className={styles['swiperSlide']}>
-                            <ProductsContainer
-                                categoryId={category.id}
-                                salePage={category.id === 0}
-                            />
+                    {categories.map((category, index) =>
+                        <SwiperSlide key={index} virtualIndex={index} className={styles['swiperSlide']}>
+                            <ProductsContainer navIndex={index} />
                         </SwiperSlide>
                     )}
+                    <SwiperSlide key={1000} virtualIndex={1000} className={styles['swiperSlide']}>
+                    </SwiperSlide>
                 </Swiper>
                 :
-                <ProductsContainer
-                    categoryId={navStore.categoryId}
-                    salePage={navStore.categoryId === 0}
-                />
+                <ProductsContainer navIndex={navStore.navIndex}/>
             }
 
             <Footer />

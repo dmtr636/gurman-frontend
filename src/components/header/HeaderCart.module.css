@@ -7,7 +7,7 @@
     top: 0;
     right: 0;
 
-    background: #FA3D3D;
+    background: #D42216;
 
     cursor: pointer;
     user-select: none;
@@ -24,7 +24,7 @@
 }
 
 .cart:hover {
-    background: #FF5A5A;
+    background: #FA3D3D;
 }
 
 .cart.empty {
@@ -62,7 +62,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
-    color: #FA3D3D;
+    color: #D42216;
     transform: rotate(0.24deg);
 
     height: 100%;

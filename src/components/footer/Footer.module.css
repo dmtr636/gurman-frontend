@@ -73,7 +73,7 @@
 }
 
 .colItem:hover {
-    color: #FA3D3D;
+    color: #D42216;
 }
 
 .colItemImages {
@@ -94,8 +94,8 @@
 
 .brand {
     position: absolute;
-    width: 139px;
-    height: 46px;
+    width: 179px;
+    height: 40px;
     right: 286px;
     top: 96px;
     font-family: 'Ubuntu';
@@ -111,7 +111,7 @@
         font-size: 26px;
         line-height: 30px;
         left: 20px;
-        top: 12px;
+        top: 10px;
     }
 }
 

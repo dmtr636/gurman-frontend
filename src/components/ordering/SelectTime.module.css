@@ -130,8 +130,8 @@
 
 .selectButtonSelected {
     composes: selectButton;
-    color: #FA3D3D;
-    border: 1px solid #FA3D3D;
+    color: #D42216;
+    border: 1px solid #D42216;
     border-radius: 5px 5px 5px 5px;
 }
 
@@ -142,7 +142,7 @@
 .button {
     width: 440px;
     height: 69px;
-    background: #FA3D3D;
+    background: #D42216;
     border-radius: 5px;
     margin: 0 auto;
     cursor: pointer;
@@ -175,7 +175,7 @@
 }
 
 .button:hover {
-    background: #FF5A5A;
+    background: #FA3D3D;
 }
 
 .todayLabel {
@@ -228,7 +228,7 @@
 
 .selectActive {
     composes: select;
-    color: #FA3D3D;
+    color: #D42216;
 }
 
 .selectMark {
@@ -288,7 +288,7 @@
 
 .selectMenuItemActive {
     composes: selectMenuItem;
-    color: #FA3D3D;
+    color: #D42216;
 }
 
 .verticalDivider {

@@ -3,23 +3,17 @@ import category from "../../store/categoryStore";
 import styles from './Nav.module.css'
 import Link from "./Link";
 import React from "react";
-import navStore from "../../store/navStore";
 
 const Nav = observer(() => {
     const categories = category.categories
 
     return (
         <nav className={styles.nav}>
-            <Link
-                categoryId={0}
-                name={"Акции"}
-                key={0}
-            />
-            {categories.map((category) =>
+            {categories.map((category, index) =>
                 <Link
-                    categoryId={category.id}
+                    navIndex={index}
+                    key={index}
                     name={category.name}
-                    key={category.id}
                 />
             )}
         </nav>

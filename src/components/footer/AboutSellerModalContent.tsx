@@ -11,7 +11,7 @@ const Link = styled.span`
   font-weight: bold;
   
   &:hover{
-    color: #FA3D3D;
+    color: #D42216;
   }
 `
 

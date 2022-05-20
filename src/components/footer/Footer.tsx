@@ -14,6 +14,7 @@ import RequisitesModalContent from "./RequisitesModalContent";
 import PrivacyPolicyModalContent from "./PrivacyPolicyModalContent";
 import UseTermsModalContent from "./UseTermsModalContent";
 import useWindowDimensions from "../../hooks/hooks";
+import footerBrandImage from "../../images/footerBrandImage.svg"
 
 export const FOR_CONSUMERS_MODAL_TYPE = "FOR_CONSUMERS_MODAL_TYPE"
 export const DELIVERY_AND_PICKUP_MODAL_TYPE = "DELIVERY_AND_PICKUP_MODAL_TYPE"
@@ -77,9 +78,7 @@ const Footer = observer(() => {
     return(
         <footer className={styles.footer}>
             <div className={styles.col}>
-                <div className={styles.brand}>
-                    Гурман
-                </div>
+                <img src={footerBrandImage} alt={""} className={styles.brand} />
                 <div className={styles.colHeader}>
                     Клиентам
                 </div>

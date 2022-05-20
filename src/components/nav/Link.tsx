@@ -1,21 +1,15 @@
 import styles from "./Link.module.css";
 import navStore from "../../store/navStore";
 import { observer } from "mobx-react-lite";
-import React, {useRef} from "react";
+import React from "react";
 
-function Link(props: { categoryId: number; name: string;}) {
-    const match = props.categoryId === navStore.categoryId
-    const ref = useRef(null)
-
-    if (match) {
-        navStore.setActiveNavLinkRef(ref)
-    }
+function Link(props: { navIndex: number; name: string;}) {
+    const match = props.navIndex === navStore.navIndex
 
     return (
         <div
-            ref={ref}
             className={styles.item + (match ? " " + styles.active : "")}
-            onClick={() => navStore.setCategoryId(props.categoryId)}
+            onClick={() => navStore.setNavIndex(props.navIndex, true)}
         >
             {props.name}
             {match && <div className={styles.line} />}

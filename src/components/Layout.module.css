@@ -17,4 +17,5 @@
 
 .swiperSlide {
     min-height: 400px;
+    min-width: 280px;
 }
