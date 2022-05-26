@@ -5,8 +5,11 @@ import successIcon from "../../images/successIcon.svg"
 import orderButtonArrow from "../../images/orderButtonArrow.svg";
 import React from "react";
 import productStore from "../../store/productStore";
+import {useNavigate} from "react-router-dom";
 
-const OrderingResult = () => {
+const OrderingResultSuccess = () => {
+    const navigate = useNavigate()
+
     return(
         <div className={styles["wrapper"]}>
             <div className={styles["result"]}>
@@ -29,6 +32,7 @@ const OrderingResult = () => {
                         event.stopPropagation()
                         navStore.closAll()
                         productStore.clearCart()
+                        navigate("/")
                     }}
                 >
                     <div>В меню</div>
@@ -39,4 +43,4 @@ const OrderingResult = () => {
     )
 }
 
-export default OrderingResult
+export default OrderingResultSuccess

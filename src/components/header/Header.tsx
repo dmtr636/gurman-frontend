@@ -15,6 +15,8 @@ import MobileMenu from "./MobileMenu";
 import productStore from "../../store/productStore";
 import brandImage from "../../images/brandImage.svg"
 import brandTextImage from "../../images/brandTextImage.svg"
+import settingsStore from "../../store/settingsStore";
+import HeaderCartClosed from "./HeaderCartClosed";
 
 const isNight = () => {
     let hours = new Date().getHours()
@@ -44,16 +46,16 @@ function Header() {
                     />
                 }
 
-                <img src={brandImage} alt={""}/>
-                <img src={brandTextImage} alt={""} className={styles['brand']} />
+                <img src={brandImage} alt={""} className={styles['brandImage']} onClick={() => navStore.setNavIndex(0, true)}/>
+                <img src={brandTextImage} alt={""} className={styles['brand']} onClick={() => navStore.setNavIndex(0, true)} />
                 <div className={styles.info}>
                     <a href="https://yandex.ru/maps/-/CCUFV8xoPC" target="_blank" rel="noreferrer">
                         <img src={infoLocation} alt={""} />
                     </a>
                     <div>
-                        <div className={styles.infoTextTop}>
+                        <a href={"https://yandex.ru/maps/-/CCUFV8xoPC"} target="_blank" rel="noreferrer" className={styles.infoTextTop + " " + styles['infoTextTop']}>
                             Калуга
-                        </div>
+                        </a>
                         <div className={styles.infoTextBottom}>
                             Плеханова, 19А
                         </div>
@@ -64,9 +66,9 @@ function Header() {
                         <img src={infoPhone} alt={""} />
                     </a>
                     <div>
-                        <div className={styles.infoTextTop}>
+                        <a href={"tel:+79109140005"} className={styles.infoTextTop + " " + styles['infoTextTop']}>
                             8 910 914 00 05
-                        </div>
+                        </a>
                         <div className={styles.infoTextBottom}>
                             Готовим круглосуточно
                         </div>
@@ -114,7 +116,12 @@ function Header() {
                         </div>
                     </div>
                 }
-                <HeaderCart />
+
+                {settingsStore.siteOpenState
+                    ? <HeaderCart />
+                    : <HeaderCartClosed />
+                }
+
 
                 {navStore.menuOpenState
                     ?

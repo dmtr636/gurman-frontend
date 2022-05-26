@@ -7,6 +7,8 @@ import styles from './App.module.css'
 import category from './store/categoryStore'
 import product from './store/productStore'
 import sliderStore from "./store/sliderStore";
+import settingsStore from "./store/settingsStore";
+import promoCodeStore from "./store/promoCodeStore";
 
 function App() {
     useEffect(() => {
@@ -14,6 +16,8 @@ function App() {
         product.fetchProducts()
         sliderStore.fetchImages()
         product.fetchRecommendations()
+        settingsStore.fetchSiteOpenState()
+        promoCodeStore.fetchSiteClosedPromoCodeImage()
     }, [])
 
   return (

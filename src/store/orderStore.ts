@@ -8,16 +8,16 @@ export const CASH_COURIER = "CASH_COURIER"
 export const CARD_COURIER = "CARD_COURIER"
 
 class OrderStore {
-    name = ""
-    phone = ""
-    receiveWay = DELIVERY
-    street = ""
-    house = ""
-    entrance = ""
-    flat = ""
-    comment = ""
-    paymentType = ONLINE
-    cookingTime: string = ""
+    name = localStorage.getItem("name") || ""
+    phone = localStorage.getItem("phone") || ""
+    receiveWay = localStorage.getItem("receiveWay") || DELIVERY
+    street = localStorage.getItem("street") || ""
+    house = localStorage.getItem("house") || ""
+    entrance = localStorage.getItem("entrance") || ""
+    flat = localStorage.getItem("flat") || ""
+    comment = localStorage.getItem("comment") || ""
+    paymentType = localStorage.getItem("paymentType") || ONLINE
+    cookingTime: string = localStorage.getItem("cookingTime") || ""
 
     constructor() {
         makeAutoObservable(this)
@@ -53,6 +53,19 @@ class OrderStore {
     }
     setCookingTime(time: string) {
         this.cookingTime = time
+    }
+
+    saveToLocalStorage() {
+        localStorage.setItem("name", this.name)
+        localStorage.setItem("phone", this.phone)
+        localStorage.setItem("receiveWay", this.receiveWay)
+        localStorage.setItem("street", this.street)
+        localStorage.setItem("house", this.house)
+        localStorage.setItem("entrance", this.entrance)
+        localStorage.setItem("flat", this.flat)
+        localStorage.setItem("comment", this.comment)
+        localStorage.setItem("paymentType", this.paymentType)
+        localStorage.setItem("cookingTime", this.cookingTime)
     }
 }
 

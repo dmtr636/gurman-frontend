@@ -13,8 +13,15 @@ class PromoCodeStore {
     exists = false
     status = NOT_CHECKED
 
+    siteClosedPromoCodeImage = ""
+
     constructor() {
         makeAutoObservable(this)
+    }
+
+    fetchSiteClosedPromoCodeImage() {
+        axios.get(SERVER_HOST + "/api/promo-code-image")
+            .then(res => this.siteClosedPromoCodeImage = res.data['image'])
     }
 
     setPromoCode(code: string) {

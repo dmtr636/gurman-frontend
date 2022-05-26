@@ -11,7 +11,7 @@ import PickupForm from "./PickupForm";
 import orderButtonArrow from "../../images/orderButtonArrow.svg";
 import Drawer from "@mui/material/Drawer";
 import navStore from "../../store/navStore";
-import OrderingResult from "./OrderingResult";
+import OrderingResultSuccess from "./OrderingResultSuccess";
 import orderStore, {CARD_COURIER, CASH_COURIER} from "../../store/orderStore";
 import {DELIVERY, ONLINE, CHECKOUT, PICKUP} from "../../store/orderStore";
 import SelectTime from "./SelectTime";
@@ -56,7 +56,11 @@ const Ordering = observer((props: {close: any}) => {
             <div className={styles.cart}>
                 <form onSubmit={(event) => {
                     postOrder()
-                    navStore.openResult()
+                    if (orderStore.paymentType === ONLINE) {
+
+                    } else {
+                        navStore.openResult()
+                    }
                     event.preventDefault()
                     event.stopPropagation()
                 }}>

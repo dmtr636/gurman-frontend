@@ -82,6 +82,33 @@
     }
 }
 
+.phoneText {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    color: #D42216;
+
+    margin-top: 20px;
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .phoneText {
+        margin-top: 10px;
+        font-size: 16px;
+        line-height: 18px;
+        column-gap: 10px;
+    }
+    .phoneText img {
+        width: 13px;
+        height: 15px;
+    }
+}
+
 .divider {
     box-sizing: border-box;
     height: 1px;

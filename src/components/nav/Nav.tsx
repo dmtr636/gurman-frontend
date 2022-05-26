@@ -2,7 +2,7 @@ import {observer} from "mobx-react-lite";
 import category from "../../store/categoryStore";
 import styles from './Nav.module.css'
 import Link from "./Link";
-import React from "react";
+import React, {useRef} from "react";
 
 const Nav = observer(() => {
     const categories = category.categories

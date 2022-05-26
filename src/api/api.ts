@@ -2,7 +2,7 @@ import {SERVER_HOST} from "../constants/constants";
 import axios from "axios";
 import productStore from "../store/productStore";
 import promoCodeStore from "../store/promoCodeStore";
-import orderStore from "../store/orderStore";
+import orderStore, {ONLINE} from "../store/orderStore";
 
 export function postOrder() {
     let order: any = {
@@ -32,5 +32,9 @@ export function postOrder() {
     order['products'] = products
 
     axios.post(SERVER_HOST + "/orders", order)
-        .then()
+        .then(res => {
+            if (order.paymentType === ONLINE) {
+                window.location.href = res.data['confirmation_url']
+            }
+        })
 }

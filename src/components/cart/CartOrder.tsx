@@ -10,7 +10,7 @@ import promoCodeStore, {CHECKING, EXISTS, NOT_CHECKED, NOT_EXISTS} from "../../s
 import Ordering from "../ordering/Ordering";
 import navStore from "../../store/navStore";
 import SelectTime from "../ordering/SelectTime";
-import OrderingResult from "../ordering/OrderingResult";
+import OrderingResultSuccess from "../ordering/OrderingResultSuccess";
 
 
 function declOfNum(number: number, titles: string[]) {
@@ -107,7 +107,7 @@ const CartOrder = observer(() => {
                 elevation={0}
                 BackdropProps={{style:{opacity:0}}}
             >
-                <OrderingResult />
+                <OrderingResultSuccess />
             </Drawer>
         </div>
     )

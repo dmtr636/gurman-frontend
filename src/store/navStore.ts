@@ -16,8 +16,23 @@ class NavStore {
 
     navIndex = 0
 
+    siteOpenState = true
+
+    siteClosedModalOpen = false
+
     constructor() {
         makeAutoObservable(this)
+    }
+
+    openSiteClosedModal() {
+        this.siteClosedModalOpen = true
+    }
+    closeSiteClosedModal() {
+        this.siteClosedModalOpen = false
+    }
+
+    setSiteOpenState(state: boolean) {
+        this.siteOpenState = state
     }
 
     setNavSwiper(swiper: Swiper) {
@@ -28,6 +43,9 @@ class NavStore {
         this.navIndex = index
         if (this.navSwiper != null && updateSwiper) {
             this.navSwiper.slideTo(index)
+        }
+        if (this.backButtonVisible) {
+            this.back()
         }
     }
 
