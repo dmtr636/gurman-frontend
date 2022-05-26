@@ -22,6 +22,7 @@ import React from "react";
 import PaymentSucceeded from "./ordering/PaymentSucceeded";
 import PaymentError from "./ordering/PaymentError";
 import SiteClosedModal from "./modal/SiteClosedModal";
+import AdditionsModal from "./modal/additions/Additions";
 
 
 const Layout = observer(() => {
@@ -100,6 +101,7 @@ const Layout = observer(() => {
                 </Routes>
 
                 <SiteClosedModal />
+                <AdditionsModal />
             </div>
         </HashRouter>
     )

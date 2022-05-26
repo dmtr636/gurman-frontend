@@ -1,6 +1,7 @@
 import {makeAutoObservable} from "mobx";
 import Swiper from "swiper";
 import React from "react";
+import {IProduct} from "../model/IProduct";
 
 class NavStore {
     cartOpenState = false
@@ -20,6 +21,9 @@ class NavStore {
 
     siteClosedModalOpen = false
 
+    additionsModalOpen = false
+    additionsModalProduct: IProduct | null = null
+
     constructor() {
         makeAutoObservable(this)
     }
@@ -29,6 +33,14 @@ class NavStore {
     }
     closeSiteClosedModal() {
         this.siteClosedModalOpen = false
+    }
+
+    openAdditionsModal(product: IProduct) {
+        this.additionsModalProduct = product
+        this.additionsModalOpen = true
+    }
+    closeAdditionsModal() {
+        this.additionsModalOpen = false
     }
 
     setSiteOpenState(state: boolean) {

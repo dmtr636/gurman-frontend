@@ -5,6 +5,7 @@ import {IVariant} from "../model/IVariant";
 import {ICartItem} from "../model/ICartItem";
 import {SERVER_HOST} from "../constants/constants";
 import promoCodeStore from "./promoCodeStore";
+import {IAddition} from "../model/IAddition";
 
 class ProductStore {
     products: IProduct[] = []
@@ -45,8 +46,10 @@ class ProductStore {
     toggleInCartState(variant: IVariant, product: IProduct) {
         if (variant.cartCount === 0) {
             variant.cartCount = 1
+            return true
         } else {
             variant.cartCount = 0
+            return false
         }
     }
 
@@ -68,6 +71,24 @@ class ProductStore {
                 variant.cartCount = 0
             })
         })
+    }
+
+    toggleAddition(addition: IAddition) {
+        addition.selected = !addition.selected
+    }
+
+    getProductCost(product: IProduct) {
+        let cost = product.activeVariant.cost
+        if (product.onSale) {
+            cost *= (100 - product.discount) / 100
+        }
+        product.additions.forEach(addition => {
+            if (addition.selected) {
+                cost += addition.cost
+            }
+        })
+        cost *= product.activeVariant.cartCount
+        return Math.round(cost)
     }
 
     get getRecommendations() {

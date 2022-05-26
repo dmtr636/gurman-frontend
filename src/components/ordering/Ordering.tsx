@@ -8,13 +8,9 @@ import InputMask from "react-input-mask";
 import React, {useState} from "react";
 import DeliveryForm from "./DeliveryForm";
 import PickupForm from "./PickupForm";
-import orderButtonArrow from "../../images/orderButtonArrow.svg";
-import Drawer from "@mui/material/Drawer";
 import navStore from "../../store/navStore";
-import OrderingResultSuccess from "./OrderingResultSuccess";
 import orderStore, {CARD_COURIER, CASH_COURIER} from "../../store/orderStore";
 import {DELIVERY, ONLINE, CHECKOUT, PICKUP} from "../../store/orderStore";
-import SelectTime from "./SelectTime";
 import {isNight} from "../../utils/utils";
 import {postOrder} from "../../api/api"
 import useWindowDimensions from "../../hooks/hooks";
