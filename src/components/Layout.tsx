@@ -23,6 +23,9 @@ import PaymentSucceeded from "./ordering/PaymentSucceeded";
 import PaymentError from "./ordering/PaymentError";
 import SiteClosedModal from "./modal/SiteClosedModal";
 import AdditionsModal from "./modal/additions/Additions";
+import Cart from "./cart/Cart";
+import Dialog from "@mui/material/Dialog";
+import EmptyCart from "./cart/EmptyCart";
 
 
 const Layout = observer(() => {
@@ -102,6 +105,26 @@ const Layout = observer(() => {
 
                 <SiteClosedModal />
                 <AdditionsModal />
+
+                <Drawer
+                    anchor={'right'}
+                    open={navStore.cartOpenState}
+                >
+                    <Cart close={() => navStore.closeCart()} />
+                </Drawer>
+
+                <Dialog
+                    fullWidth={true}
+                    maxWidth={'lg'}
+                    open={navStore.emptyCartOpenState}
+                    PaperProps={{ style: { height: "745px", width: "1030px", position: "static", margin: "0 auto", maxHeight: "745px" } }}
+                    onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
+                        event.stopPropagation()
+                        navStore.closeEmptyCart()
+                    }}
+                >
+                    <EmptyCart close={() => navStore.closeEmptyCart()} />
+                </Dialog>
             </div>
         </HashRouter>
     )

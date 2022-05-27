@@ -31,7 +31,9 @@
 .closeImg {
     position: absolute;
     right: 40px;
-    top: 40px;
+    top: 49px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
 }
 

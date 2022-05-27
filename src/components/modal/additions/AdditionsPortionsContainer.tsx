@@ -18,6 +18,10 @@ const List = styled.div`
   flex-direction: column;
   row-gap: 20px;
   margin-bottom: 40px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 20px;
+  }
 `
 
 function AdditionsPortionsContainer() {

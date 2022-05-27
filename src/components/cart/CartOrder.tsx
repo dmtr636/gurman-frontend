@@ -74,12 +74,12 @@ const CartOrder = observer(() => {
             />
             <InfoRow
                 title={"Доставка"}
-                value={"Бесплатно"}
+                value={productStore.cartCost >= 800 ? "Бесплатно" : "200 рублей"}
             />
             <div className={styles.divider} />
             <InfoRow
                 title={"Итого"}
-                value={productStore.cartCost + " " + declOfNum(productStore.cartCost, ["рубль", "рубля", "рублей"])}
+                value={productStore.totalCost + " " + declOfNum(productStore.totalCost, ["рубль", "рубля", "рублей"])}
             />
             <div
                 className={styles.button}

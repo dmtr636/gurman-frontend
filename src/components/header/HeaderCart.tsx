@@ -52,25 +52,6 @@ const HeaderCart = observer(() => {
                     : "Оформить заказ"
                 }
             </div>
-            <Drawer
-                anchor={'right'}
-                open={navStore.cartOpenState}
-            >
-                <Cart close={() => navStore.closeCart()} />
-            </Drawer>
-
-            <Dialog
-                fullWidth={true}
-                maxWidth={'lg'}
-                open={navStore.emptyCartOpenState}
-                PaperProps={{ style: { height: "745px", width: "1030px", position: "static", margin: "0 auto", maxHeight: "745px" } }}
-                onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
-                    event.stopPropagation()
-                    navStore.closeEmptyCart()
-                }}
-            >
-                <EmptyCart close={() => navStore.closeEmptyCart()} />
-            </Dialog>
         </div>
     )
 })

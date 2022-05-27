@@ -14,6 +14,10 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   column-gap: 17px;
+
+  @media (max-width: 767px) {
+    background: #FFFFFF;
+  }
 `
 const Button = styled.img`
   cursor: pointer;

@@ -5,6 +5,7 @@ import productStore from "../../store/productStore";
 import {SERVER_HOST} from "../../constants/constants";
 import useWindowDimensions from "../../hooks/hooks";
 import styled from "styled-components";
+import navStore from "../../store/navStore";
 
 
 function truncate(input: string, title: string, screenWidth: number) {
@@ -65,6 +66,9 @@ const CartItem = observer((props: {item: ICartItem}) => {
                             className={styles.cartCountButton}
                             onClick={() => {
                                 productStore.decrementCartCount(item.variant)
+                                if (productStore.cartCount === 0) {
+                                    navStore.closeCart()
+                                }
                             }}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2" fill="none">

@@ -22,6 +22,14 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 290px 394px;
   grid-column-gap: 40px;
+  position: relative;
+  
+  @media (max-width: 767px) {
+    width: 100vw;
+    grid-template-columns: 1fr;
+    padding: 60px 26px 40px 26px;
+    grid-row-gap: 20px;
+  }
 `
 const CloseImg = styled.img`
   cursor: pointer;
@@ -32,11 +40,40 @@ const CloseImg = styled.img`
   &:hover{
     opacity: 0.8;
   }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `
 const BottomRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    row-gap: 40px;
+  }
+`
+const Image = styled.img`
+
+  @media (max-width: 767px) {
+    width: 100vw;
+    margin: 0 -26px;
+  }
+`
+const Divider = styled.div`
+  display: none;
+  position: absolute;
+  background: #929292;
+  opacity: 0.3;
+  height: 1px;
+  width: 100vw;
+  bottom: 110px;
+  
+  @media (max-width: 767px) {
+    display: block;
+  }
 `
 
 function Additions() {
@@ -55,9 +92,12 @@ function Additions() {
                 <CloseImg
                     src={closeImg}
                     alt={""}
-                    onClick={(event) => navStore.closeAdditionsModal()}
+                    onClick={() => {
+                        navStore.closeAdditionsModal()
+                        productStore.toggleInCartState(product?.activeVariant!, product!)
+                    }}
                 />
-                <img src={SERVER_HOST + product?.image} alt={""} />
+                <Image src={SERVER_HOST + product?.image} alt={""} />
                 <div>
                     <AdditionsModalTitle />
                     <AdditionsComposition />
@@ -68,6 +108,7 @@ function Additions() {
                         <AdditionsButton />
                     </BottomRow>
                 </div>
+                <Divider />
             </Container>
         </Dialog>
     )

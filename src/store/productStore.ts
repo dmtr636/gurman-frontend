@@ -188,6 +188,14 @@ class ProductStore {
         return Math.round(cost)
     }
 
+    get totalCost() {
+        if (this.cartCost >= 800) {
+            return this.cartCost
+        } else {
+            return this.cartCost + 200
+        }
+    }
+
     get productsOnSale() {
         return this.products.filter(product => product.onSale)
     }

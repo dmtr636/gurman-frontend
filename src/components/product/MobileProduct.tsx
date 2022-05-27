@@ -6,6 +6,8 @@ import Variants from "./Variants";
 import Composition from "./Composition";
 import {SERVER_HOST} from "../../constants/constants";
 import MobileComposition from "./MobileComposition";
+import settingsStore from "../../store/settingsStore";
+import navStore from "../../store/navStore";
 
 const MobileProduct = observer((props: {product: IProduct}) => {
     const product = props.product
@@ -55,7 +57,14 @@ const MobileProduct = observer((props: {product: IProduct}) => {
                 <div
                     className={orderButtonClassNames()}
                     onClick={(event) => {
-                        productStore.toggleInCartState(product.activeVariant, product)
+                        if (settingsStore.siteOpenState) {
+                            let cartState = productStore.toggleInCartState(product.activeVariant, product)
+                            if ((product.bigPortionAvailable || product.additions.length > 0) && cartState) {
+                                navStore.openAdditionsModal(product)
+                            }
+                        } else {
+                            navStore.openSiteClosedModal()
+                        }
                         event.stopPropagation()
                     }}
                 >

@@ -22,9 +22,9 @@ const Cart = observer((props: {close: any}) => {
                     + " на "
                 }
                 <span className={styles.cost}>
-                    {productStore.cartCost
+                    {productStore.totalCost
                         + " "
-                        + declOfNum(productStore.cartCost, ["рубль", "рубля", "рублей"])
+                        + declOfNum(productStore.totalCost, ["рубль", "рубля", "рублей"])
                     }
                 </span>
             </div>

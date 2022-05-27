@@ -12,7 +12,7 @@ const Button = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Ubuntu';
+  font-family: 'Ubuntu', 'Segoe UI';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -24,6 +24,10 @@ const Button = styled.div`
   
   &:hover{
     background: #FA3D3D;;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `
 

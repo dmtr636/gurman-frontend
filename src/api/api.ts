@@ -19,13 +19,23 @@ export function postOrder() {
         paymentType: orderStore.paymentType
     }
 
-    let products: { productId: number; variantId: number; amount: number }[] = []
+    let products: {
+        productId: number;
+        variantId: number;
+        amount: number;
+        additionsIds: number[];
+        isBigPortion: boolean
+    }[] = []
 
     productStore.cartItems.forEach(item => {
         products.push({
             productId: item.product.id,
             variantId: item.variant.id,
-            amount: item.variant.cartCount
+            amount: item.variant.cartCount,
+            additionsIds: item.variant.additions
+                .filter(addition => addition.selected)
+                .map(addition => addition.id),
+            isBigPortion: item.variant.isBigPortion
         })
     })
 

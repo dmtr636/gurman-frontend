@@ -17,6 +17,10 @@ const List = styled.div`
   flex-direction: column;
   row-gap: 20px;
   margin-bottom: 80px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 70px;
+  }
 `
 
 function AdditionsIngredientsContainer() {
