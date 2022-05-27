@@ -7,10 +7,12 @@ import {SERVER_HOST} from "../../../constants/constants";
 import promoCodeStore from "../../../store/promoCodeStore";
 import React from "react";
 import AdditionsModalTitle from "./AdditionsTitle";
-import AdditionsModalComposition from "./AdditionsComposition";
-import AdditionsModalIngredients from "./AdditionsIngredientsContainer";
+import AdditionsComposition from "./AdditionsComposition";
+import AdditionsIngredientsContainer from "./AdditionsIngredientsContainer";
 import AdditionsButton from "./AdditionsButton";
 import AdditionsCartCount from "./AdditionsCartCount";
+import AdditionsPortionsContainer from "./AdditionsPortionsContainer";
+import productStore from "../../../store/productStore";
 
 const Container = styled.div`
   width: 868px;
@@ -44,7 +46,10 @@ function Additions() {
         <Dialog
             open={navStore.additionsModalOpen}
             PaperProps={{ style: { maxWidth: "868px", maxHeight: "100vh", margin: 0 } }}
-            onClose={() => navStore.closeAdditionsModal()}
+            onClose={() => {
+                navStore.closeAdditionsModal()
+                productStore.toggleInCartState(product?.activeVariant!, product!)
+            }}
         >
             <Container>
                 <CloseImg
@@ -55,8 +60,9 @@ function Additions() {
                 <img src={SERVER_HOST + product?.image} alt={""} />
                 <div>
                     <AdditionsModalTitle />
-                    <AdditionsModalComposition />
-                    <AdditionsModalIngredients />
+                    <AdditionsComposition />
+                    {product?.bigPortionAvailable && <AdditionsPortionsContainer />}
+                    <AdditionsIngredientsContainer />
                     <BottomRow>
                         <AdditionsCartCount />
                         <AdditionsButton />

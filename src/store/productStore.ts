@@ -21,7 +21,17 @@ class ProductStore {
                 let products = response.data["products"]
                 products.forEach((product: IProduct) => {
                     product.expanded = false
-                    product.variants.forEach((variant: IVariant) => variant.cartCount = 0)
+                    product.variants.forEach((variant: IVariant) => {
+                        variant.cartCount = 0
+                        variant.isBigPortion = false
+                        variant.additions = [...product.additions]
+                        if (product.bigPortionAvailable) {
+                            variant.portions = [
+                                {id: 0, name: "Стандартная", cost: 0, selected: true},
+                                {id: 1, name: "Большая", cost: product.bigPortionCost, selected: false}
+                            ]
+                        }
+                    })
                 })
                 this.products = products
             })
@@ -82,12 +92,32 @@ class ProductStore {
         if (product.onSale) {
             cost *= (100 - product.discount) / 100
         }
-        product.additions.forEach(addition => {
+        product.activeVariant.additions.forEach(addition => {
             if (addition.selected) {
                 cost += addition.cost
             }
         })
+        if (product.activeVariant.isBigPortion) {
+            cost += product.bigPortionCost
+        }
         cost *= product.activeVariant.cartCount
+        return Math.round(cost)
+    }
+
+    getVariantCost(product: IProduct, variant: IVariant) {
+        let cost = variant.cost
+        if (product.onSale) {
+            cost *= (100 - product.discount) / 100
+        }
+        variant.additions.forEach(addition => {
+            if (addition.selected) {
+                cost += addition.cost
+            }
+        })
+        if (variant.isBigPortion) {
+            cost += product.bigPortionCost
+        }
+        cost *= variant.cartCount
         return Math.round(cost)
     }
 
@@ -135,11 +165,22 @@ class ProductStore {
         let cost = 0
         this.products.forEach(product => {
             product.variants.forEach(variant => {
+                let variantCost = 0
                 if (product.onSale) {
-                    cost += variant.cartCount * variant.cost * (100 - product.discount) / 100
+                    variantCost += variant.cost * (100 - product.discount) / 100
                 } else {
-                    cost += variant.cartCount * variant.cost
+                    variantCost += variant.cost
                 }
+                variant.additions.forEach(addition => {
+                    if (addition.selected) {
+                        variantCost += addition.cost
+                    }
+                })
+                if (variant.isBigPortion) {
+                    variantCost += product.bigPortionCost
+                }
+                variantCost *= variant.cartCount
+                cost += variantCost
             })
         })
         cost *= (100 - promoCodeStore.discount) / 100

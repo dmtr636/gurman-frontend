@@ -4,6 +4,7 @@ import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore";
 import {SERVER_HOST} from "../../constants/constants";
 import useWindowDimensions from "../../hooks/hooks";
+import styled from "styled-components";
 
 
 function truncate(input: string, title: string, screenWidth: number) {
@@ -20,6 +21,10 @@ function truncate(input: string, title: string, screenWidth: number) {
     }
     return input;
 }
+
+const Addition = styled.span`
+  color: #D42216;
+`
 
 const CartItem = observer((props: {item: ICartItem}) => {
     const item = props.item
@@ -40,16 +45,19 @@ const CartItem = observer((props: {item: ICartItem}) => {
 
                 <div className={styles['composition']}>
                     <span className={styles['compositionText']}>
+                        {item.variant.additions
+                            .filter(addition => addition.selected)
+                            .map(addition =>
+                                <Addition>{addition.name + ", "}</Addition>
+                            )
+                        }
                         {truncate(item.variant.composition, item.product.name, width)}
                     </span>
                 </div>
 
                 <div className={styles.orderRow}>
                     <div className={styles.cost}>
-                        {item.product.onSale
-                            ? item.variant.cost * (100 - item.product.discount) / 100 + " ₽"
-                            : item.variant.cost + " ₽"
-                        }
+                        {productStore.getVariantCost(item.product, item.variant) + " ₽"}
                     </div>
 
                     <div className={styles.cartCount}>

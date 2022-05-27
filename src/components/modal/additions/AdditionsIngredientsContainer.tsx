@@ -28,7 +28,7 @@ function AdditionsIngredientsContainer() {
                 Ингредиенты
             </Header>
             <List>
-                {product?.additions.map(addition =>
+                {product?.activeVariant.additions.map(addition =>
                     <AdditionsIngredient addition={addition} />
                 )}
             </List>

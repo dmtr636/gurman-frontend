@@ -31,7 +31,9 @@ function AdditionsButton() {
     const product = navStore.additionsModalProduct
 
     return(
-        <Button onClick={() => navStore.closeAdditionsModal()}>
+        <Button onClick={() => {
+            navStore.closeAdditionsModal()
+        }}>
             <span>Добавить</span>
             <span>{productStore.getProductCost(product!) + " ₽"}</span>
         </Button>

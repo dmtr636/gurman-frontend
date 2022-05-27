@@ -44,11 +44,17 @@ const Cost = styled.div<{selected: boolean}>`
   color: ${props => props.selected ? "#231F20" : "#929292"}
 `
 
-function AdditionsIngredient(props: {addition: IAddition}) {
+function AdditionsIngredient(props: {addition: IAddition, onSelect?: (addition: IAddition) => void}) {
     const addition = props.addition
 
     return(
-        <Ingredient onClick={() => productStore.toggleAddition(addition)}>
+        <Ingredient onClick={() => {
+            if (props.onSelect) {
+                props.onSelect(addition)
+            } else {
+                productStore.toggleAddition(addition)
+            }
+        }}>
             <CheckBox selected={addition.selected}/>
             <Name selected={addition.selected}>
                 {addition.name}

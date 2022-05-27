@@ -1,4 +1,5 @@
 import {IProduct} from "./IProduct";
+import {IAddition} from "./IAddition";
 
 export interface IVariant {
     id: number,
@@ -6,4 +7,7 @@ export interface IVariant {
     composition: string,
     cost: number,
     cartCount: number,
+    additions: IAddition[],
+    isBigPortion: boolean,
+    portions: IAddition[]
 }

@@ -17,6 +17,8 @@ const Container = styled.div`
 `
 const Button = styled.img`
   cursor: pointer;
+  height: 100%;
+  width: 12px;
   
   &:hover {
     opacity: 0.8;
