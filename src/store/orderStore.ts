@@ -15,9 +15,9 @@ class OrderStore {
     house = localStorage.getItem("house") || ""
     entrance = localStorage.getItem("entrance") || ""
     flat = localStorage.getItem("flat") || ""
-    comment = localStorage.getItem("comment") || ""
-    paymentType = localStorage.getItem("paymentType") || ONLINE
-    cookingTime: string = localStorage.getItem("cookingTime") || ""
+    comment = ""
+    paymentType = ONLINE
+    cookingTime: string = ""
 
     constructor() {
         makeAutoObservable(this)
@@ -63,9 +63,6 @@ class OrderStore {
         localStorage.setItem("house", this.house)
         localStorage.setItem("entrance", this.entrance)
         localStorage.setItem("flat", this.flat)
-        localStorage.setItem("comment", this.comment)
-        localStorage.setItem("paymentType", this.paymentType)
-        localStorage.setItem("cookingTime", this.cookingTime)
     }
 }
 

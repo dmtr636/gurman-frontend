@@ -42,7 +42,12 @@ function AdditionsCartCount() {
 
     return(
         <Container>
-            <Button src={minus} onClick={() => productStore.decrementCartCount(product?.activeVariant!)}/>
+            <Button src={minus} onClick={() => {
+                if (product?.activeVariant.cartCount === 1) {
+                    navStore.closeAdditionsModal()
+                }
+                productStore.decrementCartCount(product?.activeVariant!)
+            }}/>
             <Text>{product?.activeVariant.cartCount}</Text>
             <Button src={plus} onClick={() => productStore.incrementCartCount(product?.activeVariant!)} />
         </Container>

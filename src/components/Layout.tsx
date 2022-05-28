@@ -26,6 +26,8 @@ import AdditionsModal from "./modal/additions/Additions";
 import Cart from "./cart/Cart";
 import Dialog from "@mui/material/Dialog";
 import EmptyCart from "./cart/EmptyCart";
+import LoadingDrawer from "./common/LoadingDrawer";
+import PaymentStatus from "./common/PaymentStatus";
 
 
 const Layout = observer(() => {
@@ -89,12 +91,21 @@ const Layout = observer(() => {
 
                 <Routes>
                     <Route path={"/"} element={<></>}/>
+
+                    <Route
+                        path={"/payment-status"}
+                        element={
+                            <PaymentStatus />
+                        }
+                    />
+
                     <Route
                         path={"/payment-succeeded"}
                         element={
                             <PaymentSucceeded />
                         }
                     />
+
                     <Route
                         path={"/payment-error"}
                         element={
@@ -111,6 +122,13 @@ const Layout = observer(() => {
                     open={navStore.cartOpenState}
                 >
                     <Cart close={() => navStore.closeCart()} />
+                </Drawer>
+
+                <Drawer
+                    anchor={'right'}
+                    open={navStore.loadingOpenState}
+                >
+                    <LoadingDrawer />
                 </Drawer>
 
                 <Dialog

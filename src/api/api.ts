@@ -44,6 +44,7 @@ export function postOrder() {
     axios.post(SERVER_HOST + "/orders", order)
         .then(res => {
             if (order.paymentType === ONLINE) {
+                localStorage.setItem("payment_id", res.data['payment_id'])
                 window.location.href = res.data['confirmation_url']
             }
         })

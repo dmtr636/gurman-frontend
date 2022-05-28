@@ -9,6 +9,7 @@ class NavStore {
     resultOpenState = false
     emptyCartOpenState = false
     selectTimeOpenState = false
+    loadingOpenState = false
 
     footerModalType = ""
     menuOpenState = false
@@ -137,6 +138,13 @@ class NavStore {
 
     closeSelectTime() {
         this.selectTimeOpenState = false
+    }
+
+    openLoading() {
+        this.loadingOpenState = true
+    }
+    closeLoading() {
+        this.loadingOpenState = false
     }
 
     closAll() {

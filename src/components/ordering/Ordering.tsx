@@ -52,8 +52,9 @@ const Ordering = observer((props: {close: any}) => {
             <div className={styles.cart}>
                 <form onSubmit={(event) => {
                     postOrder()
+                    orderStore.saveToLocalStorage()
                     if (orderStore.paymentType === ONLINE) {
-
+                        navStore.openLoading()
                     } else {
                         navStore.openResult()
                     }
