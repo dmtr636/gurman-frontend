@@ -18,7 +18,7 @@ import {EffectCreative, EffectCube, Virtual} from "swiper";
 import {HashRouter, Route, Routes} from "react-router-dom";
 import OrderingResultSuccess from "./ordering/OrderingResultSuccess";
 import Drawer from "@mui/material/Drawer";
-import React from "react";
+import React, {useEffect} from "react";
 import PaymentSucceeded from "./ordering/PaymentSucceeded";
 import PaymentError from "./ordering/PaymentError";
 import SiteClosedModal from "./modal/SiteClosedModal";
@@ -34,7 +34,11 @@ const Layout = observer(() => {
     const categories = category.categories
     const { width } = useWindowDimensions()
 
-    console.log("RR")
+    useEffect(() => {
+        setTimeout(() => {
+            navStore.setNavIndex(navStore.navIndex, true)
+        }, 1000)
+    }, [])
 
     return (
         <HashRouter>
