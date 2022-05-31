@@ -27,6 +27,10 @@ class CategoryStore {
                 this.categories = [...STATIC_CATEGORIES, ...response.data["categories"]]
             })
     }
+
+    get shawarmaCategoryId() {
+        return this.categories.find(category => category.name === 'Шаурма')?.id
+    }
 }
 
 export default new CategoryStore()

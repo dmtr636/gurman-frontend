@@ -15,5 +15,6 @@ export interface IProduct {
     discount: number,
     unit: string,
     bigPortionAvailable: boolean,
-    bigPortionCost: number
+    bigPortionCost: number,
+    active: boolean
 }

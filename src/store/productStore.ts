@@ -33,7 +33,7 @@ class ProductStore {
                         }
                     })
                 })
-                this.products = products
+                this.products = products.filter((product: IProduct) => product.active)
             })
     }
 

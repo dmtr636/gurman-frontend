@@ -7,12 +7,19 @@ import closeImg from "../../images/Close.svg";
 import styled from "styled-components";
 import promoCodeStore from "../../store/promoCodeStore";
 import {SERVER_HOST} from "../../constants/constants";
+import useWindowDimensions from "../../hooks/hooks";
 
 const Container = styled.div`
   width: 1030px;
   box-sizing: border-box;
-  padding: 40px;
-  background: #FAF9F9;
+  padding: 40px 40px 20px 40px;
+  background: #FFFFFF;
+  
+  @media (max-width: 767px) {
+    width: 100vw;
+    padding: 20px 20px 20px 20px;
+    height: 100%;
+  }
 `
 const Header = styled.div`
   display: flex;
@@ -23,12 +30,22 @@ const Header = styled.div`
   font-size: 32px;
   line-height: 37px;
   color: #282828;
+  
+  @media (max-width: 767px) {
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 20px;
+  }
 `
 const CloseImg = styled.img`
   cursor: pointer;
   
   &:hover{
     opacity: 0.8;
+  }
+
+  @media (max-width: 767px) {
+    display: none;
   }
 `
 const Text = styled.div`
@@ -39,13 +56,32 @@ const Text = styled.div`
   font-size: 32px;
   line-height: 44px;
   color: #000000;
+  
+  @media (max-width: 767px) {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 10px 0;
+  }
+`
+const Image = styled.img`
+  width: 100%;
 `
 
 function SiteClosedModal() {
+    const {width} = useWindowDimensions()
+
     return (
         <Dialog
             open={navStore.siteClosedModalOpen}
-            PaperProps={{ style: { maxWidth: "1030px", maxHeight: "100vh", margin: 0 } }}
+            PaperProps={{style: {
+                    width: "100%",
+                    marginLeft: 0,
+                    marginRight: 0,
+                    marginBottom: 0,
+                    marginTop: "55px",
+                    maxWidth: "100%",
+                    height: "calc(100vh - 60px)"
+                }}}
             onClose={() => navStore.closeSiteClosedModal()}
         >
             <Container>
@@ -61,7 +97,7 @@ function SiteClosedModal() {
                     Нам жаль, что вы попали к нам во время перерыва, поэтому
                     спешим подарить вам прокомод!
                 </Text>
-                <img src={SERVER_HOST + promoCodeStore.siteClosedPromoCodeImage} alt={""}/>
+                <Image src={SERVER_HOST + promoCodeStore.siteClosedPromoCodeImage} alt={""}/>
                 <Text>
                     Воспользуйтесь им, как только мы вернёмся!
                 </Text>

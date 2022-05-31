@@ -28,6 +28,7 @@ const Button = styled.div`
 
   @media (max-width: 767px) {
     width: 100%;
+    margin-bottom: 40px;
   }
 `
 

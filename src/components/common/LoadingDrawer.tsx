@@ -6,8 +6,8 @@ import styled from "styled-components";
 import {useEffect} from "react";
 
 const Loader = styled.img`
-  width: 243px;
-  height: 238px;
+  width: 122px;
+  height: 119px;
   margin: auto;
 `
 

@@ -7,6 +7,12 @@ import Composition from "./Composition";
 import {SERVER_HOST} from "../../constants/constants";
 import settingsStore from "../../store/settingsStore";
 import navStore from "../../store/navStore";
+import styled from "styled-components";
+import categoryStore from "../../store/categoryStore";
+
+const Image = styled.img<{top: boolean}>`
+  object-position: ${props => props.top ? "top" : "initial"};
+`
 
 const Product = observer((props: {product: IProduct}) => {
     const product = props.product
@@ -27,7 +33,11 @@ const Product = observer((props: {product: IProduct}) => {
             className={styles.product}
             onClick={() => productStore.setExpanded(product, false)}
         >
-            <img src={SERVER_HOST + props.product.image} alt={""}/>
+            <Image
+                src={SERVER_HOST + props.product.image}
+                alt={""}
+                top={product.category === categoryStore.shawarmaCategoryId}
+            />
 
             {product.onSale &&
                 <div className={styles.saleBg}>
@@ -42,7 +52,9 @@ const Product = observer((props: {product: IProduct}) => {
                     {props.product.name}
                 </span>
                 <span className={styles.portion}>
-                    {props.product.portion + " " + props.product.unit}
+                    {props.product.portion}
+                    &nbsp;
+                    {props.product.unit}
                 </span>
             </div>
 

@@ -82,10 +82,13 @@ class NavStore {
             this.additionsModalOpen = false
             this.additionsModalProduct!.activeVariant.cartCount = 0
         }
+        if (this.siteClosedModalOpen) {
+            this.siteClosedModalOpen = false
+        }
     }
 
     get backButtonVisible() {
-        return this.cartOpenState || this.footerModalType !== "" || this.additionsModalOpen;
+        return this.cartOpenState || this.footerModalType !== "" || this.additionsModalOpen || this.siteClosedModalOpen;
     }
 
     openMenu() {

@@ -26,9 +26,12 @@ const Container = styled.div`
   
   @media (max-width: 767px) {
     width: 100vw;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     padding: 60px 26px 40px 26px;
-    grid-row-gap: 20px;
+    row-gap: 20px;
+    min-height: 100vh;
+    height: auto;
   }
 `
 const CloseImg = styled.img`
@@ -49,6 +52,7 @@ const BottomRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -57,6 +61,13 @@ const BottomRow = styled.div`
 `
 const Image = styled.img`
 
+  @media (min-width: 768px) {
+    width: 100%;
+    height: 205px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
   @media (max-width: 767px) {
     width: 100vw;
     margin: 0 -26px;
@@ -69,7 +80,7 @@ const Divider = styled.div`
   opacity: 0.3;
   height: 1px;
   width: 100vw;
-  bottom: 110px;
+  top: 45px;
   
   @media (max-width: 767px) {
     display: block;
@@ -105,10 +116,10 @@ function Additions() {
                     <AdditionsIngredientsContainer />
                     <BottomRow>
                         <AdditionsCartCount />
+                        <Divider />
                         <AdditionsButton />
                     </BottomRow>
                 </div>
-                <Divider />
             </Container>
         </Dialog>
     )

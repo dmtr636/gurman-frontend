@@ -35,7 +35,7 @@ const Name = styled.div<{selected: boolean}>`
 `
 const Cost = styled.div<{selected: boolean}>`
   margin-left: auto;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', 'Segoe UI';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

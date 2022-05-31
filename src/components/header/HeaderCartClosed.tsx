@@ -16,6 +16,10 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  @media (max-width: 767px) {
+    display: none;
+  }
 `
 const Text = styled.div`
   font-family: 'Ubuntu';

@@ -23,16 +23,20 @@ function PaymentStatus() {
         navStore.openLoading()
 
         let payment_id = localStorage.getItem("payment_id")
-
-        axios.get(SERVER_HOST + "/api/payment-status?payment_id=" + payment_id)
-            .then(res => {
-                navStore.closeLoading()
-                if (res.data['status'] === 'succeeded') {
-                    navigate("/payment-succeeded")
-                } else {
-                    navigate("/payment-error")
-                }
-            })
+        if (payment_id != null) {
+            axios.get(SERVER_HOST + "/api/payment-status?payment_id=" + payment_id)
+                .then(res => {
+                    navStore.closeLoading()
+                    if (res.data['status'] === 'succeeded') {
+                        navigate("/payment-succeeded")
+                    } else {
+                        navigate("/payment-error")
+                    }
+                })
+        } else {
+            navStore.closeLoading()
+            navigate("/payment-error")
+        }
     }, [navigate])
 
     return (
