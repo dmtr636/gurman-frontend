@@ -74,13 +74,14 @@ function SiteClosedModal() {
         <Dialog
             open={navStore.siteClosedModalOpen}
             PaperProps={{style: {
-                    width: "100%",
+                    width: width < 768 ? "100%" : "initial",
                     marginLeft: 0,
                     marginRight: 0,
                     marginBottom: 0,
-                    marginTop: "55px",
+                    marginTop: width < 768 ? "55px" : 0,
                     maxWidth: "100%",
-                    height: "calc(100vh - 60px)"
+                    height: width < 768 ? "calc(100vh - 60px)" : "initial",
+                    maxHeight: width >= 768 ? "100%" : undefined
                 }}}
             onClose={() => navStore.closeSiteClosedModal()}
         >
