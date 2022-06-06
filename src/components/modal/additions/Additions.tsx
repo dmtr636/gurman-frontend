@@ -96,7 +96,6 @@ function Additions() {
             PaperProps={{ style: { maxWidth: "868px", maxHeight: "100vh", margin: 0 } }}
             onClose={() => {
                 navStore.closeAdditionsModal()
-                productStore.toggleInCartState(product?.activeVariant!, product!)
             }}
         >
             <Container>
@@ -105,7 +104,6 @@ function Additions() {
                     alt={""}
                     onClick={() => {
                         navStore.closeAdditionsModal()
-                        productStore.toggleInCartState(product?.activeVariant!, product!)
                     }}
                 />
                 <Image src={SERVER_HOST + product?.image} alt={""} />

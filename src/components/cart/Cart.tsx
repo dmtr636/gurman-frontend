@@ -5,6 +5,7 @@ import {observer} from "mobx-react-lite";
 import productStore from "../../store/productStore";
 import CartOrder from "./CartOrder";
 import DrawerContainer from "../common/DrawerContainer";
+import cartStore from '../../store/cartStore';
 
 function declOfNum(number: number, titles: string[]) {
     let cases = [2, 0, 1, 1, 1, 2];
@@ -16,9 +17,9 @@ const Cart = observer((props: {close: any}) => {
     return (
         <DrawerContainer close={() => props.close()}>
             <div className={styles.header}>
-                {productStore.cartCount
+                {cartStore.cartAmount
                     + " "
-                    + declOfNum(productStore.cartCount, ["товар", "товара", "товаров"])
+                    + declOfNum(cartStore.cartAmount, ["товар", "товара", "товаров"])
                     + " на "
                 }
                 <span className={styles.cost}>

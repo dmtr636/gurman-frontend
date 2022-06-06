@@ -6,6 +6,7 @@ import {SERVER_HOST} from "../../constants/constants";
 import useWindowDimensions from "../../hooks/hooks";
 import styled from "styled-components";
 import navStore from "../../store/navStore";
+import cartStore from "../../store/cartStore";
 
 
 function truncate(input: string, title: string, screenWidth: number) {
@@ -46,12 +47,9 @@ const CartItem = observer((props: {item: ICartItem}) => {
 
                 <div className={styles['composition']}>
                     <span className={styles['compositionText']}>
-                        {item.variant.additions
-                            .filter(addition => addition.selected)
-                            .map(addition =>
-                                <Addition>{addition.name + ", "}</Addition>
-                            )
-                        }
+                        {item.additionsIds?.map(additionId =>
+                            <Addition>{productStore.getAddition(item.product, additionId)?.name + ", "}</Addition>
+                        )}
                         {truncate(item.variant.composition, item.product.name, width)}
                     </span>
                 </div>
@@ -66,7 +64,8 @@ const CartItem = observer((props: {item: ICartItem}) => {
                             className={styles.cartCountButton}
                             onClick={() => {
                                 productStore.decrementCartCount(item.variant)
-                                if (productStore.cartCount === 0) {
+                                cartStore.decAmount(item)
+                                if (cartStore.cartAmount === 0) {
                                     navStore.closeCart()
                                 }
                             }}
@@ -76,12 +75,13 @@ const CartItem = observer((props: {item: ICartItem}) => {
                             </svg>
                         </div>
 
-                        <div>{item.variant.cartCount}</div>
+                        <div>{item.amount}</div>
 
                         <div
                             className={styles.cartCountButton}
                             onClick={() => {
                                 productStore.incrementCartCount(item.variant)
+                                cartStore.incAmount(item)
                             }}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">

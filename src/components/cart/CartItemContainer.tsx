@@ -1,9 +1,9 @@
 import styles from './CartItemContainer.module.css'
 import CartItem from "./CartItem";
-import productStore from "../../store/productStore";
+import cartStore from "../../store/cartStore";
 
 const CartItemContainer = () => {
-    const items = productStore.cartItems
+    const items = cartStore.items
 
     return (
         <div className={styles.container}>

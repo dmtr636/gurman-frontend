@@ -188,6 +188,10 @@ class ProductStore {
         return Math.round(cost)
     }
 
+    getAddition(product: IProduct, additionId: number) {
+        return product.additions.find(addition => addition.id === additionId)
+    }
+
     get totalCost() {
         if (this.cartCost >= 800) {
             return this.cartCost

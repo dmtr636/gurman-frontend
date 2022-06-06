@@ -2,6 +2,7 @@ import navStore from "../../../store/navStore";
 import {observer} from "mobx-react-lite";
 import styled from "styled-components";
 import productStore from "../../../store/productStore";
+import cartStore from "../../../store/cartStore";
 
 const Button = styled.div`
   width: 269px;
@@ -37,6 +38,12 @@ function AdditionsButton() {
 
     return(
         <Button onClick={() => {
+            cartStore.addItem(
+                product!,
+                product?.activeVariant!,
+                product?.activeVariant.additions.filter(addition => addition.selected).map(addition => addition.id),
+                product?.activeVariant.isBigPortion
+            )
             navStore.closeAdditionsModal()
         }}>
             <span>Добавить</span>

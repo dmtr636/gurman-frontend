@@ -9,6 +9,7 @@ import settingsStore from "../../store/settingsStore";
 import navStore from "../../store/navStore";
 import styled from "styled-components";
 import categoryStore from "../../store/categoryStore";
+import cartStore from "../../store/cartStore";
 
 const Image = styled.img<{top: boolean}>`
   object-position: ${props => props.top ? "top" : "initial"};
@@ -23,7 +24,7 @@ const Product = observer((props: {product: IProduct}) => {
 
     const orderButtonClassNames = () => {
         return styles['orderButton'] +
-            (product.activeVariant.cartCount > 0
+            (cartStore.isVariantInCart(product.activeVariant)
                 ? ' ' + styles.active
                 : '')
     }
@@ -68,16 +69,22 @@ const Product = observer((props: {product: IProduct}) => {
                 <div
                     className={orderButtonClassNames()}
                     onClick={(event) => {
-                        if (settingsStore.siteOpenState) {
-                            let cartState = productStore.toggleInCartState(product.activeVariant, product)
-                            if ((product.bigPortionAvailable || product.additions.length > 0) && cartState) {
-                                navStore.openAdditionsModal(product)
-                            }
-                        } else {
+                        event.stopPropagation()
+
+                        if (!settingsStore.siteOpenState) {
                             navStore.openSiteClosedModal()
+                            return
                         }
 
-                        event.stopPropagation()
+                        if (cartStore.isVariantInCart(product.activeVariant)) {
+                            cartStore.removeVariant(product.activeVariant)
+                        } else {
+                            if (product.bigPortionAvailable || product.additions.length > 0) {
+                                navStore.openAdditionsModal(product)
+                            } else {
+                                cartStore.addItem(product, product.activeVariant)
+                            }
+                        }
                     }}
                 >
                     {(product.onSale && product.activeVariant.cartCount > 0)
@@ -86,12 +93,12 @@ const Product = observer((props: {product: IProduct}) => {
                     }
                 </div>
 
-                {product.activeVariant.cartCount > 0 &&
+                {cartStore.isVariantInCart(product.activeVariant) &&
                     <div className={styles.cartCount}>
                         <div
                             className={styles.cartCountButton}
                             onClick={(event) => {
-                                productStore.decrementCartCount(product.activeVariant)
+                                cartStore.decVariantAmount(product, product.activeVariant)
                                 event.stopPropagation()
                             }}
                         >
@@ -100,12 +107,16 @@ const Product = observer((props: {product: IProduct}) => {
                             </svg>
                         </div>
 
-                        <div>{product.activeVariant.cartCount}</div>
+                        <div>{cartStore.getVariantAmount(product, product.activeVariant)}</div>
 
                         <div
                             className={styles.cartCountButton}
                             onClick={(event) => {
-                                productStore.incrementCartCount(product.activeVariant)
+                                if (product.additions.length > 0 || product.bigPortionAvailable) {
+                                    navStore.openAdditionsModal(product)
+                                } else {
+                                    cartStore.incVariantAmount(product, product.activeVariant)
+                                }
                                 event.stopPropagation()
                             }}
                         >

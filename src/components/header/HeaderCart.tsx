@@ -7,12 +7,13 @@ import Cart from '../cart/Cart'
 import navStore from "../../store/navStore";
 import EmptyCart from "../cart/EmptyCart";
 import Dialog from "@mui/material/Dialog";
+import cartStore from "../../store/cartStore";
 
 const HeaderCart = observer(() => {
-    const cartCount = productStore.cartCount
+    const cartAmount = cartStore.cartAmount
 
     const cartClassName = () => {
-        let empty = cartCount === 0 ? styles.empty : " "
+        let empty = cartAmount === 0 ? styles.empty : " "
         return `${styles.cart} ${empty}`
     }
 
@@ -21,14 +22,14 @@ const HeaderCart = observer(() => {
             if (navStore.cartOpenState) {
                 return
             }
-            if (cartCount > 0) {
+            if (cartAmount > 0) {
                 navStore.openCart()
             } else {
                 navStore.openEmptyCart()
             }
         }}>
             <div className={styles.image}>
-                {cartCount === 0
+                {cartAmount === 0
                     ?
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" viewBox="0 0 25 30" fill="none">
                         <path d="M23.8636 7.5H19.0341V6.9C19.0341 3.09 16.108 0 12.5 0C8.89205 0 5.96591 3.09 5.96591 6.9V7.5H1.13636C0.507812 7.5 0 8.03625 0 8.7V28.8C0 29.4638 0.507812 30 1.13636 30H23.8636C24.4922 30 25 29.4638 25 28.8V8.7C25 8.03625 24.4922 7.5 23.8636 7.5ZM8.52273 6.9C8.52273 4.57875 10.3018 2.7 12.5 2.7C14.6982 2.7 16.4773 4.57875 16.4773 6.9V7.5H8.52273V6.9ZM22.4432 27.3H2.55682V10.2H5.96591V13.5C5.96591 13.665 6.09375 13.8 6.25 13.8H8.23864C8.39489 13.8 8.52273 13.665 8.52273 13.5V10.2H16.4773V13.5C16.4773 13.665 16.6051 13.8 16.7614 13.8H18.75C18.9062 13.8 19.0341 13.665 19.0341 13.5V10.2H22.4432V27.3Z" fill="white"/>
@@ -39,15 +40,15 @@ const HeaderCart = observer(() => {
                     </svg>
                 }
             </div>
-            {cartCount > 0 &&
+            {cartAmount > 0 &&
                 <div className={styles.positions}>
                     <div className={styles.positionsText}>
-                        {cartCount}
+                        {cartAmount}
                     </div>
                 </div>
             }
             <div className={styles.text}>
-                {cartCount === 0
+                {cartAmount === 0
                     ? "Корзина пустует"
                     : "Оформить заказ"
                 }

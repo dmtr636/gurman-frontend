@@ -10,13 +10,12 @@ class SettingsStore {
     }
 
     setSiteOpenState(state: boolean) {
-        this.siteOpenState = state
+        //this.siteOpenState = state
     }
 
     fetchSiteOpenState() {
         axios.get(SERVER_HOST + "/api/site-state")
             .then(res => this.setSiteOpenState(res.data['isOpen']))
-        console.log("fetch")
     }
 }
 
