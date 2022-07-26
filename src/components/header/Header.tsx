@@ -1,7 +1,7 @@
 import styles from './Header.module.css'
 import HeaderCart from "./HeaderCart";
 import infoIcon from "../../images/infoIcon.svg"
-import React from "react";
+import React, {useEffect} from "react";
 import {Popover} from "@mui/material";
 import infoLocation from "../../images/infoLocation.svg"
 import infoPhone from "../../images/infoPhone.svg"
@@ -17,6 +17,7 @@ import brandImage from "../../images/brandImage.svg"
 import brandTextImage from "../../images/brandTextImage.svg"
 import settingsStore from "../../store/settingsStore";
 import HeaderCartClosed from "./HeaderCartClosed";
+import cartClosedBg from "../../images/headerCartClosedBg.svg"
 
 const isNight = () => {
     let hours = new Date().getHours()
@@ -33,6 +34,11 @@ function Header() {
     const handlePopoverClose = () => {
         setAnchorEl(null);
     };
+
+    useEffect(() => {
+        //preloading image
+        new Image().src = cartClosedBg;
+    }, []);
 
     const open = Boolean(anchorEl);
 
@@ -66,8 +72,8 @@ function Header() {
                         <img src={infoPhone} alt={""} />
                     </a>
                     <div>
-                        <a href={"tel:+79109140005"} className={styles.infoTextTop + " " + styles['infoTextTop']}>
-                            8 910 914 00 05
+                        <a href={"tel:+79109130005"} className={styles.infoTextTop + " " + styles['infoTextTop']}>
+                            8 910 913 00 05
                         </a>
                         <div className={styles.infoTextBottom}>
                             Готовим круглосуточно

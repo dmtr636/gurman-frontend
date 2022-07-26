@@ -3,6 +3,7 @@ import axios from "axios";
 import productStore from "../store/productStore";
 import promoCodeStore from "../store/promoCodeStore";
 import orderStore, {ONLINE} from "../store/orderStore";
+import cartStore from "../store/cartStore";
 
 export function postOrder() {
     let order: any = {
@@ -27,15 +28,13 @@ export function postOrder() {
         isBigPortion: boolean
     }[] = []
 
-    productStore.cartItems.forEach(item => {
+    cartStore.items.forEach(item => {
         products.push({
             productId: item.product.id,
             variantId: item.variant.id,
-            amount: item.variant.cartCount,
-            additionsIds: item.variant.additions
-                .filter(addition => addition.selected)
-                .map(addition => addition.id),
-            isBigPortion: item.variant.isBigPortion
+            amount: item.amount,
+            additionsIds: item.additionsIds || [],
+            isBigPortion: item.isBigPortion || false
         })
     })
 

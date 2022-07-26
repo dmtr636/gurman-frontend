@@ -39,6 +39,7 @@ const CartItem = observer((props: {item: ICartItem}) => {
                 <div className={styles.titleRow}>
                     <span className={styles.title}>
                         {item.product.name}
+                        {item.isBigPortion && " (большая)"}
                         <span className={styles.portion}>
                             {item.product.portion + " г."}
                         </span>
@@ -56,14 +57,13 @@ const CartItem = observer((props: {item: ICartItem}) => {
 
                 <div className={styles.orderRow}>
                     <div className={styles.cost}>
-                        {productStore.getVariantCost(item.product, item.variant) + " ₽"}
+                        {cartStore.getItemCost(item) + " ₽"}
                     </div>
 
                     <div className={styles.cartCount}>
                         <div
                             className={styles.cartCountButton}
                             onClick={() => {
-                                productStore.decrementCartCount(item.variant)
                                 cartStore.decAmount(item)
                                 if (cartStore.cartAmount === 0) {
                                     navStore.closeCart()
@@ -80,7 +80,6 @@ const CartItem = observer((props: {item: ICartItem}) => {
                         <div
                             className={styles.cartCountButton}
                             onClick={() => {
-                                productStore.incrementCartCount(item.variant)
                                 cartStore.incAmount(item)
                             }}
                         >

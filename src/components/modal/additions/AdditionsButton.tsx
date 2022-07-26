@@ -42,7 +42,8 @@ function AdditionsButton() {
                 product!,
                 product?.activeVariant!,
                 product?.activeVariant.additions.filter(addition => addition.selected).map(addition => addition.id),
-                product?.activeVariant.isBigPortion
+                product?.activeVariant.isBigPortion,
+                product?.activeVariant.cartCount
             )
             navStore.closeAdditionsModal()
         }}>

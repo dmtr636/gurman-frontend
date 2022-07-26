@@ -5,6 +5,7 @@ import cart from "../../images/floatingCart.svg"
 import circle from "../../images/ellips.svg"
 import productStore from "../../store/productStore";
 import navStore from "../../store/navStore";
+import cartStore from "../../store/cartStore";
 
 const Button = styled.div`
   width: 60px;
@@ -49,7 +50,7 @@ function FloatingCartButton() {
             <CartImage />
             <CountBg>
                 <CountText>
-                    {productStore.cartCount}
+                    {cartStore.cartAmount}
                 </CountText>
             </CountBg>
         </Button>

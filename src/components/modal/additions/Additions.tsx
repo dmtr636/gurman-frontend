@@ -5,7 +5,7 @@ import styled from "styled-components";
 import closeImg from "../../../images/Close.svg";
 import {SERVER_HOST} from "../../../constants/constants";
 import promoCodeStore from "../../../store/promoCodeStore";
-import React from "react";
+import React, {useEffect} from "react";
 import AdditionsModalTitle from "./AdditionsTitle";
 import AdditionsComposition from "./AdditionsComposition";
 import AdditionsIngredientsContainer from "./AdditionsIngredientsContainer";

@@ -18,12 +18,12 @@ class CartStore {
         return this.currentId++
     }
 
-    addItem(product: IProduct, variant: IVariant, additionsIds?: number[], isBigPortion?: boolean) {
+    addItem(product: IProduct, variant: IVariant, additionsIds?: number[], isBigPortion?: boolean, amount?: number) {
         this.items.push({
             id: this.generateId(),
             product: product,
             variant: variant,
-            amount: 1,
+            amount: amount || 1,
             additionsIds: additionsIds,
             isBigPortion: isBigPortion
         })
@@ -76,6 +76,28 @@ class CartStore {
         }
     }
 
+    getItemCost(item: ICartItem) {
+        let itemCost = 0
+        if (item.product.onSale) {
+            itemCost += item.variant.cost * (100 - item.product.discount) / 100
+        } else {
+            itemCost += item.variant.cost
+        }
+        item.additionsIds?.forEach(additionId => {
+            let addition = productStore.getAddition(item.product, additionId)
+            itemCost += addition!.cost
+        })
+        if (item.isBigPortion) {
+            itemCost += item.product.bigPortionCost
+        }
+        itemCost *= item.amount
+        return itemCost
+    }
+
+    clearCart() {
+        this.items = []
+    }
+
     get cartAmount() {
         return this.items.length
     }
@@ -83,25 +105,19 @@ class CartStore {
     get cartCost() {
         let cost = 0
         this.items.forEach(item => {
-            let itemCost = 0
-            if (item.product.onSale) {
-                itemCost += item.variant.cost * (100 - item.product.discount) / 100
-            } else {
-                itemCost += item.variant.cost
-            }
-            item.additionsIds?.forEach(additionId => {
-                let addition = productStore.getAddition(item.product, additionId)
-                itemCost += addition!.cost
-            })
-            if (item.isBigPortion) {
-                itemCost += item.product.bigPortionCost
-            }
-            itemCost *= item.amount
-            cost += itemCost
+            cost += this.getItemCost(item)
         })
         cost *= (100 - promoCodeStore.discount) / 100
 
         return Math.round(cost)
+    }
+
+    get totalCost() {
+        if (this.cartCost >= 800) {
+            return this.cartCost
+        } else {
+            return this.cartCost + 200
+        }
     }
 }
 

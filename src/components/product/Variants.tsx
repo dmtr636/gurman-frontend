@@ -6,25 +6,25 @@ import productStore from "../../store/productStore";
 
 
 const Variants = observer((props: { product: IProduct}) => {
-    const product = props.product
+  const product = props.product
 
-    const variantClassNames = (variant: IVariant) => {
-        const active = variant.id === product.activeVariant.id ? styles.active : ''
-        return `${styles.variant} ${active}`
-    }
+  const variantClassNames = (variant: IVariant) => {
+    const active = variant.id === product.activeVariant.id ? styles.active : ''
+    return `${styles.variant} ${active}`
+  }
 
-    return (
-        <div className={styles['variants']}>
-            {product.variants.map(variant =>
-                <div
-                    className={variantClassNames(variant)}
-                    onClick={() => productStore.setActiveVariant(product, variant)}
-                >
-                    {variant.name}
-                </div>
-            )}
+  return (
+    <div className={styles['variants']}>
+      {product.variants.map(variant =>
+        <div
+          className={variantClassNames(variant)}
+          onClick={() => productStore.setActiveVariant(product, variant)}
+        >
+          {variant.name}
         </div>
-    )
+      )}
+    </div>
+  )
 })
 
 export default Variants

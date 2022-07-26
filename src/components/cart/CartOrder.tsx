@@ -11,6 +11,7 @@ import Ordering from "../ordering/Ordering";
 import navStore from "../../store/navStore";
 import SelectTime from "../ordering/SelectTime";
 import OrderingResultSuccess from "../ordering/OrderingResultSuccess";
+import cartStore from "../../store/cartStore";
 
 
 function declOfNum(number: number, titles: string[]) {
@@ -69,17 +70,17 @@ const CartOrder = observer(() => {
             </div>
             <div className={styles.divider} />
             <InfoRow
-                title={productStore.cartCount + " " + declOfNum(productStore.cartCount, ["товар", "товара", "товаров"])}
-                value={productStore.cartCost + " " + declOfNum(productStore.cartCost, ["рубль", "рубля", "рублей"])}
+                title={cartStore.cartAmount + " " + declOfNum(cartStore.cartAmount, ["товар", "товара", "товаров"])}
+                value={cartStore.cartCost + " " + declOfNum(cartStore.cartCost, ["рубль", "рубля", "рублей"])}
             />
             <InfoRow
                 title={"Доставка"}
-                value={productStore.cartCost >= 800 ? "Бесплатно" : "200 рублей"}
+                value={cartStore.cartCost >= 800 ? "Бесплатно" : "200 рублей"}
             />
             <div className={styles.divider} />
             <InfoRow
                 title={"Итого"}
-                value={productStore.totalCost + " " + declOfNum(productStore.totalCost, ["рубль", "рубля", "рублей"])}
+                value={cartStore.totalCost + " " + declOfNum(cartStore.totalCost, ["рубль", "рубля", "рублей"])}
             />
             <div
                 className={styles.button}

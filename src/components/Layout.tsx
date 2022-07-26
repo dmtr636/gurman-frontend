@@ -28,128 +28,124 @@ import Dialog from "@mui/material/Dialog";
 import EmptyCart from "./cart/EmptyCart";
 import LoadingDrawer from "./common/LoadingDrawer";
 import PaymentStatus from "./common/PaymentStatus";
+import cart from "./cart/Cart";
+import cartStore from "../store/cartStore";
 
 
 const Layout = observer(() => {
-    const categories = category.categories
-    const { width } = useWindowDimensions()
+  const categories = category.categories
+  const { width } = useWindowDimensions()
 
-    useEffect(() => {
-        setTimeout(() => {
-            navStore.setNavIndex(navStore.navIndex, true)
-        }, 1000)
-    }, [])
+  return (
+    <HashRouter>
+      <div className={styles.layout}>
+        <Header />
+        {width < 768 && <MobileInfo />}
 
-    return (
-        <HashRouter>
-            <div className={styles.layout}>
-                <Header />
-                {width < 768 && <MobileInfo />}
+        <Nav />
 
-                <Nav />
+        {width < 768
+          ?
+          <Swiper
+            effect={"creative"}
+            creativeEffect={{
+              limitProgress: 2,
+              prev: {
+                translate: ["-100%", 0, 0],
+              },
+              next: {
+                translate: ["100%", 0, 0],
+                opacity: 0.2
+              },
+            }}
+            modules={[EffectCreative]}
+            slidesPerView={width / 300}
+            autoHeight
+            onSwiper={swiper => navStore.setNavSwiper(swiper)}
+            className={styles['swiper']}
+            onActiveIndexChange={swiper => {
+              console.log(swiper.activeIndex)
+              if (swiper.activeIndex === categories.length) {
+                navStore.setNavIndex(swiper.activeIndex - 1, true)
+              } else {
+                navStore.setNavIndex(swiper.activeIndex)
+              }
+            }}
+          >
+            {categories.map((category, index) =>
+              <SwiperSlide key={index} virtualIndex={index} className={styles['swiperSlide']}>
+                <ProductsContainer navIndex={index} />
+              </SwiperSlide>
+            )}
+            <SwiperSlide key={1000} virtualIndex={1000} className={styles['swiperSlide']}>
+            </SwiperSlide>
+          </Swiper>
 
-                {width < 768
-                    ?
-                    <Swiper
-                        effect={"creative"}
-                        creativeEffect={{
-                            limitProgress: 2,
-                            prev: {
-                                translate: ["-100%", 0, 0],
-                            },
-                            next: {
-                                translate: ["100%", 0, 0],
-                                opacity: 0.2
-                            },
-                        }}
-                        modules={[EffectCreative]}
-                        slidesPerView={width / 300}
-                        autoHeight
-                        onSwiper={swiper => navStore.setNavSwiper(swiper)}
-                        className={styles['swiper']}
-                        onActiveIndexChange={swiper => {
-                            console.log(swiper.activeIndex)
-                            if (swiper.activeIndex === categories.length) {
-                                navStore.setNavIndex(swiper.activeIndex - 1, true)
-                            } else {
-                                navStore.setNavIndex(swiper.activeIndex)
-                            }
-                        }}
-                    >
-                        {categories.map((category, index) =>
-                            <SwiperSlide key={index} virtualIndex={index} className={styles['swiperSlide']}>
-                                <ProductsContainer navIndex={index} />
-                            </SwiperSlide>
-                        )}
-                        <SwiperSlide key={1000} virtualIndex={1000} className={styles['swiperSlide']}>
-                        </SwiperSlide>
-                    </Swiper>
+          :
+          <ProductsContainer navIndex={navStore.navIndex}/>
+        }
 
-                    :
-                    <ProductsContainer navIndex={navStore.navIndex}/>
-                }
+        <Footer />
 
-                <Footer />
+        {(cartStore.cartAmount > 0 && width < 768) && <FloatingCartButton />}
 
-                {(productStore.cartCost > 0 && width < 768) && <FloatingCartButton />}
+        <Routes>
+          <Route path={"/"} element={<></>}/>
 
-                <Routes>
-                    <Route path={"/"} element={<></>}/>
+          <Route
+            path={"/payment-status"}
+            element={
+              <PaymentStatus />
+            }
+          />
 
-                    <Route
-                        path={"/payment-status"}
-                        element={
-                            <PaymentStatus />
-                        }
-                    />
+          <Route
+            path={"/payment-succeeded"}
+            element={
+              <PaymentSucceeded />
+            }
+          />
 
-                    <Route
-                        path={"/payment-succeeded"}
-                        element={
-                            <PaymentSucceeded />
-                        }
-                    />
+          <Route
+            path={"/payment-error"}
+            element={
+              <PaymentError />
+            }
+          />
+        </Routes>
 
-                    <Route
-                        path={"/payment-error"}
-                        element={
-                            <PaymentError />
-                        }
-                    />
-                </Routes>
+        <SiteClosedModal />
+        <AdditionsModal />
 
-                <SiteClosedModal />
-                <AdditionsModal />
+        <Drawer
+          anchor={'right'}
+          open={navStore.cartOpenState}
+        >
+          <Cart close={() => navStore.closeCart()} />
+        </Drawer>
 
-                <Drawer
-                    anchor={'right'}
-                    open={navStore.cartOpenState}
-                >
-                    <Cart close={() => navStore.closeCart()} />
-                </Drawer>
+        <Drawer
+          anchor={'right'}
+          open={navStore.loadingOpenState}
+        >
+          <LoadingDrawer />
+        </Drawer>
 
-                <Drawer
-                    anchor={'right'}
-                    open={navStore.loadingOpenState}
-                >
-                    <LoadingDrawer />
-                </Drawer>
-
-                <Dialog
-                    fullWidth={true}
-                    maxWidth={'lg'}
-                    open={navStore.emptyCartOpenState}
-                    PaperProps={{ style: { height: "745px", width: "1030px", position: "static", margin: "0 auto", maxHeight: "745px" } }}
-                    onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
-                        event.stopPropagation()
-                        navStore.closeEmptyCart()
-                    }}
-                >
-                    <EmptyCart close={() => navStore.closeEmptyCart()} />
-                </Dialog>
-            </div>
-        </HashRouter>
-    )
+        <Dialog
+          fullWidth={true}
+          maxWidth={'lg'}
+          open={navStore.emptyCartOpenState}
+          PaperProps={{ style: { height: "745px", width: "1030px", position: "static", margin: "0 auto", maxHeight: "745px" } }}
+          onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
+            event.stopPropagation()
+            navStore.closeEmptyCart()
+          }}
+        >
+          <EmptyCart close={() => navStore.closeEmptyCart()} />
+        </Dialog>
+      </div>
+    </HashRouter>
+  )
 })
 
 export default Layout

@@ -6,6 +6,7 @@ import orderButtonArrow from "../../images/orderButtonArrow.svg";
 import React from "react";
 import productStore from "../../store/productStore";
 import {useNavigate} from "react-router-dom";
+import cartStore from "../../store/cartStore";
 
 const OrderingResultSuccess = () => {
     const navigate = useNavigate()
@@ -31,7 +32,7 @@ const OrderingResultSuccess = () => {
                     onClick={(event) => {
                         event.stopPropagation()
                         navStore.closAll()
-                        productStore.clearCart()
+                        cartStore.clearCart()
                         navigate("/")
                     }}
                 >

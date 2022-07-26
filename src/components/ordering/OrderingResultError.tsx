@@ -7,6 +7,7 @@ import React from "react";
 import productStore from "../../store/productStore";
 import {useNavigate} from "react-router-dom";
 import phoneIcon from "../../images/orderingErrorPhoneIcon.svg"
+import cartStore from "../../store/cartStore";
 
 const OrderingResultError = () => {
     const navigate = useNavigate()
@@ -36,7 +37,7 @@ const OrderingResultError = () => {
                     onClick={(event) => {
                         event.stopPropagation()
                         navStore.closAll()
-                        productStore.clearCart()
+                        cartStore.clearCart()
                         navigate("/")
                     }}
                 >
