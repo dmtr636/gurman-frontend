@@ -31,6 +31,12 @@ const DeliveryForm = observer(() => {
                 value={orderStore.flat}
                 onChange={event => orderStore.setFlat(event.target.value)}
             />
+            <input
+                className={styles["inputHouse"]}
+                placeholder={"Этаж"}
+                value={orderStore.floor}
+                onChange={event => orderStore.setFloor(event.target.value)}
+            />
             <textarea
                 className={styles["inputComment"]}
                 placeholder={"Комментарий к заказу"}

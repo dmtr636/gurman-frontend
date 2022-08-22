@@ -146,7 +146,7 @@ const Ordering = observer((props: {close: any}) => {
                         ?
                         <div className={styles["paymentMessage"]}>
                             Все способы оплаты будут доступны<br/>
-                            с 8:00 до 22:00
+                            с 8:00 до 01:00
                         </div>
                         :
                         <div className={styles["formRow"]}>

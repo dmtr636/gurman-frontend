@@ -21,7 +21,7 @@ import cartClosedBg from "../../images/headerCartClosedBg.svg"
 
 const isNight = () => {
     let hours = new Date().getHours()
-    return hours >= 22 || hours < 8;
+    return hours >= 1 && hours < 8;
 }
 
 function Header() {
@@ -112,7 +112,7 @@ function Header() {
                             <div className={styles["infoPaymentPopup"]}>
                                 <div className={"text-info"}>
                                     Все способы оплаты будут доступны<br />
-                                    с 8:00 до 22:00
+                                    с 8:00 до 01:00
                                 </div>
                             </div>
                         </Popover>

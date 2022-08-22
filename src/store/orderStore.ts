@@ -15,6 +15,7 @@ class OrderStore {
     house = localStorage.getItem("house") || ""
     entrance = localStorage.getItem("entrance") || ""
     flat = localStorage.getItem("flat") || ""
+    floor = localStorage.getItem("floor") || ""
     comment = ""
     paymentType = ONLINE
     cookingTime: string = ""
@@ -54,6 +55,9 @@ class OrderStore {
     setCookingTime(time: string) {
         this.cookingTime = time
     }
+    setFloor(floor: string) {
+        this.floor = floor
+    }
 
     saveToLocalStorage() {
         localStorage.setItem("name", this.name)
@@ -63,6 +67,7 @@ class OrderStore {
         localStorage.setItem("house", this.house)
         localStorage.setItem("entrance", this.entrance)
         localStorage.setItem("flat", this.flat)
+        localStorage.setItem("floor", this.floor)
     }
 }
 

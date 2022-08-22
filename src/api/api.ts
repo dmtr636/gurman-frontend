@@ -16,6 +16,7 @@ export function postOrder() {
         house: orderStore.house,
         entrance: orderStore.entrance,
         flat: orderStore.flat,
+        floor: orderStore.floor,
         comment: orderStore.comment,
         paymentType: orderStore.paymentType
     }
