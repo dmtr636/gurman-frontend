@@ -1,13 +1,10 @@
 import styles from "./CartOrder.module.css"
-import React, {useState} from "react";
+import React from "react";
 import {observer} from "mobx-react-lite";
-import productStore from "../../store/productStore";
 import orderButtonArrow from "../../images/orderButtonArrow.svg"
 import Drawer from "@mui/material/Drawer";
-import Cart from "./Cart";
 import checkMark from "../../images/checkMark.svg"
 import promoCodeStore, {CHECKING, EXISTS, NOT_CHECKED, NOT_EXISTS} from "../../store/promoCodeStore";
-import Ordering from "../ordering/Ordering";
 import navStore from "../../store/navStore";
 import SelectTime from "../ordering/SelectTime";
 import OrderingResultSuccess from "../ordering/OrderingResultSuccess";

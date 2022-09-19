@@ -1,6 +1,5 @@
 import {makeAutoObservable} from "mobx";
 import Swiper from "swiper";
-import React from "react";
 import {IProduct} from "../model/IProduct";
 
 class NavStore {

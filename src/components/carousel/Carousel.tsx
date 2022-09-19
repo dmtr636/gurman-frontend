@@ -2,9 +2,8 @@ import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "./styles.css";
-import { Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import sliderImage from '../../images/Slider.png'
+import {Navigation} from "swiper";
+import {Swiper, SwiperSlide} from "swiper/react";
 import sliderStore from "../../store/sliderStore";
 import {observer} from "mobx-react-lite";
 import {SERVER_HOST} from "../../constants/constants";

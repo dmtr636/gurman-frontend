@@ -1,11 +1,7 @@
 import {observer} from "mobx-react-lite";
-import loadingGif from "../../images/logotypeLoading.gif"
-import DrawerContainer from "./DrawerContainer";
 import navStore from "../../store/navStore";
 import styled from "styled-components";
 import React, {useEffect} from "react";
-import Drawer from "@mui/material/Drawer";
-import LoadingDrawer from "./LoadingDrawer";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {SERVER_HOST} from "../../constants/constants";

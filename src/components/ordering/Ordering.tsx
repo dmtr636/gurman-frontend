@@ -5,7 +5,7 @@ import number1Image from "../../images/Number1.svg"
 import number2Image from "../../images/Number2.svg"
 import number3Image from "../../images/Number3.svg"
 import InputMask from "react-input-mask";
-import React, {useState} from "react";
+import React from "react";
 import DeliveryForm from "./DeliveryForm";
 import PickupForm from "./PickupForm";
 import navStore from "../../store/navStore";

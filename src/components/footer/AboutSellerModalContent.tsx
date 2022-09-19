@@ -1,10 +1,8 @@
-import DialogContent from "@mui/material/DialogContent";
-import Typography from "@mui/material/Typography";
 import * as React from "react";
 import styles from "./Footer.module.css"
 import styled from "styled-components";
 import navStore from "../../store/navStore";
-import Footer, {REQUISITES_MODAL_CONTENT_TYPE} from "./Footer";
+import {REQUISITES_MODAL_CONTENT_TYPE} from "./Footer";
 
 const Link = styled.span`
   cursor: pointer;

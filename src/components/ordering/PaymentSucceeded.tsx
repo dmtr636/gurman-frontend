@@ -2,8 +2,7 @@ import React, {useEffect} from "react";
 import navStore from "../../store/navStore";
 import Drawer from "@mui/material/Drawer";
 import OrderingResultSuccess from "./OrderingResultSuccess";
-import { observer } from "mobx-react-lite";
-import {useNavigate} from "react-router-dom";
+import {observer} from "mobx-react-lite";
 
 function PaymentSucceeded() {
     useEffect(() => {

@@ -1,5 +1,3 @@
-import DialogContent from "@mui/material/DialogContent";
-import Typography from "@mui/material/Typography";
 import * as React from "react";
 import styles from "./Footer.module.css"
 

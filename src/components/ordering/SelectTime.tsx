@@ -5,14 +5,13 @@ import closeImage from "../../images/Close.svg"
 import React from "react";
 import flagImage from "../../images/flag.svg"
 import alarmImage from "../../images/alarm.svg"
-import orderStore, {DELIVERY, PICKUP} from "../../store/orderStore";
+import orderStore from "../../store/orderStore";
 import orderButtonArrow from "../../images/orderButtonArrow.svg";
 import Drawer from "@mui/material/Drawer";
 import Ordering from "./Ordering";
 import selectMark from "../../images/selectMark.svg"
-import {Paper, Popover, Popper, Typography} from "@mui/material";
+import {Paper, Popover, Popper} from "@mui/material";
 import useWindowDimensions from "../../hooks/hooks";
-import { ClickAwayListener } from "@material-ui/core";
 
 const cookingTimes = () => {
     const currentHours = new Date().getHours()

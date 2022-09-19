@@ -1,5 +1,5 @@
 import {observer} from "mobx-react-lite";
-import React, {useEffect} from "react";
+import React from "react";
 import bg from "../../images/headerCartClosedBg.svg"
 import styled from "styled-components";
 import navStore from "../../store/navStore";

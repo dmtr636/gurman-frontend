@@ -3,7 +3,6 @@ import styles from './MobileProduct.module.css'
 import productStore from '../../store/productStore'
 import {observer} from "mobx-react-lite";
 import Variants from "./Variants";
-import Composition from "./Composition";
 import {SERVER_HOST} from "../../constants/constants";
 import MobileComposition from "./MobileComposition";
 import settingsStore from "../../store/settingsStore";

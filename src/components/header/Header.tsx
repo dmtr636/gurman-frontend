@@ -9,78 +9,75 @@ import navBurger from "../../images/navBurger.svg"
 import navClose from "../../images/navClose.svg"
 import Dialog from "@mui/material/Dialog";
 import navStore from "../../store/navStore";
-import EmptyCart from "../cart/EmptyCart";
-import { observer } from 'mobx-react-lite';
+import {observer} from 'mobx-react-lite';
 import MobileMenu from "./MobileMenu";
-import productStore from "../../store/productStore";
 import brandImage from "../../images/brandImage.svg"
 import brandTextImage from "../../images/brandTextImage.svg"
 import settingsStore from "../../store/settingsStore";
 import HeaderCartClosed from "./HeaderCartClosed";
 import cartClosedBg from "../../images/headerCartClosedBg.svg"
-
-const isNight = () => {
-    let hours = new Date().getHours()
-    return hours >= 1 && hours < 8;
-}
+import {isNight} from "../../utils/utils";
 
 function Header() {
-    const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+	const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
-    const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
+	const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
 
-    const handlePopoverClose = () => {
-        setAnchorEl(null);
-    };
+	const handlePopoverClose = () => {
+		setAnchorEl(null);
+	};
 
-    useEffect(() => {
-        //preloading image
-        new Image().src = cartClosedBg;
-    }, []);
+	useEffect(() => {
+		//preloading image
+		new Image().src = cartClosedBg;
+	}, []);
 
-    const open = Boolean(anchorEl);
+	const open = Boolean(anchorEl);
 
-    return (
-        <div className={styles.headerWrapper}>
-            <div className={styles.header}>
-                {navStore.backButtonVisible &&
+	return (
+		<div className={styles.headerWrapper}>
+			<div className={styles.header}>
+				{navStore.backButtonVisible &&
                     <div
                         className={styles['backButton']}
                         onClick={() => navStore.back()}
                     />
-                }
+				}
 
-                <img src={brandImage} alt={""} className={styles['brandImage']} onClick={() => navStore.setNavIndex(0, true)}/>
-                <img src={brandTextImage} alt={""} className={styles['brand']} onClick={() => navStore.setNavIndex(0, true)} />
-                <div className={styles.info}>
-                    <a href="https://yandex.ru/maps/-/CCUFV8xoPC" target="_blank" rel="noreferrer">
-                        <img src={infoLocation} alt={""} />
-                    </a>
-                    <div>
-                        <a href={"https://yandex.ru/maps/-/CCUFV8xoPC"} target="_blank" rel="noreferrer" className={styles.infoTextTop + " " + styles['infoTextTop']}>
-                            Калуга
-                        </a>
-                        <div className={styles.infoTextBottom}>
-                            Плеханова, 19А
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.info}>
-                    <a href={"tel:+79109140005"}>
-                        <img src={infoPhone} alt={""} />
-                    </a>
-                    <div>
-                        <a href={"tel:+79109130005"} className={styles.infoTextTop + " " + styles['infoTextTop']}>
-                            8 910 913 00 05
-                        </a>
-                        <div className={styles.infoTextBottom}>
-                            Готовим с 10:00 до 3:00
-                        </div>
-                    </div>
-                </div>
-                {isNight() &&
+				<img src={brandImage} alt={""} className={styles['brandImage']}
+					 onClick={() => navStore.setNavIndex(0, true)}/>
+				<img src={brandTextImage} alt={""} className={styles['brand']}
+					 onClick={() => navStore.setNavIndex(0, true)}/>
+				<div className={styles.info}>
+					<a href="https://yandex.ru/maps/-/CCUFV8xoPC" target="_blank" rel="noreferrer">
+						<img src={infoLocation} alt={""}/>
+					</a>
+					<div>
+						<a href={"https://yandex.ru/maps/-/CCUFV8xoPC"} target="_blank" rel="noreferrer"
+						   className={styles.infoTextTop + " " + styles['infoTextTop']}>
+							Калуга
+						</a>
+						<div className={styles.infoTextBottom}>
+							Плеханова, 19А
+						</div>
+					</div>
+				</div>
+				<div className={styles.info}>
+					<a href={"tel:+79109140005"}>
+						<img src={infoPhone} alt={""}/>
+					</a>
+					<div>
+						<a href={"tel:+79109130005"} className={styles.infoTextTop + " " + styles['infoTextTop']}>
+							8 910 913 00 05
+						</a>
+						<div className={styles.infoTextBottom}>
+							Готовим с 10:00 до 3:00
+						</div>
+					</div>
+				</div>
+				{isNight() &&
                     <div className={styles["infoPayment"]}>
                         <img
                             src={infoIcon}
@@ -91,18 +88,18 @@ function Header() {
                         <Popover
                             id="mouse-over-popover"
                             sx={{
-                                pointerEvents: 'none',
-                            }}
+								pointerEvents: 'none',
+							}}
                             open={open}
                             anchorEl={anchorEl}
                             anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
+								vertical: 'bottom',
+								horizontal: 'left',
+							}}
                             transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
+								vertical: 'top',
+								horizontal: 'right',
+							}}
                             onClose={handlePopoverClose}
                             disableRestoreFocus
                             disableScrollLock
@@ -111,61 +108,63 @@ function Header() {
                         >
                             <div className={styles["infoPaymentPopup"]}>
                                 <div className={"text-info"}>
-                                    Все способы оплаты будут доступны<br />
+                                    Все способы оплаты будут доступны<br/>
                                     с 10:00 до 22:00
                                 </div>
                             </div>
                         </Popover>
                         <div className={"text-info"}>
-                            Доступна только<br />
+                            Доступна только<br/>
                             онлайн-оплата
                         </div>
                     </div>
-                }
+				}
 
-                {settingsStore.siteOpenState
-                    ? <HeaderCart />
-                    : <HeaderCartClosed />
-                }
+				{settingsStore.siteOpenState
+					? <HeaderCart/>
+					: <HeaderCartClosed/>
+				}
 
 
-                {navStore.menuOpenState
-                    ?
-                    <img
-                        className={styles['navClose']}
-                        src={navClose}
-                        alt={""}
-                        onClick={() => navStore.closeMenu()}
-                    />
-                    :
-                    <img
-                        className={styles['navBurger']}
-                        src={navBurger}
-                        alt={""}
-                        onClick={() => navStore.openMenu()}
-                    />
-                }
+				{navStore.menuOpenState
+					?
+					<img
+						className={styles['navClose']}
+						src={navClose}
+						alt={""}
+						onClick={() => navStore.closeMenu()}
+					/>
+					:
+					<img
+						className={styles['navBurger']}
+						src={navBurger}
+						alt={""}
+						onClick={() => navStore.openMenu()}
+					/>
+				}
 
-                <Dialog
-                    open={navStore.menuOpenState}
-                    PaperProps={{ style: {
-                            width: "155px",
-                            position: "absolute",
-                            right: "0",
-                            top: "60px",
-                            margin: "0",
-                            borderRadius: "0px 0px 0px 5px"
-                    }}}
-                    onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
-                        event.stopPropagation()
-                        navStore.closeMenu()
-                    }}
-                >
-                    <MobileMenu />
-                </Dialog>
-            </div>
-        </div>
-    )
+				<Dialog
+					open={navStore.menuOpenState}
+					PaperProps={{
+						style: {
+							width: "155px",
+							position: "absolute",
+							right: "0",
+							top: "60px",
+							margin: "0",
+							borderRadius: "0px 0px 0px 5px"
+						}
+					}}
+					onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
+						event.stopPropagation()
+						navStore.closeMenu()
+					}}
+				>
+					<MobileMenu/>
+				</Dialog>
+			</div>
+		</div>
+	)
 }
 
 export default observer(Header)

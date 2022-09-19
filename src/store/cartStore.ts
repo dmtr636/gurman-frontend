@@ -2,7 +2,6 @@ import {makeAutoObservable} from "mobx";
 import {ICartItem} from "../model/ICartItem";
 import {IProduct} from "../model/IProduct";
 import {IVariant} from "../model/IVariant";
-import {IAddition} from "../model/IAddition";
 import promoCodeStore from "./promoCodeStore";
 import productStore from "./productStore";
 

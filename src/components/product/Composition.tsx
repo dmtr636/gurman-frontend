@@ -1,6 +1,5 @@
 import styles from "./Product.module.css";
 import {IProduct} from "../../model/IProduct";
-import productState from '../../store/productStore'
 import {observer} from "mobx-react-lite";
 
 const COMPOSITION_MAX_LEN = 110

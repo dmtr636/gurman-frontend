@@ -2,7 +2,6 @@ import Dialog from "@mui/material/Dialog";
 import navStore from "../../store/navStore";
 import React from "react";
 import { observer } from "mobx-react-lite";
-import styles from "../cart/EmptyCart.module.css";
 import closeImg from "../../images/Close.svg";
 import styled from "styled-components";
 import promoCodeStore from "../../store/promoCodeStore";

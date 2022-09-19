@@ -1,12 +1,7 @@
 import styles from "./HeaderCart.module.css";
 import {observer} from "mobx-react-lite";
-import productStore from "../../store/productStore"
-import React, {useState} from "react";
-import Drawer from '@mui/material/Drawer';
-import Cart from '../cart/Cart'
+import React from "react";
 import navStore from "../../store/navStore";
-import EmptyCart from "../cart/EmptyCart";
-import Dialog from "@mui/material/Dialog";
 import cartStore from "../../store/cartStore";
 
 const HeaderCart = observer(() => {

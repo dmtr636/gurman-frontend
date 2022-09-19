@@ -1,7 +1,6 @@
 import styles from "./Footer.module.css"
 import vkImage from "../../images/Vk.svg"
 import instagramImage from "../../images/Instagram.svg"
-import {useState} from "react";
 import Modal from "./Modal";
 import ForConsumersModalContent from "./ForConsumersModalContent";
 import DeliveryAndPickupModalContent from "./DeliveryAndPickupModalContent";

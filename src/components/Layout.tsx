@@ -4,21 +4,16 @@ import Nav from './nav/Nav'
 import category from "../store/categoryStore";
 import {observer} from "mobx-react-lite";
 import ProductsContainer from "./product/ProductsContainer";
-import Carousel from "./carousel/Carousel";
 import Footer from "./footer/Footer";
 import useWindowDimensions from "../hooks/hooks";
 import MobileInfo from "./header/MobileInfo";
 import navStore from "../store/navStore";
 import FloatingCartButton from "./cart/FloatingCartButton";
-import productStore from "../store/productStore";
-import SwipeableViews from 'react-swipeable-views';
-import { virtualize } from 'react-swipeable-views-utils';
 import {Swiper, SwiperSlide} from "swiper/react";
-import {EffectCreative, EffectCube, Virtual} from "swiper";
+import {EffectCreative} from "swiper";
 import {HashRouter, Route, Routes} from "react-router-dom";
-import OrderingResultSuccess from "./ordering/OrderingResultSuccess";
 import Drawer from "@mui/material/Drawer";
-import React, {useEffect} from "react";
+import React from "react";
 import PaymentSucceeded from "./ordering/PaymentSucceeded";
 import PaymentError from "./ordering/PaymentError";
 import SiteClosedModal from "./modal/SiteClosedModal";
@@ -28,7 +23,6 @@ import Dialog from "@mui/material/Dialog";
 import EmptyCart from "./cart/EmptyCart";
 import LoadingDrawer from "./common/LoadingDrawer";
 import PaymentStatus from "./common/PaymentStatus";
-import cart from "./cart/Cart";
 import cartStore from "../store/cartStore";
 
 

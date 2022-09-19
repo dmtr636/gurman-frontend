@@ -1,10 +1,8 @@
 import styles from "./OrderingResult.module.css"
 import navStore from "../../store/navStore";
-import DrawerContainer from "../common/DrawerContainer";
 import successIcon from "../../images/successIcon.svg"
 import orderButtonArrow from "../../images/orderButtonArrow.svg";
 import React from "react";
-import productStore from "../../store/productStore";
 import {useNavigate} from "react-router-dom";
 import cartStore from "../../store/cartStore";
 
