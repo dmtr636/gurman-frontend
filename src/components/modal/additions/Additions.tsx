@@ -91,7 +91,7 @@ function Additions() {
 	return (
 		<Dialog
 			open={navStore.additionsModalOpen}
-			PaperProps={{style: {maxWidth: "868px", maxHeight: "100vh", margin: 0}}}
+			PaperProps={{style: {maxWidth: "888px", maxHeight: "100vh", margin: 0}}}
 			onClose={() => {
 				navStore.closeAdditionsModal()
 			}}
