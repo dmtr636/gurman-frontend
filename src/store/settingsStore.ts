@@ -1,6 +1,7 @@
 import {makeAutoObservable} from "mobx";
 import axios from "axios";
 import {SERVER_HOST} from "../constants/constants";
+import {isWorkingTime} from "../utils/utils";
 
 class SettingsStore {
     siteOpenState = true
@@ -10,12 +11,16 @@ class SettingsStore {
     }
 
     setSiteOpenState(state: boolean) {
-        //this.siteOpenState = state
+        this.siteOpenState = state
     }
 
     fetchSiteOpenState() {
-        axios.get(SERVER_HOST + "/api/site-state")
-            .then(res => this.setSiteOpenState(res.data['isOpen']))
+        if (!isWorkingTime()) {
+            this.siteOpenState = false
+        } else {
+            axios.get(SERVER_HOST + "/api/site-state")
+                .then(res => this.setSiteOpenState(res.data['isOpen']))
+        }
     }
 }
 

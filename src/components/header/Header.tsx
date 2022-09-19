@@ -76,7 +76,7 @@ function Header() {
                             8 910 913 00 05
                         </a>
                         <div className={styles.infoTextBottom}>
-                            Готовим круглосуточно
+                            Готовим с 10:00 до 3:00
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ function Header() {
                             <div className={styles["infoPaymentPopup"]}>
                                 <div className={"text-info"}>
                                     Все способы оплаты будут доступны<br />
-                                    с 8:00 до 01:00
+                                    с 10:00 до 22:00
                                 </div>
                             </div>
                         </Popover>
