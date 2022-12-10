@@ -22,7 +22,7 @@
     font-weight: 700;
     font-size: 22px;
     line-height: 25px;
-    color: #282828;
+    color: white;
 }
 
 .portion {
@@ -37,6 +37,7 @@
 
 .composition {
     margin-top: 20px;
+    color: white;
 }
 
 @media (max-width: 1365px) {
@@ -83,6 +84,8 @@
     position: absolute;
     bottom: 0;
     display: flex;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .orderButton {
@@ -133,15 +136,16 @@
     line-height: 23px;
     color: #282828;
 
-    column-gap: 17px;
     user-select: none;
 }
 
 .cartCountButton {
-    height: 20px;
+    height: 100%;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .cartCountButton:hover {

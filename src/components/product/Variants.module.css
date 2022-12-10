@@ -1,6 +1,8 @@
 .variants {
     display: flex;
     margin-top: 20px;
+    background: #FAF9F9;
+    border-radius: 5px;
 }
 
 @media (max-width: 767px) {
@@ -26,7 +28,7 @@
 
 @media (max-width: 767px) {
     .variant {
-        width: 93px;
+        width: 94px;
         height: 30px;
         font-size: 14px;
     }

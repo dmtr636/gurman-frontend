@@ -152,7 +152,8 @@ function Header() {
 							right: "0",
 							top: "60px",
 							margin: "0",
-							borderRadius: "0px 0px 0px 5px"
+							borderRadius: "0px 0px 0px 5px",
+							background: "transparent"
 						}
 					}}
 					onClose={(event: React.KeyboardEvent | React.MouseEvent) => {

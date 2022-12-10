@@ -41,6 +41,7 @@ const MobileProduct = observer((props: {product: IProduct}) => {
             <div className={styles.titleRow}>
                 <span className={styles.title}>
                     {props.product.name}
+                    <span>&nbsp;&nbsp;&nbsp;</span>
                     <span className={styles.portion}>
                         {props.product.portion + " " + props.product.unit}
                     </span>

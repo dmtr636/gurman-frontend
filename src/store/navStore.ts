@@ -26,6 +26,10 @@ class NavStore {
 
     constructor() {
         makeAutoObservable(this)
+
+        setInterval(() => {
+            this.navSwiper?.updateAutoHeight()
+        }, 100)
     }
 
     openSiteClosedModal() {

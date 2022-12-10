@@ -1,5 +1,5 @@
 .headerWrapper {
-    background: #FAF9F9;
+    background: #2C2C2C;
 
     position: sticky;
     top: 0;
@@ -104,7 +104,7 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
-    color: #282828;
+    color: white;
     text-decoration: none;
 }
 
@@ -118,7 +118,7 @@
     font-weight: 300;
     font-size: 16px;
     line-height: 18px;
-    color: #282828;
+    color: white;
     margin-top: 3px;
 }
 

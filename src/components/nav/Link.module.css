@@ -4,7 +4,7 @@
     font-weight: 400;
     font-size: 22px;
     line-height: 30px;
-    color: #282828;
+    color: white;
     text-decoration: none;
     cursor: pointer;
 }
@@ -12,7 +12,7 @@
 @media (max-width: 1365px) {
     .item {
         padding: 4px 10px;
-        background: #FAF9F9;
+        background: #2C2C2C;
         border-radius: 5px;
         flex-shrink: 0;
         font-size: 16px;

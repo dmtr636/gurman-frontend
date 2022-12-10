@@ -5,6 +5,7 @@ import navStore from "../../store/navStore";
 
 const Container = styled.div`
   padding: 20px;
+  background: #2C2C2C;
 `
 const Header = styled.div`
   font-family: 'Open Sans';
@@ -12,7 +13,7 @@ const Header = styled.div`
   font-weight: 600;
   font-size: 18px;
   line-height: 25px;
-  color: #000000;
+  color: white;
   text-align: right;
   margin-bottom: 30px;
 `
@@ -33,7 +34,7 @@ const Item = styled.div<{active: boolean}>`
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  color: ${props => props.active ? "#D42216" : "#00000"};
+  color: ${props => props.active ? "#D42216" : "#FFFFFF"};
 `
 
 function MobileMenu() {
