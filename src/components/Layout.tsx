@@ -129,7 +129,7 @@ const Layout = observer(() => {
           fullWidth={true}
           maxWidth={'lg'}
           open={navStore.emptyCartOpenState}
-          PaperProps={{ style: { height: "745px", width: "1030px", position: "static", margin: "0 auto", maxHeight: "745px" } }}
+          PaperProps={{ style: { height: "745px", width: "1030px", position: "static", margin: "0 auto", maxHeight: "745px", background: "transparent" } }}
           onClose={(event: React.KeyboardEvent | React.MouseEvent) => {
             event.stopPropagation()
             navStore.closeEmptyCart()

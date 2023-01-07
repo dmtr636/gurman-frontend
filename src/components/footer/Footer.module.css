@@ -145,6 +145,13 @@
     }
 }
 
+@media (min-width: 1366px) {
+    .bottom {
+        justify-content: space-between;
+        width: 1280px;
+    }
+}
+
 .modalContent {
     white-space: pre-wrap;
     font-family: 'Open Sans';
@@ -210,4 +217,28 @@
 .line3 {
     composes: divider;
     top: 372px;
+}
+
+.madeInKodim {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 130%;
+    color: #FFFFFF;
+    text-decoration: none;
+
+    display: flex;
+    column-gap: 5px;
+}
+
+.madeInKodim:hover {
+    opacity: 0.85;
+}
+
+.kodimLogo {
+    background: url("../../images/kodimLogo.svg");
+    margin-top: 2px;
+    width: 70px;
+    height: 12px;
 }

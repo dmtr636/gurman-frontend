@@ -1,10 +1,13 @@
 .wrapper {
     height: 745px;
+    overflow: overlay;
+    background: #161616;
+    padding-bottom: 40px;
 }
 
 .cart {
     width: 1030px;
-    background: #FAF9F9;
+    background: #161616;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -27,7 +30,7 @@
     font-weight: 500;
     font-size: 32px;
     line-height: 37px;
-    color: #282828;
+    color: white;
     padding: 40px;
-    background: #FAF9F9;
+    background: #2C2C2C;
 }
