@@ -115,20 +115,27 @@
     }
 }
 
+@media (min-width: 1366px) and (max-width: 1440px) {
+    .brand {
+        right: 250px;
+    }
+}
+
 .bottom {
+    height: 39px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: rgba(40, 40, 40, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.bottomContent {
+    height: 100%;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    height: 39px;
-    width: 100%;
-
-    position: absolute;
-    bottom: 0;
-
-    background: rgba(40, 40, 40, 0.2);
-    backdrop-filter: blur(10px);
-
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 500;
@@ -139,14 +146,16 @@
 
 @media (max-width: 767px) {
     .bottom {
+        left: 0;
+    }
+    .bottomContent {
         font-size: 14px;
         line-height: 16px;
-        left: 0;
     }
 }
 
 @media (min-width: 1366px) {
-    .bottom {
+    .bottomContent {
         justify-content: space-between;
         width: 1280px;
     }

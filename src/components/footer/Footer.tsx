@@ -147,16 +147,18 @@ const Footer = observer(() => {
                 </div>
             </div>
             <div className={styles.bottom}>
-                © Все права защищены «Гурман» 2022
-                {width >= 1366 &&
-                    <a
-                        className={styles.madeInKodim}
-                        href={"https://кодим.рф"}
-                        target={"_blank"}
-                    >
-                        Сделано в <div className={styles.kodimLogo}></div>
-                    </a>
-                }
+                <div className={styles.bottomContent}>
+                    © Все права защищены «Гурман» 2022
+                    {width >= 1366 &&
+                        <a
+                            className={styles.madeInKodim}
+                            href={"https://кодим.рф"}
+                            target={"_blank"}
+                        >
+                            Сделано в <div className={styles.kodimLogo}></div>
+                        </a>
+                    }
+                </div>
             </div>
             {width < 768 &&
                 <>
