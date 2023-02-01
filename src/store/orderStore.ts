@@ -17,7 +17,7 @@ class OrderStore {
     flat = localStorage.getItem("flat") || ""
     floor = localStorage.getItem("floor") || ""
     comment = ""
-    paymentType = ONLINE
+    paymentType = CHECKOUT
     cookingTime: string = ""
 
     constructor() {

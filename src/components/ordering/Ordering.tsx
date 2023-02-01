@@ -135,12 +135,12 @@ const Ordering = observer((props: {close: any}) => {
                         </div>
                     </div>
 
-                    <div
-                        className={selectPaymentTypeButtonClassname(ONLINE)}
-                        onClick={() => orderStore.setPaymentType(ONLINE)}
-                    >
-                        Онлайн оплата
-                    </div>
+                    {/*<div*/}
+                    {/*    className={selectPaymentTypeButtonClassname(ONLINE)}*/}
+                    {/*    onClick={() => orderStore.setPaymentType(ONLINE)}*/}
+                    {/*>*/}
+                    {/*    Онлайн оплата*/}
+                    {/*</div>*/}
 
                     {isNight()
                         ?

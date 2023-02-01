@@ -1,8 +1,13 @@
 import styles from "./DeliveryForm.module.css"
-import orderStore from "../../store/orderStore";
+import orderStore, {CASH_COURIER} from "../../store/orderStore";
 import {observer} from "mobx-react-lite";
+import {useEffect} from "react";
 
 const DeliveryForm = observer(() => {
+    useEffect(() => {
+        orderStore.setPaymentType(CASH_COURIER)
+    }, [])
+
     return(
         <div className={styles["container"]}>
             <input
