@@ -27,7 +27,7 @@ const OrderingResultError = () => {
 
                 <div className={styles['phoneText']}>
                     <img src={phoneIcon} alt={""} />
-                    8 (910) 914-00-05
+                    8 (910) 913-00-05
                 </div>
 
                 <div

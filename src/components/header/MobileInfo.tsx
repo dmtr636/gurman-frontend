@@ -45,7 +45,7 @@ const MobileInfo = () => {
                 </LocationImg>
                 <Text>Калуга, Плеханова, 19А</Text>
             </LeftCol>
-            <PhoneImg href="tel:+79109140005">
+            <PhoneImg href="tel:+79109130005">
                 <img src={phoneImg} alt={""} />
             </PhoneImg>
         </Container>

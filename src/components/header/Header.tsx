@@ -65,7 +65,7 @@ function Header() {
 					</div>
 				</div>
 				<div className={styles.info}>
-					<a href={"tel:+79109140005"}>
+					<a href={"tel:+79109130005"}>
 						<img src={infoPhone} alt={""}/>
 					</a>
 					<div>
