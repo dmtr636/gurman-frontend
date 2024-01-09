@@ -17,7 +17,7 @@ const AboutSellerModalContent = () => {
     return(
         <>
             <div className={styles["modalContent"]}>
-                Мгерян Серёжа Меружанович является основателем кафе «Гурман»
+                Багирян Ануш Геннадьевна является основателем кафе «Гурман»
                 в городе Калуга и владельцем этого сайта (гурман-калуга.рф).
                 С полными реквизитами можете ознакомиться
                 <Link onClick={() => {navStore.setFooterModalType(REQUISITES_MODAL_CONTENT_TYPE)}}> тут</Link>.
