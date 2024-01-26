@@ -112,7 +112,7 @@ class CartStore {
     }
 
     get totalCost() {
-        if (this.cartCost >= 800) {
+        if (this.cartCost >= 1100) {
             return this.cartCost
         } else {
             return this.cartCost + 200

@@ -7,5 +7,5 @@ export const isNight = () => {
 export const isWorkingTime = () => {
     let hours = new Date().getHours()
 
-    return hours >= 10 || hours < 3;
+    return hours >= 11 || hours < 2;
 }

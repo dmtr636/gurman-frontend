@@ -73,7 +73,7 @@ function Header() {
 							8 910 913 00 05
 						</a>
 						<div className={styles.infoTextBottom}>
-							Готовим с 10:00 до 3:00
+							Готовим с 11:00 до 2:00
 						</div>
 					</div>
 				</div>
