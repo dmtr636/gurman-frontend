@@ -51,11 +51,11 @@ function Header() {
 				<img src={brandTextImage} alt={""} className={styles['brand']}
 					 onClick={() => navStore.setNavIndex(0, true)}/>
 				<div className={styles.info}>
-					<a href="https://yandex.ru/maps/-/CCUFV8xoPC" target="_blank" rel="noreferrer">
+					<a href="https://yandex.ru/maps/-/CDTUuTYe" target="_blank" rel="noreferrer">
 						<img src={infoLocation} alt={""}/>
 					</a>
 					<div>
-						<a href={"https://yandex.ru/maps/-/CCUFV8xoPC"} target="_blank" rel="noreferrer"
+						<a href={"https://yandex.ru/maps/-/CDTUuTYe"} target="_blank" rel="noreferrer"
 						   className={styles.infoTextTop + " " + styles['infoTextTop']}>
 							Калуга
 						</a>

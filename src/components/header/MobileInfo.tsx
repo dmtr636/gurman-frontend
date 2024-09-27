@@ -39,7 +39,7 @@ const Text = styled.div`
 const MobileInfo = () => {
     return(
         <Container>
-            <LeftCol href="https://yandex.ru/maps/-/CCUFV8xoPC" target="_blank" rel="noreferrer">
+            <LeftCol href="https://yandex.ru/maps/-/CDTUuTYe" target="_blank" rel="noreferrer">
                 <LocationImg>
                     <img src={locationImg} alt={""} />
                 </LocationImg>

@@ -1,5 +1,5 @@
 import styles from "./PickupForm.module.css"
-import mapImage from "../../images/map.png"
+import mapImage from "../../images/map.jpg"
 import {useEffect} from "react";
 import orderStore, {CASH_COURIER, CHECKOUT} from "../../store/orderStore";
 
