@@ -11,7 +11,7 @@ const PickupForm = () => {
     return(
         <div>
             <div className={styles["title"]}>
-                Калуга, Плеханова 19А
+                Калуга, переулок Труда, 9
             </div>
             <div className={styles["image"]}>
                 <img src={mapImage} alt={""} />

@@ -60,7 +60,7 @@ function Header() {
 							Калуга
 						</a>
 						<div className={styles.infoTextBottom}>
-							Плеханова, 19А
+							переулок Труда, 9
 						</div>
 					</div>
 				</div>
