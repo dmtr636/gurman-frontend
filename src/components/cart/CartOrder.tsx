@@ -72,7 +72,7 @@ const CartOrder = observer(() => {
             />
             <InfoRow
                 title={"Доставка"}
-                value={cartStore.cartCost >= 1100 ? "Бесплатно" : "200 рублей"}
+                value={cartStore.cartCost >= 1400 ? "Бесплатно" : "200 рублей"}
             />
             <div className={styles.divider} />
             <InfoRow
