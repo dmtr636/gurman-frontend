@@ -5,7 +5,14 @@ export const isNight = () => {
 }
 
 export const isWorkingTime = () => {
-    let hours = new Date().getHours()
+    const now = new Date();
+    const day = now.getDay();
+    const hours = now.getHours();
+
+    // 0 — воскресенье
+    if (day === 0) {
+        return false;
+    }
 
     return hours >= 11 || hours < 2;
-}
+};

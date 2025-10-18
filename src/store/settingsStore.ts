@@ -4,7 +4,7 @@ import {SERVER_HOST} from "../constants/constants";
 import {isWorkingTime} from "../utils/utils";
 
 class SettingsStore {
-    siteOpenState = true
+    siteOpenState = isWorkingTime();
 
     constructor() {
         makeAutoObservable(this)
